@@ -20,6 +20,11 @@
       "fade, 1, 1, default"
     ];
 
+    misc = {
+      disable_splash_rendering = true;
+      disable_hyprland_logo = true;
+    };
+
     bind = [
       "$mod, Q, killactive"
       "$mod + SHIFT, Q, killactive"
@@ -63,6 +68,7 @@
 
   programs.waybar = {
     enable = true;
+    systemd.enable = true;
   };
   programs.waybar.settings.main = {
     modules-left = [ "hyprland/workspaces" ];
@@ -91,19 +97,21 @@
     };
   };
   programs.waybar.style = ''
+    @import url("file://${pkgs.waybar}/etc/xdg/waybar/style.css");
+
     * {
       font-family: Alegreya Sans, sans-serif;
       font-weight: 600;
       font-size: 12px;
     }
 
-    #waybar {
+    window#waybar {
       background-color: #000;
-      border: none;
+      border-bottom: none;
     }
 
     #workspaces button.active {
-      background-color: #333;
+      background-color: rgba(255, 255, 255, 0.2);
     }
   '';
 
@@ -117,7 +125,7 @@
 
   dconf.settings = {
     "org/gnome/desktop/background" = {
-      picture-uri-dark = "file://${pkgs.nixos-artwork.wallpapers.nineish-dark-gray.src}";
+      picture-uri-dark = "file:///etc/nixos/bg.jpeg";
     };
     "org/gnome/desktop/interface" = {
       color-scheme = "prefer-dark";
@@ -156,17 +164,17 @@
     enable = true;
     darkModeScripts = {
       color-scheme = ''
-        dconf write /org/gnome/desktop/interface/color-scheme "'prefer-dark'"
-        for addr in `ls /tmp/*.nvim.pipe`; do
-            nvim --server $addr --remote-send ":set bg=dark<CR>"
+        ${pkgs.dconf}/bin/dconf write /org/gnome/desktop/interface/color-scheme "'prefer-dark'"
+        for addr in `${pkgs.findutils}/bin/find /tmp/ -name '*.nvim.pipe'`; do
+            ${pkgs.neovim}/bin/nvim --server $addr --remote-send ":set bg=dark<CR>"
         done
       '';
     };
     lightModeScripts = {
       color-scheme = ''
-        dconf write /org/gnome/desktop/interface/color-scheme "'prefer-light'"
-        for addr in `ls /tmp/*.nvim.pipe`; do
-            nvim --server $addr --remote-send ":set bg=light<CR>"
+        ${pkgs.dconf}/bin/dconf write /org/gnome/desktop/interface/color-scheme "'prefer-light'"
+        for addr in `${pkgs.findutils}/bin/find /tmp/ -name '*.nvim.pipe'`; do
+            ${pkgs.neovim}/bin/nvim --server $addr --remote-send ":set bg=light<CR>"
         done
       '';
     };

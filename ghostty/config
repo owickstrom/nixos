@@ -10,7 +10,7 @@ font-style-bold-italic = "Bold SemiCondensed Oblique"
 
 adjust-cell-height = 20%
 
-theme = dark:Zenwritten Dark,light:Zenwritten Light
+theme = dark:Zenbones Dark,light:Zenbones Light
 selection-invert-fg-bg = false
 minimum-contrast = 1
 
