@@ -10,11 +10,11 @@ let
   };
 in
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      (import "${home-manager}/nixos")
-    ];
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    (import "${home-manager}/nixos")
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -61,13 +61,15 @@ in
     theme = "where_is_my_sddm_theme";
   };
 
-
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.owi = {
     isNormalUser = true;
     description = "Oskar";
-    extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
+    packages = with pkgs; [ ];
   };
 
   fonts.fontconfig.enable = true;
@@ -79,7 +81,6 @@ in
     withUWSM = true;
     xwayland.enable = true;
   };
-
 
   programs.hyprlock = {
     enable = true;
