@@ -1,6 +1,10 @@
 { pkgs, config, ... }:
 {
-  home.packages = with pkgs; [ nautilus ];
+  home.packages = with pkgs; [
+    glib
+    gsettings-desktop-schemas
+    nautilus
+  ];
 
   wayland.windowManager.hyprland.enable = true;
   wayland.windowManager.hyprland.settings = {
@@ -24,6 +28,7 @@
       "$mod, Return, exec, ghostty"
       "$mod + SHIFT, Return, exec, firefox"
       "$mod + SHIFT, N, exec, nautilus"
+      "$mod, T, exec, darkman toggle"
 
       "$mod, Left, movefocus, l"
       "$mod, Right, movefocus, r"
@@ -146,4 +151,29 @@
   #   };
   # };
   #
+
+  services.darkman = {
+    enable = true;
+    darkModeScripts = {
+      color-scheme = ''
+        dconf write /org/gnome/desktop/interface/color-scheme "'prefer-dark'"
+        for addr in `ls /tmp/*.nvim.pipe`; do
+            nvim --server $addr --remote-send ":set bg=dark<CR>"
+        done
+      '';
+    };
+    lightModeScripts = {
+      color-scheme = ''
+        dconf write /org/gnome/desktop/interface/color-scheme "'prefer-light'"
+        for addr in `ls /tmp/*.nvim.pipe`; do
+            nvim --server $addr --remote-send ":set bg=light<CR>"
+        done
+      '';
+    };
+    settings = {
+      lat = 59.19;
+      lng = 18.4;
+      usegeoclue = false;
+    };
+  };
 }
