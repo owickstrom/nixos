@@ -9,6 +9,7 @@
   imports = [
     ./hyprland.nix
     ./waybar.nix
+    ./rofi.nix
     ./ghostty.nix
     ./zed.nix
     ./bat.nix

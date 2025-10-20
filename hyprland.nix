@@ -9,9 +9,8 @@ let
 in
 {
   home.packages = with pkgs; [
-    glib
-    gsettings-desktop-schemas
     nautilus
+    pavucontrol
   ];
 
   wayland.windowManager.hyprland.enable = true;
@@ -166,21 +165,5 @@ in
       lng = 18.4;
       usegeoclue = false;
     };
-  };
-
-  programs.rofi = {
-    enable = true;
-    font = "Alegreya Sans 12";
-    location = "bottom";
-    terminal = "${pkgs.ghostty}/bin/ghostty";
-    theme =
-      let
-        inherit (config.lib.formats.rasi) mkLiteral;
-      in
-      {
-        "*" = {
-          font = "Alegreya Sans 12";
-        };
-      };
   };
 }
