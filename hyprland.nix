@@ -14,6 +14,8 @@
     };
     general.gaps_in = 5;
     general.gaps_out = 5;
+    general."col.active_border" = "rgb(8d7b71) rgb(483e38) 45deg";
+
     animation = [
       "workspaces, 1, 1, default"
       "windows, 1, 1, default"
@@ -34,6 +36,7 @@
       "$mod + SHIFT, Return, exec, firefox"
       "$mod + SHIFT, N, exec, nautilus"
       "$mod, T, exec, darkman toggle"
+      "$mod + SHIFT, E, exit"
 
       "$mod, Left, movefocus, l"
       "$mod, Right, movefocus, r"
@@ -47,6 +50,8 @@
 
       ", Print, exec, grimblast copy area"
       "SHIFT, Print, exec, grimblast copysave area"
+      "CTRL, Print, exec, grimblast copy screen"
+      "CTRL + SHIFT, Print, exec, grimblast copysave screen"
     ]
     ++ (
       # workspaces
@@ -106,12 +111,28 @@
     }
 
     window#waybar {
-      background-color: #000;
+      background-color: #171210;
+      color: #b4bdc3;
       border-bottom: none;
     }
 
     #workspaces button.active {
-      background-color: rgba(255, 255, 255, 0.2);
+      background-color: #483e38;
+    }
+
+    #network {
+      background-color: #18252f;
+      color: inherit;
+    }
+
+    #clock {
+      background-color: #1e2616;
+      color: inherit;
+    }
+
+    #battery {
+      background-color: #2d404e;
+      color: #b4bdc3;
     }
   '';
 
