@@ -18,6 +18,7 @@
     ./tmux.nix
     ./ctags.nix
     ./gammastep.nix
+    ./spotify.nix
   ];
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
@@ -56,7 +57,6 @@
     # Generally useful apps
     firefox
     papers
-    spotify
 
     # Git
     difftastic

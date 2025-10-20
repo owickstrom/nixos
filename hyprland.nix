@@ -20,8 +20,8 @@ in
     input = {
       kb_options = "ctrl:nocaps";
     };
-    general.gaps_in = 5;
-    general.gaps_out = 5;
+    general.gaps_in = 2;
+    general.gaps_out = 4;
     general.border_size = 2;
     general."col.inactive_border" =
       "rgba(${lib.strings.removePrefix "#" themes.dark.white}aa) rgba(${lib.strings.removePrefix "#" themes.dark.white}44) 45deg";
@@ -55,6 +55,7 @@ in
       "$mod + SHIFT, N, exec, nautilus"
       "$mod, Space, exec, rofi -show run"
       "$mod, T, exec, darkman toggle"
+      "$mod + SHIFT, L, exec, hyprlock"
       "$mod + SHIFT, E, exit"
 
       "$mod, Left, movefocus, l"
@@ -105,6 +106,13 @@ in
     "org/gnome/desktop/interface" = {
       color-scheme = "prefer-dark";
     };
+  };
+
+  home.pointerCursor = {
+    hyprcursor.enable = true;
+    name = "Vanilla-DMZ";
+    package = pkgs.vanilla-dmz;
+
   };
 
   gtk = {
