@@ -55,13 +55,6 @@ let
   '';
 in
 {
-
-  # programs.rofi = {
-  #   enable = true;
-  #   terminal = "${pkgs.ghostty}/bin/ghostty";
-  #   theme = "zenbones-dark";
-  # };
-
   home.packages = [ rofi-wrapped ];
 
   xdg.dataFile."rofi/themes/zenbones-dark.rasi".text = makeTheme themes.dark;
