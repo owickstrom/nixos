@@ -8,6 +8,7 @@
 
   imports = [
     ./hyprland.nix
+    ./waybar.nix
     ./ghostty.nix
     ./zed.nix
     ./bat.nix
@@ -28,8 +29,9 @@
     };
   };
 
+  nixpkgs.config.allowUnfree = true;
   nixpkgs.config.input-fonts.acceptLicense = true;
-  nixpkgs.overlays = [];
+  nixpkgs.overlays = [ ];
 
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
@@ -54,6 +56,7 @@
     # Generally useful apps
     firefox
     papers
+    spotify
 
     # Git
     difftastic
@@ -98,4 +101,9 @@
     zig
     zls
   ];
+
+  home.sessionVariables = {
+    ELECTRON_OZONE_PLATFORM_HINT = "wayland";
+    NIXOS_OZONE_WL = 1;
+  };
 }

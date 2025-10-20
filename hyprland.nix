@@ -1,4 +1,12 @@
-{ pkgs, config, ... }:
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
+let
+  themes = pkgs.callPackage ./themes.nix { };
+in
 {
   home.packages = with pkgs; [
     glib
@@ -14,7 +22,17 @@
     };
     general.gaps_in = 5;
     general.gaps_out = 5;
-    general."col.active_border" = "rgb(8d7b71) rgb(483e38) 45deg";
+    general.border_size = 2;
+    general."col.inactive_border" =
+      "rgba(${lib.strings.removePrefix "#" themes.dark.white}aa) rgba(${lib.strings.removePrefix "#" themes.dark.white}44) 45deg";
+    general."col.active_border" =
+      "rgba(${lib.strings.removePrefix "#" themes.dark.brightBlue}ff) rgba(${lib.strings.removePrefix "#" themes.dark.blue}aa) 45deg";
+
+    decoration = {
+      shadow.enabled = false;
+      dim_inactive = true;
+      dim_strength = 0.1;
+    };
 
     animation = [
       "workspaces, 1, 1, default"
@@ -35,6 +53,7 @@
       "$mod, Return, exec, ghostty"
       "$mod + SHIFT, Return, exec, firefox"
       "$mod + SHIFT, N, exec, nautilus"
+      "$mod, Space, exec, rofi -show run"
       "$mod, T, exec, darkman toggle"
       "$mod + SHIFT, E, exit"
 
@@ -71,71 +90,6 @@
     );
   };
 
-  programs.waybar = {
-    enable = true;
-    systemd.enable = true;
-  };
-  programs.waybar.settings.main = {
-    modules-left = [ "hyprland/workspaces" ];
-    modules-center = [ "hyprland/window" ];
-    modules-right = [
-      "network"
-      "battery"
-      "clock"
-    ];
-    battery = {
-      format = "{capacity}%";
-    };
-    clock = {
-      format-alt = "{:%a, %d. %b  %H:%M}";
-    };
-    network = {
-      format = "{ifname}";
-      format-wifi = "{essid} ({signalStrength}%)";
-      format-ethernet = "{ipaddr}/{cidr} 󰊗";
-      format-disconnected = ""; # An empty format will hide the module.
-      tooltip-format = "{ifname} via {gwaddr} 󰊗";
-      tooltip-format-wifi = "{essid} ({signalStrength}%)";
-      tooltip-format-ethernet = "{ifname} ";
-      tooltip-format-disconnected = "Disconnected";
-      max-length = 50;
-    };
-  };
-  programs.waybar.style = ''
-    @import url("file://${pkgs.waybar}/etc/xdg/waybar/style.css");
-
-    * {
-      font-family: Alegreya Sans, sans-serif;
-      font-weight: 600;
-      font-size: 12px;
-    }
-
-    window#waybar {
-      background-color: #171210;
-      color: #b4bdc3;
-      border-bottom: none;
-    }
-
-    #workspaces button.active {
-      background-color: #483e38;
-    }
-
-    #network {
-      background-color: #18252f;
-      color: inherit;
-    }
-
-    #clock {
-      background-color: #1e2616;
-      color: inherit;
-    }
-
-    #battery {
-      background-color: #2d404e;
-      color: #b4bdc3;
-    }
-  '';
-
   services.hyprpaper = {
     enable = true;
     settings = {
@@ -157,7 +111,7 @@
     enable = true;
     font = {
       name = "Alegreya Sans";
-      size = 11;
+      size = 12;
     };
     theme = {
       name = "Adwaita-dark";
@@ -204,5 +158,21 @@
       lng = 18.4;
       usegeoclue = false;
     };
+  };
+
+  programs.rofi = {
+    enable = true;
+    font = "Alegreya Sans 12";
+    location = "bottom";
+    terminal = "${pkgs.ghostty}/bin/ghostty";
+    theme =
+      let
+        inherit (config.lib.formats.rasi) mkLiteral;
+      in
+      {
+        "*" = {
+          font = "Alegreya Sans 12";
+        };
+      };
   };
 }
