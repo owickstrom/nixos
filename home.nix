@@ -83,6 +83,7 @@
     alegreya-sans
     jetbrains-mono
     nerd-fonts.jetbrains-mono
+    nerd-fonts.ubuntu-sans
     inter
     font-awesome
 

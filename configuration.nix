@@ -14,6 +14,7 @@ in
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     (import "${home-manager}/nixos")
+    ./pipewire.nix
   ];
 
   # Bootloader.

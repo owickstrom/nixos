@@ -5,7 +5,7 @@ let
     @import url("file://${pkgs.waybar}/etc/xdg/waybar/style.css");
 
     * {
-      font-family: Alegreya Sans, sans-serif;
+      font-family: "JetBrainsMono Nerd Font";
       font-weight: 600;
       font-size: 12px;
     }
@@ -33,6 +33,11 @@ let
       background-color: ${theme.background};
     }
 
+    #wireplumber {
+      color: ${theme.foreground};
+      background-color: ${theme.background};
+    }
+
     #battery {
       color: ${theme.yellow};
       background-color: ${theme.background};
@@ -49,18 +54,26 @@ in
     modules-center = [ "hyprland/window" ];
     modules-right = [
       "network"
+      "wireplumber"
       "battery"
       "clock"
     ];
     battery = {
-      format = "{capacity}%";
+      format = "{icon}  {capacity}%";
+      "format-icons" = [
+        ""
+        ""
+        ""
+        ""
+        ""
+      ];
     };
     clock = {
       format-alt = "{:%a, %d. %b  %H:%M}";
     };
     network = {
-      format = "{ifname}";
-      format-wifi = "{essid} ({signalStrength}%)";
+      format = "{icon}  {ifname}";
+      format-wifi = "{icon}  {essid} ({signalStrength}%)";
       format-ethernet = "{ipaddr}/{cidr} 󰊗";
       format-disconnected = ""; # An empty format will hide the module.
       tooltip-format = "{ifname} via {gwaddr} 󰊗";
@@ -68,6 +81,19 @@ in
       tooltip-format-ethernet = "{ifname} ";
       tooltip-format-disconnected = "Disconnected";
       max-length = 50;
+      "format-icons" = [ "" ];
+    };
+    wireplumber = {
+      "format" = "{icon}  {volume}%";
+      "format-muted" = "";
+      "format-icons" = [
+        ""
+        ""
+        ""
+      ];
+      "on-click" = "pwvucontrol";
+      "max-volume" = 150;
+      "scroll-step" = 0.2;
     };
   };
 
