@@ -57,6 +57,7 @@
   home.packages = with pkgs; [
     # Generally useful apps
     firefox
+    chromium
     papers
 
     # Git
