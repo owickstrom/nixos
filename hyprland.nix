@@ -148,7 +148,7 @@ in
       color-scheme = ''
         ${pkgs.dconf}/bin/dconf write /org/gnome/desktop/interface/color-scheme "'prefer-dark'"
         for addr in `${pkgs.findutils}/bin/find /tmp/ -name '*.nvim.pipe'`; do
-            ${pkgs.neovim}/bin/nvim --server $addr --remote-send ":set bg=dark<CR>"
+            ${pkgs.neovim}/bin/nvim --server $addr --remote-send "<Esc>:set bg=dark<CR>"
         done
       '';
     };
@@ -156,7 +156,7 @@ in
       color-scheme = ''
         ${pkgs.dconf}/bin/dconf write /org/gnome/desktop/interface/color-scheme "'prefer-light'"
         for addr in `${pkgs.findutils}/bin/find /tmp/ -name '*.nvim.pipe'`; do
-            ${pkgs.neovim}/bin/nvim --server $addr --remote-send ":set bg=light<CR>"
+            ${pkgs.neovim}/bin/nvim --server $addr --remote-send "<Esc>:set bg=light<CR>"
         done
       '';
     };
