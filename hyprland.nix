@@ -54,18 +54,30 @@ in
       "$mod + SHIFT, N, exec, nautilus"
       "$mod, Space, exec, rofi -show run"
       "$mod, T, exec, darkman toggle"
-      "$mod + SHIFT, L, exec, hyprlock"
+      "$mod + SHIFT, Escape, exec, hyprlock"
       "$mod + SHIFT, E, exit"
+
+      "$mod, R, layoutmsg, orientationnext"
 
       "$mod, Left, movefocus, l"
       "$mod, Right, movefocus, r"
       "$mod, Up, movefocus, u"
       "$mod, Down, movefocus, d"
 
+      "$mod + Shift, Left, movewindow, l"
+      "$mod + Shift, Right, movewindow, r"
+      "$mod + Shift, Up, movewindow, u"
+      "$mod + Shift, Down, movewindow, d"
+
       "$mod, H, movefocus, l"
       "$mod, J, movefocus, d"
       "$mod, K, movefocus, u"
       "$mod, L, movefocus, r"
+
+      "$mod + Shift, H, movewindow, l"
+      "$mod + Shift, J, movewindow, d"
+      "$mod + Shift, K, movewindow, u"
+      "$mod + Shift, L, movewindow, r"
 
       ", Print, exec, grimblast copy area"
       "SHIFT, Print, exec, grimblast copysave area"
@@ -88,6 +100,31 @@ in
         ) 9
       )
     );
+  };
+
+  programs.hyprlock.enable = true;
+
+  services.hypridle = {
+    enable = true;
+    settings = {
+      general = {
+        after_sleep_cmd = "hyprctl dispatch dpms on";
+        ignore_dbus_inhibit = false;
+        lock_cmd = "hyprlock";
+      };
+
+      listener = [
+        {
+          timeout = 900;
+          on-timeout = "hyprlock";
+        }
+        {
+          timeout = 1200;
+          on-timeout = "hyprctl dispatch dpms off";
+          on-resume = "hyprctl dispatch dpms on";
+        }
+      ];
+    };
   };
 
   services.hyprpaper = {

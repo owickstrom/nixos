@@ -59,6 +59,7 @@
     firefox
     chromium
     papers
+    gnome-calculator
 
     # Git
     difftastic

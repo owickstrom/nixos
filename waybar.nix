@@ -24,6 +24,11 @@ let
     }
 
     #network {
+      color: ${theme.red};
+      background-color: ${theme.background};
+    }
+
+    #bluetooth {
       color: ${theme.blue};
       background-color: ${theme.background};
     }
@@ -53,6 +58,7 @@ in
     modules-left = [ "hyprland/workspaces" ];
     modules-center = [ "hyprland/window" ];
     modules-right = [
+      "bluetooth"
       "network"
       "wireplumber"
       "battery"
@@ -95,9 +101,17 @@ in
       "max-volume" = 150;
       "scroll-step" = 0.2;
     };
+    bluetooth = {
+      "format" = "";
+      "format-connected" = " {device_alias}";
+      "format-connected-battery" = " {device_alias} {device_battery_percentage}%";
+      "on-click" = "blueberry";
+    };
   };
 
   xdg.configFile."waybar/style-light.css".text = makeStyles themes.light;
 
   xdg.configFile."waybar/style-dark.css".text = makeStyles themes.dark;
+
+  home.packages = [ pkgs.blueberry ];
 }
