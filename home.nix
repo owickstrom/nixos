@@ -57,9 +57,9 @@
   home.packages = with pkgs; [
     # Generally useful apps
     firefox
-    chromium
     papers
     gnome-calculator
+    vlc
 
     # Git
     difftastic
@@ -109,5 +109,19 @@
   home.sessionVariables = {
     ELECTRON_OZONE_PLATFORM_HINT = "wayland";
     NIXOS_OZONE_WL = 1;
+  };
+
+  programs.chromium = {
+    enable = true;
+    dictionaries = [
+      pkgs.hunspellDictsChromium.en_US
+      pkgs.hunspellDictsChromium.sv_SE
+    ];
+    extensions = [
+      "nngceckbapebfimnlniiiahkandclblb" # bitwarden
+      "eimadpbcbfnmbkopoojfekhnkhdbieeh" # dark reader
+      "cjpalhdlnbpafiamejdnhcphjbkeiagm" # ublock origin
+      "dbepggeogbaibhgnhhndojpepiihcmeb" # vimium
+    ];
   };
 }
