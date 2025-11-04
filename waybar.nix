@@ -47,6 +47,11 @@ let
       color: ${theme.yellow};
       background-color: ${theme.background};
     }
+
+    #battery.charging, #battery.plugged {
+      color: ${theme.green};
+      background-color: ${theme.background};
+    }
   '';
 in
 {
@@ -78,8 +83,8 @@ in
       format-alt = "{:%a, %d. %b  %H:%M}";
     };
     network = {
-      format = "{icon}  {ifname}";
-      format-wifi = "{icon}  {essid} ({signalStrength}%)";
+      format = " {icon}  {ifname}";
+      format-wifi = " {icon}  {essid} ({signalStrength}%)";
       format-ethernet = "{ipaddr}/{cidr} 󰊗";
       format-disconnected = ""; # An empty format will hide the module.
       tooltip-format = "{ifname} via {gwaddr} 󰊗";
