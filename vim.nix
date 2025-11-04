@@ -38,8 +38,7 @@
       lush-nvim
       zenbones-nvim
       goyo
-      copilot-lua
-      CopilotChat-nvim
+      lean-nvim
     ];
     extraConfig = ''
       source /etc/nixos/vim/init.vim
