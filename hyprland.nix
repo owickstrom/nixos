@@ -17,7 +17,8 @@ in
   wayland.windowManager.hyprland.settings = {
     "$mod" = "SUPER";
     input = {
-      kb_options = "ctrl:nocaps";
+      kb_layout = "us,se";
+      kb_options = "ctrl:nocaps, compose:ralt";
     };
     general.gaps_in = 2;
     general.gaps_out = 4;
@@ -88,6 +89,8 @@ in
       "$mod + Shift, J, movewindow, d"
       "$mod + Shift, K, movewindow, u"
       "$mod + Shift, L, movewindow, r"
+
+      "$mod + Alt, Backspace, exec, hyprctl switchxkblayout all next"
 
       ", Print, exec, grimblast copy area"
       "SHIFT, Print, exec, grimblast copysave area"

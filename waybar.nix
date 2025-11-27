@@ -5,7 +5,7 @@ let
     @import url("file://${pkgs.waybar}/etc/xdg/waybar/style.css");
 
     * {
-      font-family: "JetBrainsMono Nerd Font";
+      font-family: "TX-02 SemiCondensed";
       font-weight: 600;
       font-size: 12px;
     }
@@ -33,7 +33,19 @@ let
       background-color: ${theme.background};
     }
 
-    #clock {
+    #network.disconnected,
+    #bluetooth.disconnected {
+      color: ${theme.foreground};
+      background-color: ${theme.background};
+    }
+
+    #backlight {
+      color: ${theme.foreground};
+      background-color: ${theme.background};
+    }
+
+    #clock,
+    #language {
       color: ${theme.foreground};
       background-color: ${theme.background};
     }
@@ -65,10 +77,16 @@ in
     modules-right = [
       "bluetooth"
       "network"
+      "backlight"
+      "hyprland/language"
       "wireplumber"
       "battery"
       "clock"
     ];
+    backlight = {
+      device = "intel_backlight";
+      format = "☼ {percent}%";
+    };
     battery = {
       format = "{icon}  {capacity}%";
       "format-icons" = [
@@ -83,16 +101,23 @@ in
       format-alt = "{:%a, %d. %b  %H:%M}";
     };
     network = {
-      format = " {icon}  {ifname}";
-      format-wifi = " {icon}  {essid} ({signalStrength}%)";
+      format = "{icon}  {ifname}";
+      format-wifi = "{icon}  {essid} ({signalStrength}%)";
       format-ethernet = "{ipaddr}/{cidr} 󰊗";
-      format-disconnected = ""; # An empty format will hide the module.
+      format-disconnected = "{icon}"; # An empty format will hide the module.
       tooltip-format = "{ifname} via {gwaddr} 󰊗";
       tooltip-format-wifi = "{essid} ({signalStrength}%)";
       tooltip-format-ethernet = "{ifname} ";
       tooltip-format-disconnected = "Disconnected";
       max-length = 50;
       "format-icons" = [ "" ];
+      on-click = "ghostty -e nmtui";
+    };
+    "hyprland/language" = {
+      format = "  {}";
+      on-click = "hyprctl switchxkblayout all next";
+      format-sv = "SV";
+      format-en = "EN";
     };
     wireplumber = {
       "format" = "{icon}  {volume}%";

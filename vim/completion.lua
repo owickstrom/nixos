@@ -1,4 +1,4 @@
-vim.opt.completeopt = "menu,menuone,noinsert,preview"
+vim.opt.completeopt = "menu,menuone,noinsert,popup,fuzzy"
 
 local fzf = require("fzf-lua")
 fzf.setup({ winopts = { backdrop = false, border = 'double' } })

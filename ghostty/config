@@ -1,7 +1,7 @@
 # Based off `ghostty +show-config --default --docs`
 # vim: set ft=cfg:
-#font-family = "TX-02"
-font-family = "JetBrainsMono Nerd Font"
+font-family = "TX-02"
+# font-family = "JetBrainsMono Nerd Font"
 font-size = 9
 font-style = "Medium SemiCondensed"
 font-style-bold = "Bold SemiCondensed"

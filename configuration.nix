@@ -49,13 +49,6 @@ in
     LC_TIME = "sv_SE.UTF-8";
   };
 
-  # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "us,se";
-    variant = "";
-    options = "ctrl:nocaps";
-  };
-
   services.xserver.displayManager.sddm = {
     enable = true;
     wayland.enable = true;

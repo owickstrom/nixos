@@ -1,0 +1,149 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run the `zed: Open Default Settings` command
+// from the command palette
+{
+  "agent": {
+    "default_model": {
+      "provider": "ollama",
+      "model": "gpt-oss:20b"
+    }
+  },
+  "tab_bar": {
+    "show": true
+  },
+  "cursor_blink": false,
+  "vim_mode": true,
+  "ui_font_size": 14,
+  "ui_font_family": "Alegreya Sans",
+  "ui_font_weight": 450,
+  "buffer_font_size": 12,
+  "buffer_font_family": "TX-02",
+  "buffer_font_fallbacks": ["JetBrainsMono Nerd Font", "JetBrains Mono"],
+  "buffer_font_weight": 450,
+  "buffer_font_features": {
+    "calt": true,
+    "liga": true
+  },
+  "buffer_line_height": "comfortable",
+  "theme": {
+    "mode": "system",
+    "light": "Kanagawa Lotus",
+    "dark": "Kanagawa Dragon"
+  },
+  "git": {
+    "git_gutter": "tracked_files",
+    "inline_blame": {
+      "enabled": false
+    }
+  },
+  "terminal": {
+    "shell": {
+      "program": "zsh"
+    },
+    "option_as_meta": true,
+    "font_family": "TX-02",
+    "font_weight": 450,
+    "line_height": "comfortable",
+    "font_features": {
+      "calt": false,
+      "liga": false
+    }
+  },
+  "auto_signature_help": false,
+  "wrap_guides": [
+    100
+  ],
+  "preferred_line_length": 100,
+  "show_wrap_guides": true,
+  "load_direnv": "shell_hook",
+  "lsp": {
+    "zls": {
+      "binary": {}
+    },
+    "biome": {
+      "enable_lsp_tasks": true
+    },
+    "jdtls": {
+      "settings": {
+        "java": {
+          "format": {
+            "enabled": true,
+            "settings": {
+              "url": "file:///home/owi/projects/tigerbeetle/tigerbeetle/src/clients/java/eclipse-formatter.xml",
+              "profile": "tigerbeetle-java-style"
+            }
+          },
+          "configuration": {
+            "updateBuildConfiguration": "interactive"
+          },
+          "implementationsCodeLens": {
+            "enabled": true
+          },
+          "referencesCodeLens": {
+            "enabled": true
+          },
+          "references": {
+            "includeDecompiledSources": true
+          },
+          "signatureHelp": {
+            "enabled": true
+          },
+          "completion": {
+            "guessMethodArguments": true
+          }
+        }
+      }
+    }
+  },
+  "file_types": {
+    "HTML": [
+      "tera"
+    ]
+  },
+  "formatter": [
+    {
+      "language_server": {
+        "name": "biome"
+      }
+    },
+    {
+      "language_server": {}
+    }
+  ],
+  "profiles": {
+    "Focus": {
+      "tab_bar": {
+        "show": false,
+        "show_nav_history_buttons": false
+      },
+      "toolbar": {
+        "breadcrumbs": false,
+        "quick_actions": false
+      },
+      "gutter": {
+        "line_numbers": false,
+        "folds": false,
+        "breakpoints": false,
+        "runnables": false,
+        "min_line_number_digits": 0
+      },
+      "indent_guides": {
+        "enabled": false
+      },
+      "current_line_highlight": "none",
+      "scrollbar": {
+        "show": "never",
+        "cursors": false,
+        "git_diff": false,
+        "diagnostics": "none",
+        "search_results": false,
+        "selected_symbol": false
+      }
+    }
+  }
+}

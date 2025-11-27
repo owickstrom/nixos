@@ -60,6 +60,7 @@
     papers
     gnome-calculator
     vlc
+    zed-editor
 
     # Git
     difftastic
@@ -90,6 +91,8 @@
     font-awesome
 
     # Tools
+    killall
+    hdparm
     shellcheck
     btop
     tmux
@@ -113,6 +116,7 @@
 
   programs.chromium = {
     enable = true;
+    package = pkgs.ungoogled-chromium;
     dictionaries = [
       pkgs.hunspellDictsChromium.en_US
       pkgs.hunspellDictsChromium.sv_SE

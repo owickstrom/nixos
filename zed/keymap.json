@@ -1,0 +1,34 @@
+// Zed keymap
+//
+// For information on binding keys, see the Zed
+// documentation: https://zed.dev/docs/key-bindings
+//
+// To see the default key bindings run `zed: Open Default Keymap`
+// from the command palette.
+[
+  {
+    "context": "Editor",
+    "bindings": {
+      // "j k": ["workspace::SendKeystrokes", "escape"]
+      "alt-n": "editor::GoToDiagnostic",
+      "alt-p": "editor::GoToPreviousDiagnostic"
+    }
+  },
+  {
+    "context": "Terminal",
+    "bindings": {
+      "ctrl-b": [
+        "terminal::SendKeystroke",
+        "ctrl-b"
+      ],
+      "ctrl-p": [
+        "terminal::SendKeystroke",
+        "ctrl-p"
+      ],
+      "ctrl-n": [
+        "terminal::SendKeystroke",
+        "ctrl-n"
+      ]
+    }
+  }
+]
