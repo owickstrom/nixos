@@ -6,7 +6,7 @@ let
 
     * {
       font-family: "TX-02 SemiCondensed";
-      font-weight: 600;
+      font-weight: 400;
       font-size: 12px;
     }
 
@@ -23,8 +23,13 @@ let
       background-color: ${theme.selectionBackground};
     }
 
+    #window * {
+      font-family: "Alegreya Sans";
+      font-size: 14px;
+    }
+
     #network {
-      color: ${theme.red};
+      color: ${theme.blue};
       background-color: ${theme.background};
     }
 
@@ -35,7 +40,7 @@ let
 
     #network.disconnected,
     #bluetooth.disconnected {
-      color: ${theme.foreground};
+      color: ${theme.red};
       background-color: ${theme.background};
     }
 
@@ -101,20 +106,20 @@ in
       format-alt = "{:%a, %d. %b  %H:%M}";
     };
     network = {
-      format = "{icon}  {ifname}";
-      format-wifi = "{icon}  {essid} ({signalStrength}%)";
-      format-ethernet = "{ipaddr}/{cidr} 󰊗";
-      format-disconnected = "{icon}"; # An empty format will hide the module.
+      format = "{icon}";
+      format-wifi = "{icon}";
+      format-ethernet = "󰊗";
+      format-disconnected = "{icon} "; # An empty format will hide the module.
       tooltip-format = "{ifname} via {gwaddr} 󰊗";
       tooltip-format-wifi = "{essid} ({signalStrength}%)";
-      tooltip-format-ethernet = "{ifname} ";
+      tooltip-format-ethernet = "{ifname} {ipaddr}/{cidr} ";
       tooltip-format-disconnected = "Disconnected";
       max-length = 50;
       "format-icons" = [ "" ];
       on-click = "ghostty -e nmtui";
     };
     "hyprland/language" = {
-      format = "  {}";
+      format = " {}";
       on-click = "hyprctl switchxkblayout all next";
       format-sv = "SV";
       format-en = "EN";

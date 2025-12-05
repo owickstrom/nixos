@@ -20,6 +20,13 @@ in
       kb_layout = "us,se";
       kb_options = "ctrl:nocaps, compose:ralt";
     };
+
+    monitor = [
+      "HDMI-A-2,highres,auto-down,2,transform,1"
+      "DP-1,highres,auto-up,2,transform,0"
+      ", preferred, auto, 1"
+    ];
+
     general.gaps_in = 2;
     general.gaps_out = 4;
     general.border_size = 2;

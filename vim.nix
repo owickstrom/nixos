@@ -58,4 +58,7 @@
       "enable_build_on_save": true
     }
   '';
+
+  xdg.configFile."nvim/colors/lancia.lua".source =
+    config.lib.file.mkOutOfStoreSymlink ./vim/colors/lancia.lua;
 }
