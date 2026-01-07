@@ -90,9 +90,9 @@ call MyHighlights()
 autocmd BufEnter * TSEnable highlight indent
 autocmd BufEnter * TSBufEnable highlight indent
 
-luafile /etc/nixos/personal/vim/keymap.lua
-luafile /etc/nixos/personal/vim/completion.lua
-luafile /etc/nixos/personal/vim/formatting.lua
-luafile /etc/nixos/personal/vim/git.lua
-luafile /etc/nixos/personal/vim/lsp.lua
+luafile ./vim/keymap.lua
+luafile ./vim/completion.lua
+luafile ./vim/formatting.lua
+luafile ./vim/git.lua
+luafile ./vim/lsp.lua
 
