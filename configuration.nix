@@ -26,9 +26,6 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
-  # Set your time zone.
-  time.timeZone = "Europe/Stockholm";
-
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
 

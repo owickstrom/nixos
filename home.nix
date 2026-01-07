@@ -113,20 +113,4 @@
     ELECTRON_OZONE_PLATFORM_HINT = "wayland";
     NIXOS_OZONE_WL = 1;
   };
-
-  programs.chromium = {
-    enable = true;
-    package = pkgs.chromium;
-    dictionaries = [
-      pkgs.hunspellDictsChromium.en_US
-      pkgs.hunspellDictsChromium.sv_SE
-    ];
-    extensions = [
-      "aeblfdkhhhdcdjpifhhbdiojplfjncoa" # 1password
-      "nngceckbapebfimnlniiiahkandclblb" # bitwarden
-      "eimadpbcbfnmbkopoojfekhnkhdbieeh" # dark reader
-      "cjpalhdlnbpafiamejdnhcphjbkeiagm" # ublock origin
-      "dbepggeogbaibhgnhhndojpepiihcmeb" # vimium
-    ];
-  };
 }

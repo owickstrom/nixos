@@ -11,6 +11,7 @@
   networking.extraHosts = ''
     192.168.1.13	bhyve-host
   '';
+  time.timeZone = "US/Eastern";
   environment.systemPackages = with pkgs; [
     wget
     vim
@@ -23,5 +24,13 @@
     nixfmt-classic
     zoom-us
     zulip
+  ];
+  programs.chromium.enable = true;
+  programs.chromium.extensions = [
+    "aeblfdkhhhdcdjpifhhbdiojplfjncoa" # 1password
+    "nngceckbapebfimnlniiiahkandclblb" # bitwarden
+    "eimadpbcbfnmbkopoojfekhnkhdbieeh" # dark reader
+    "cjpalhdlnbpafiamejdnhcphjbkeiagm" # ublock origin
+    "dbepggeogbaibhgnhhndojpepiihcmeb" # vimium
   ];
 }

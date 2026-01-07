@@ -24,7 +24,7 @@ in
     monitor = [
       "eDP-1,highres,auto-left,1.5,transform,0"
       "HDMI-A-2,highres,auto-down,2,transform,1"
-      "DP-1,highres,auto-up,2,transform,0"
+      "DP-1,highres,auto-up,1.5,transform,0"
       ", preferred, auto, 1"
     ];
 
