@@ -8,15 +8,8 @@
   lib,
   ...
 }:
-let
-  home-manager = builtins.fetchTarball {
-    sha256 = "sha256:0jva394l5s9vdrwfffvb8f4181i8832g6hffasn8nc8aqyn1wq5f";
-    url = "https://github.com/nix-community/home-manager/archive/master.tar.gz";
-  };
-in
 {
   imports = [
-    (import "${home-manager}/nixos")
     ./pipewire.nix
   ];
 

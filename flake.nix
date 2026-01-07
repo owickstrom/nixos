@@ -5,12 +5,37 @@
     # i.e. nixos-24.11
     # Use `nix flake update` to update the flake to the latest revision of the chosen release channel.
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-  };
-  outputs = inputs@{ self, nixpkgs, ... }: {
-    # NOTE: 'nixos' is the default hostname
-    nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
-      modules = [ ./configuration.nix ];
+
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-}
+  outputs =
+    inputs@{
+      self,
+      nixpkgs,
+      home-manager,
+      ...
+    }:
+    {
 
+      # personal setup
+      nixosConfigurations.spruce = nixpkgs.lib.nixosSystem {
+        modules = [
+          home-manager.nixosModules.home-manager
+          ./configuration.nix
+          ./hosts/antithesis-laptop
+        ];
+      };
+
+      nixosConfigurations."antithesis-laptop" = nixpkgs.lib.nixosSystem {
+        modules = [
+          home-manager.nixosModules.home-manager
+          /etc/nixos/antithesis
+          ./configuration.nix
+          ./hosts/antithesis-laptop
+        ];
+      };
+    };
+}
