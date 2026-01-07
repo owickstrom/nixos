@@ -41,7 +41,7 @@
       lean-nvim
     ];
     extraConfig = ''
-      source /etc/nixos/vim/init.vim
+      source /etc/nixos/personal/vim/init.vim
     '';
     extraPackages = with pkgs; [
       lua-language-server

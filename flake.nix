@@ -1,4 +1,4 @@
-            {
+{
   inputs = {
     # This is pointing to an unstable release.
     # If you prefer a stable release instead, you can this to the latest number shown here: https://nixos.org/download
@@ -8,7 +8,7 @@
   };
   outputs = inputs@{ self, nixpkgs, ... }: {
     # NOTE: 'nixos' is the default hostname
-    nixosConfigurations.spruce = nixpkgs.lib.nixosSystem {
+    nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       modules = [ ./configuration.nix ];
     };
   };

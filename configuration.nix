@@ -2,17 +2,20 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 let
   home-manager = builtins.fetchTarball {
-    sha256 = "sha256:0q3lv288xlzxczh6lc5lcw0zj9qskvjw3pzsrgvdh8rl8ibyq75s";
-    url = "https://github.com/nix-community/home-manager/archive/release-25.05.tar.gz";
+    sha256 = "sha256:0jva394l5s9vdrwfffvb8f4181i8832g6hffasn8nc8aqyn1wq5f";
+    url = "https://github.com/nix-community/home-manager/archive/master.tar.gz";
   };
 in
 {
   imports = [
-    # Include the results of the hardware scan.
-    ./hardware-configuration.nix
     (import "${home-manager}/nixos")
     ./pipewire.nix
   ];
@@ -21,7 +24,6 @@ in
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "spruce"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -49,7 +51,7 @@ in
     LC_TIME = "sv_SE.UTF-8";
   };
 
-  services.xserver.displayManager.sddm = {
+  services.displayManager.sddm = {
     enable = true;
     wayland.enable = true;
     theme = "where_is_my_sddm_theme";
@@ -80,7 +82,9 @@ in
     enable = true;
   };
 
-  # Allow unfree packages
+  nix.settings.experimental-features = lib.mkForce "nix-command flakes";
+  system.copySystemConfiguration = lib.mkForce false;
+
   nixpkgs.config.allowUnfree = true;
 
   # List packages installed in system profile. To search, run:

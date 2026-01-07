@@ -148,5 +148,7 @@ in
 
   xdg.configFile."waybar/style-dark.css".text = makeStyles themes.dark;
 
+  xdg.configFile."waybar/style.css".text = makeStyles themes.dark;
+
   home.packages = [ pkgs.blueberry ];
 }

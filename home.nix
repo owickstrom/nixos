@@ -46,8 +46,8 @@
 
   fonts.fontconfig.enable = true;
 
-  programs.direnv.enable = true;
-  programs.direnv.nix-direnv.enable = true;
+  # programs.direnv.enable = true;
+  # programs.direnv.nix-direnv.enable = true;
 
   # Make sure to add these to ~/.config/nix/nix.conf:
   #
@@ -116,12 +116,13 @@
 
   programs.chromium = {
     enable = true;
-    package = pkgs.ungoogled-chromium;
+    package = pkgs.chromium;
     dictionaries = [
       pkgs.hunspellDictsChromium.en_US
       pkgs.hunspellDictsChromium.sv_SE
     ];
     extensions = [
+      "aeblfdkhhhdcdjpifhhbdiojplfjncoa" # 1password
       "nngceckbapebfimnlniiiahkandclblb" # bitwarden
       "eimadpbcbfnmbkopoojfekhnkhdbieeh" # dark reader
       "cjpalhdlnbpafiamejdnhcphjbkeiagm" # ublock origin

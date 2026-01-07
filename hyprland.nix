@@ -152,16 +152,16 @@ in
     enable = true;
     settings = {
       preload = [
-        "/etc/nixos/bg-dark.jpeg"
-        "/etc/nixos/bg-light.jpeg"
+        "/etc/nixos/personal/bg-dark.jpeg"
+        "/etc/nixos/personal/bg-light.jpeg"
       ];
-      wallpaper = ", /etc/nixos/bg-dark.jpeg";
+      wallpaper = ", /etc/nixos/personal/bg-dark.jpeg";
     };
   };
 
   dconf.settings = {
     "org/gnome/desktop/background" = {
-      picture-uri-dark = "file:///etc/nixos/bg-dark.jpeg";
+      picture-uri-dark = "file:///etc/nixos/personal/bg-dark.jpeg";
     };
     "org/gnome/desktop/interface" = {
       color-scheme = "prefer-dark";
@@ -203,11 +203,20 @@ in
   # };
   #
 
+  xdg.portal = {
+    enable = true;
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    config.common.default = [
+      "hyprland"
+      "gtk"
+    ]; # Prioritize hyprland for screen sharing, gtk for settings
+  };
+
   services.darkman = {
     enable = true;
     darkModeScripts = {
       color-scheme = ''
-        ${pkgs.hyprland}/bin/hyprctl hyprpaper reload ",/etc/nixos/bg-dark.jpeg"
+        ${pkgs.hyprland}/bin/hyprctl hyprpaper reload ",/etc/nixos/personal/bg-dark.jpeg"
         ${pkgs.dconf}/bin/dconf write /org/gnome/desktop/interface/color-scheme "'prefer-dark'"
         for addr in `${pkgs.findutils}/bin/find /tmp/ -name '*.nvim.pipe'`; do
             ${pkgs.neovim}/bin/nvim --server $addr --remote-send "<Esc>:set bg=dark<CR>"
@@ -216,7 +225,7 @@ in
     };
     lightModeScripts = {
       color-scheme = ''
-        ${pkgs.hyprland}/bin/hyprctl hyprpaper reload ",/etc/nixos/bg-light.jpeg"
+        ${pkgs.hyprland}/bin/hyprctl hyprpaper reload ",/etc/nixos/personal/bg-light.jpeg"
         ${pkgs.dconf}/bin/dconf write /org/gnome/desktop/interface/color-scheme "'prefer-light'"
         for addr in `${pkgs.findutils}/bin/find /tmp/ -name '*.nvim.pipe'`; do
             ${pkgs.neovim}/bin/nvim --server $addr --remote-send "<Esc>:set bg=light<CR>"
