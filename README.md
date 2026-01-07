@@ -10,7 +10,7 @@ git clone git@github.com:owickstrom/nixos ~/nixos
 ## Setup for private laptop "spruce"
 
 ```
-sudo nix-build switch --flake "$HOME/nixos#spruce"
+sudo nixos-rebuild switch --flake "$HOME/nixos#spruce"
 ```
 
 ## Setup for work laptop "antithesis-laptop"
