@@ -51,12 +51,12 @@ let
   '';
   rofi-wrapped = pkgs.writeShellScriptBin "rofi" ''
     theme=$(dconf read /org/gnome/desktop/interface/color-scheme | sed "s/'//g" | sed "s/prefer-//g")
-    ${pkgs.rofi}/bin/rofi -terminal ${pkgs.ghostty}/bin/ghostty -theme zenbones-$theme $@
+    ${pkgs.rofi}/bin/rofi -terminal ${pkgs.ghostty}/bin/ghostty -theme zenwritten-$theme $@
   '';
 in
 {
   home.packages = [ rofi-wrapped ];
 
-  xdg.dataFile."rofi/themes/zenbones-dark.rasi".text = makeTheme themes.dark;
-  xdg.dataFile."rofi/themes/zenbones-light.rasi".text = makeTheme themes.light;
+  xdg.dataFile."rofi/themes/zenwritten-dark.rasi".text = makeTheme themes.dark;
+  xdg.dataFile."rofi/themes/zenwritten-light.rasi".text = makeTheme themes.light;
 }

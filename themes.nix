@@ -8,6 +8,8 @@ let
   };
 in
 {
-  light = builtins.fromJSON (builtins.readFile "${repo}/extras/windows_terminal/zenbones_light.json");
-  dark = builtins.fromJSON (builtins.readFile "${repo}/extras/windows_terminal/zenbones_dark.json");
+  light = builtins.fromJSON (
+    builtins.readFile "${repo}/extras/windows_terminal/zenwritten_light.json"
+  );
+  dark = builtins.fromJSON (builtins.readFile "${repo}/extras/windows_terminal/zenwritten_dark.json");
 }

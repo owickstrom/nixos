@@ -73,7 +73,7 @@ set termguicolors
 
 set bg=dark
 let g:zenbones_darkness='stark'
-colorscheme zenbones
+colorscheme zenwritten
 
 function! MyHighlights() abort
   " highlight Normal         guibg=none
