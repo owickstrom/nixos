@@ -83,10 +83,8 @@ in
       "$mod, Up, movefocus, u"
       "$mod, Down, movefocus, d"
 
-      "$mod + Shift, Left, movewindow, l"
-      "$mod + Shift, Right, movewindow, r"
-      "$mod + Shift, Up, movewindow, u"
-      "$mod + Shift, Down, movewindow, d"
+      "$mod + Shift + Ctrl, H, movecurrentworkspacetomonitor, l"
+      "$mod + Shift + Ctrl, L, movecurrentworkspacetomonitor, r"
 
       "$mod, H, movefocus, l"
       "$mod, J, movefocus, d"
@@ -97,6 +95,14 @@ in
       "$mod + Shift, J, movewindow, d"
       "$mod + Shift, K, movewindow, u"
       "$mod + Shift, L, movewindow, r"
+
+      "$mod + Shift + Ctrl, Right, resizeactive, 10 0"
+      "$mod + Shift + Ctrl, Left, resizeactive, -10 0"
+      "$mod + Shift + Ctrl, Up, resizeactive, 0 -10"
+      "$mod + Shift + Ctrl, Down, resizeactive, 0 10"
+
+      "$mod,mouse:272,movewindow"
+      # "$mod,mouse:273,resizewindow"
 
       "$mod + Alt, Backspace, exec, hyprctl switchxkblayout all next"
 
