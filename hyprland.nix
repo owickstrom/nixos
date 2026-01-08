@@ -123,7 +123,57 @@ in
     );
   };
 
-  programs.hyprlock.enable = true;
+  programs.hyprlock = {
+    enable = true;
+    settings = {
+      general = {
+        hide_cursor = true;
+        ignore_empty_input = true;
+      };
+
+      animations = {
+        enabled = true;
+        fade_in = {
+          duration = 300;
+          bezier = "easeOutQuint";
+        };
+        fade_out = {
+          duration = 300;
+          bezier = "easeOutQuint";
+        };
+      };
+
+      background = [
+        {
+          path = "/home/owi/nixos/bg-dark.jpeg";
+          blur_passes = 0;
+          blur_size = 0;
+        }
+      ];
+
+      input-field = [
+        {
+          size = "200, 50";
+          halign = "center";
+          valign = "bottom";
+          position = "0, 100";
+          monitor = "";
+          dots_center = true;
+          fade_on_empty = false;
+          font_family = "TX-02";
+          font_color = "rgba(${lib.strings.removePrefix "#" themes.dark.foreground}ff)";
+          inner_color = "rgba(${lib.strings.removePrefix "#" themes.dark.background}aa)";
+          outer_color = "rgba(${lib.strings.removePrefix "#" themes.dark.foreground}88)";
+          fail_color = "rgba(${lib.strings.removePrefix "#" themes.dark.red}ff)";
+          capslock_color = "rgba(${lib.strings.removePrefix "#" themes.dark.yellow}ff)";
+          outline_thickness = 4;
+          placeholder_text = "You shall not pass!";
+          rounding = 2;
+          shadow_passes = 3;
+        }
+      ];
+    };
+  };
 
   services.hypridle = {
     enable = true;
