@@ -6,6 +6,7 @@
   networking.hostName = "spruce";
   time.timeZone = "Europe/Stockholm";
   environment.systemPackages = with pkgs; [ ];
+  programs.firefox.enable = true;
 
   programs.chromium = {
     enable = true;

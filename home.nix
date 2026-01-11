@@ -56,7 +56,6 @@
 
   home.packages = with pkgs; [
     # Generally useful apps
-    firefox
     papers
     gnome-calculator
     vlc
