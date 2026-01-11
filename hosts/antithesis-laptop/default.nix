@@ -11,7 +11,7 @@
   networking.extraHosts = ''
     192.168.1.13	bhyve-host
   '';
-  time.timeZone = "US/Eastern";
+  time.timeZone = "Europe/Stockholm";
   environment.systemPackages = with pkgs; [
     wget
     vim
