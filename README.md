@@ -7,14 +7,22 @@ If on a new laptop, install NixOS normally, and then create a new module in
 git clone git@github.com:owickstrom/nixos ~/nixos
 ```
 
-## Setup for private laptop "spruce"
+## Host-specific setup
 
-```
-sudo nixos-rebuild switch --flake "$HOME/nixos#spruce"
-```
+* `spruce`
 
-## Setup for work laptop "antithesis-laptop"
+  ```
+  sudo nixos-rebuild switch --flake "$HOME/nixos#spruce"
+  ```
 
-```
-sudo nixos-rebuild switch --flake "$HOME/src/nixos#antithesis-laptop" --impure --option substituters 'https://cache.nixos.org'
-```
+* `antithesis-laptop`
+
+  ```
+  sudo nixos-rebuild switch --flake "$HOME/nixos#antithesis-laptop" --impure --option substituters 'https://cache.nixos.org'
+  ```
+
+* `antithesis-desktop`
+
+  ```
+  sudo nixos-rebuild switch --flake "$HOME/nixos#antithesis-desktop" --impure --option substituters 'https://cache.nixos.org'
+  ```

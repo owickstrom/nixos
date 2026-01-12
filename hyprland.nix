@@ -25,6 +25,7 @@ in
       "eDP-1,highres,auto-left,1.5,transform,0"
       "HDMI-A-2,highres,auto-down,2,transform,1"
       "DP-1,highres,auto-up,1.5,transform,0"
+      "DP-3,highres,auto-up,2,transform,0" # puget external monitor
       ", preferred, auto, 1"
     ];
 
@@ -181,6 +182,8 @@ in
     };
   };
 
+  services.screen-locker.enable = false;
+
   services.hypridle = {
     enable = true;
     settings = {
@@ -271,18 +274,26 @@ in
   services.darkman = {
     enable = true;
     darkModeScripts = {
-      color-scheme = ''
+      wallpaper = ''
         ${pkgs.hyprland}/bin/hyprctl hyprpaper reload ",/home/owi/nixos/bg-dark.jpeg"
+      '';
+      color-scheme = ''
         ${pkgs.dconf}/bin/dconf write /org/gnome/desktop/interface/color-scheme "'prefer-dark'"
+      '';
+      nvim = ''
         for addr in `${pkgs.findutils}/bin/find /tmp/ -name '*.nvim.pipe'`; do
             ${pkgs.neovim}/bin/nvim --server $addr --remote-send "<Esc>:set bg=dark<CR>"
         done
       '';
     };
     lightModeScripts = {
-      color-scheme = ''
+      wallpaper = ''
         ${pkgs.hyprland}/bin/hyprctl hyprpaper reload ",/home/owi/nixos/bg-light.jpeg"
+      '';
+      color-scheme = ''
         ${pkgs.dconf}/bin/dconf write /org/gnome/desktop/interface/color-scheme "'prefer-light'"
+      '';
+      nvim = ''
         for addr in `${pkgs.findutils}/bin/find /tmp/ -name '*.nvim.pipe'`; do
             ${pkgs.neovim}/bin/nvim --server $addr --remote-send "<Esc>:set bg=light<CR>"
         done
