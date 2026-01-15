@@ -18,7 +18,6 @@
     ./vim.nix
     ./tmux.nix
     ./ctags.nix
-    ./gammastep.nix
     ./spotify.nix
   ];
   # Let Home Manager install and manage itself.

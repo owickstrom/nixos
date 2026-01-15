@@ -218,6 +218,26 @@ in
     };
   };
 
+  services.hyprsunset = {
+    enable = true;
+    settings = {
+      max-gamma = 150;
+
+      profile = [
+        {
+          time = "7:30";
+          identity = true;
+          temperature = 6500;
+        }
+        {
+          time = "19:00";
+          temperature = 2500;
+          gamma = 0.8;
+        }
+      ];
+    };
+  };
+
   dconf.settings = {
     "org/gnome/desktop/background" = {
       picture-uri-dark = "file:///home/owi/nixos/bg-dark.jpeg";
