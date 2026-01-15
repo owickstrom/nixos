@@ -32,7 +32,7 @@
   "buffer_line_height": "comfortable",
   "theme": {
     "mode": "system",
-    "light": "Kanagawa Lotus",
+    "light": "Gruvbox Light Hard",
     "dark": "Kanagawa Dragon"
   },
   "git": {
