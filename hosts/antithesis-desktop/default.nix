@@ -38,4 +38,7 @@
     package = config.boot.kernelPackages.nvidiaPackages.production;
     powerManagement.enable = true; # fixes issues coming back from sleep
   };
+
+  personal.browser = "chromium";
+
 }

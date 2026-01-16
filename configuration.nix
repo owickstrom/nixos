@@ -9,10 +9,10 @@
     ./common.nix
   ];
 
-  options.personal.checkout = lib.mkOption {
+  options.personal.browser = lib.mkOption {
     type = lib.types.str;
-    default = "/home/owi/projects/nixos";
-    description = "The path where this repository is checked out.";
+    default = "${pkgs.firefox}/bin/firefox";
+    description = "Browser executable to launch with keybindings.";
   };
 
   config.system.stateVersion = "25.05";

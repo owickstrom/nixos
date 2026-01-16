@@ -2,15 +2,21 @@
   pkgs,
   config,
   lib,
+  osConfig,
   ...
 }:
 let
   themes = pkgs.callPackage ./themes.nix { };
 in
 {
+
   home.packages = with pkgs; [
     nautilus
     pavucontrol
+
+    (pkgs.writeShellScriptBin "x-www-browser" ''
+      exec ${osConfig.personal.browser} "$@"
+    '')
   ];
 
   wayland.windowManager.hyprland.enable = true;
@@ -70,7 +76,7 @@ in
       "$mod, F, fullscreen"
       "$mod + SHIFT, F, togglefloating"
       "$mod, Return, exec, ghostty"
-      "$mod + SHIFT, Return, exec, firefox"
+      "$mod + SHIFT, Return, exec, ${osConfig.personal.browser}"
       "$mod + SHIFT, N, exec, nautilus"
       "$mod, Space, exec, rofi -show run"
       "$mod, T, exec, darkman toggle"

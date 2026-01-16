@@ -68,6 +68,7 @@
     nixfmt-rfc-style
     nix-tree
     cachix
+    nil
 
     # Python
     python313
