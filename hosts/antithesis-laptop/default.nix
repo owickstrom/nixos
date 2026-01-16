@@ -32,4 +32,5 @@
     "cjpalhdlnbpafiamejdnhcphjbkeiagm" # ublock origin
     "dbepggeogbaibhgnhhndojpepiihcmeb" # vimium
   ];
+  personal.browser = "chromium";
 }

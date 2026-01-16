@@ -40,5 +40,4 @@
   };
 
   personal.browser = "chromium";
-
 }
