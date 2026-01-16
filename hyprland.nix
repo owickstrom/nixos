@@ -13,6 +13,7 @@ in
   home.packages = with pkgs; [
     nautilus
     pavucontrol
+    brightnessctl
 
     (pkgs.writeShellScriptBin "x-www-browser" ''
       exec ${osConfig.personal.browser} "$@"
@@ -117,6 +118,9 @@ in
       "SHIFT, Print, exec, grimblast copysave area"
       "CTRL, Print, exec, grimblast copy screen"
       "CTRL + SHIFT, Print, exec, grimblast copysave screen"
+
+      ",XF86MonBrightnessUp, exec, brightnessctl s 10%+"
+      ",XF86MonBrightnessDown, exec, brightnessctl s 10%-"
     ]
     ++ (
       # workspaces

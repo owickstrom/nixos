@@ -33,4 +33,8 @@
     "dbepggeogbaibhgnhhndojpepiihcmeb" # vimium
   ];
   personal.browser = "chromium";
+  personal.backlight = {
+    enabled = true;
+    device = "acpi_video0";
+  };
 }

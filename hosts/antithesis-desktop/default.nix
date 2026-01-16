@@ -40,4 +40,7 @@
   };
 
   personal.browser = "chromium";
+  personal.backlight = {
+    enabled = false;
+  };
 }

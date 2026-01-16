@@ -22,4 +22,8 @@
       "dbepggeogbaibhgnhhndojpepiihcmeb" # vimium
     ];
   };
+  personal.backlight = {
+    enabled = true;
+    device = "intel_backlight";
+  };
 }

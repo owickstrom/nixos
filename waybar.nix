@@ -1,4 +1,10 @@
-{ pkgs, config, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  osConfig,
+  ...
+}:
 let
   themes = pkgs.callPackage ./themes.nix { };
   makeStyles = theme: ''
@@ -69,6 +75,20 @@ let
       color: ${theme.green};
       background-color: ${theme.background};
     }
+
+    #cpu {
+      background-color: ${theme.background};
+      color: ${theme.foreground};
+    }
+    #cpu.good {
+      color: ${theme.green};
+    }
+    #cpu.warning {
+      color: ${theme.yellow};
+    }
+    #cpu.critical {
+      color: ${theme.red};
+    }
   '';
 in
 {
@@ -80,16 +100,19 @@ in
     modules-left = [ "hyprland/workspaces" ];
     modules-center = [ "hyprland/window" ];
     modules-right = [
+      "cpu"
       "bluetooth"
       "network"
-      "backlight"
+    ]
+    ++ lib.optional osConfig.personal.backlight.enabled "backlight"
+    ++ [
       "hyprland/language"
       "wireplumber"
       "battery"
       "clock"
     ];
     backlight = {
-      device = "intel_backlight";
+      device = osConfig.personal.backlight.device;
       format = "☼ {percent}%";
     };
     battery = {
@@ -141,6 +164,16 @@ in
       "format-connected" = " {device_alias}";
       "format-connected-battery" = " {device_alias} {device_battery_percentage}%";
       "on-click" = "blueberry";
+    };
+    cpu = {
+      interval = 10;
+      format = " {usage}%";
+      states = {
+        good = 0;
+        warning = 33;
+        critical = 66;
+      };
+      on-click = "ghostty -e btop";
     };
   };
 
