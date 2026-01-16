@@ -115,6 +115,11 @@
       "language_server": {}
     }
   ],
+  "languages": {
+    "Nix": {
+      "language_servers": [ "nil", "!nixd" ]
+    }
+  },
   "profiles": {
     "Focus": {
       "tab_bar": {
