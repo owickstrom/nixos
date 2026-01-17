@@ -23,6 +23,7 @@
     nixfmt-classic
     zoom-us
     zulip
+    vscode
   ];
   programs.chromium.enable = true;
   programs.chromium.extensions = [
