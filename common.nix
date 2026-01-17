@@ -69,7 +69,7 @@
   };
 
   nix.settings.experimental-features = lib.mkForce "nix-command flakes";
-  system.copySystemConfiguration = lib.mkForce false;
+  # system.copySystemConfiguration = lib.mkForce false;
 
   nixpkgs.config.allowUnfree = true;
 
@@ -105,6 +105,20 @@
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
+
+  services.avahi = {
+    enable = true;
+    nssmdns4 = true;
+    openFirewall = true;
+  };
+
+  services.printing = {
+    enable = true;
+    drivers = with pkgs; [
+      cups-filters
+      cups-browsed
+    ];
+  };
 
   hardware.bluetooth = {
     enable = true;

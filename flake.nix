@@ -11,33 +11,40 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-  outputs = inputs@{ self, nixpkgs, home-manager, ... }: {
+  outputs =
+    inputs@{
+      self,
+      nixpkgs,
+      home-manager,
+      ...
+    }:
+    {
 
-    # personal setup
-    nixosConfigurations.spruce = nixpkgs.lib.nixosSystem {
-      modules = [
-        home-manager.nixosModules.home-manager
-        ./configuration.nix
-        ./hosts/antithesis-laptop
-      ];
-    };
+      # personal setup
+      nixosConfigurations.spruce = nixpkgs.lib.nixosSystem {
+        modules = [
+          home-manager.nixosModules.home-manager
+          ./configuration.nix
+          ./hosts/spruce
+        ];
+      };
 
-    nixosConfigurations."antithesis-laptop" = nixpkgs.lib.nixosSystem {
-      modules = [
-        home-manager.nixosModules.home-manager
-        /etc/nixos/antithesis
-        ./configuration.nix
-        ./hosts/antithesis-laptop
-      ];
-    };
+      nixosConfigurations."antithesis-laptop" = nixpkgs.lib.nixosSystem {
+        modules = [
+          home-manager.nixosModules.home-manager
+          /etc/nixos/antithesis
+          ./configuration.nix
+          ./hosts/antithesis-laptop
+        ];
+      };
 
-    nixosConfigurations."antithesis-desktop" = nixpkgs.lib.nixosSystem {
-      modules = [
-        home-manager.nixosModules.home-manager
-        /etc/nixos/antithesis
-        ./configuration.nix
-        ./hosts/antithesis-desktop
-      ];
+      nixosConfigurations."antithesis-desktop" = nixpkgs.lib.nixosSystem {
+        modules = [
+          home-manager.nixosModules.home-manager
+          /etc/nixos/antithesis
+          ./configuration.nix
+          ./hosts/antithesis-desktop
+        ];
+      };
     };
-  };
 }
