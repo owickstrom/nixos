@@ -1,10 +1,11 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 {
   imports = [
     ./hardware-configuration.nix
   ];
   networking.hostName = "antithesis-laptop";
   networking.hostId = "251c9149"; # TODO Required for ZFS (from 'head -c 8 /etc/machine-id').
+  system.copySystemConfiguration = lib.mkForce false;
   boot.kernelPackages = pkgs.linuxPackages;
   boot.supportedFilesystems = [ "zfs" ];
   networking.extraHosts = ''

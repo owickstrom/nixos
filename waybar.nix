@@ -34,54 +34,64 @@ let
       font-size: 14px;
     }
 
+    #clock {
+      margin: 0 0 0 0.75em;
+      padding: 0 0.75em;
+      color: ${theme.foreground};
+      background-color: transparent;
+      border-left: 1px solid ${theme.brightBlack};
+    }
+
+    #network,
+    #bluetooth,
+    #backlight,
+    #language,
+    #wireplumber,
+    #battery,
+    #cpu {
+      margin: 0;
+      padding: 0 0.75em;
+      background-color: transparent;
+    }
+
     #network {
       color: ${theme.blue};
-      background-color: ${theme.background};
     }
 
     #bluetooth {
-      color: ${theme.blue};
-      background-color: ${theme.background};
+      color: ${theme.foreground};
     }
 
-    #network.disconnected,
-    #bluetooth.disconnected {
-      color: ${theme.red};
-      background-color: ${theme.background};
+    #network.connected,
+    #bluetooth.connected {
+      color: ${theme.blue};
     }
 
     #backlight {
       color: ${theme.foreground};
-      background-color: ${theme.background};
     }
 
-    #clock,
     #language {
       color: ${theme.foreground};
-      background-color: ${theme.background};
     }
 
     #wireplumber {
       color: ${theme.foreground};
-      background-color: ${theme.background};
     }
 
     #battery {
       color: ${theme.yellow};
-      background-color: ${theme.background};
     }
 
     #battery.charging, #battery.plugged {
       color: ${theme.green};
-      background-color: ${theme.background};
     }
 
     #cpu {
-      background-color: ${theme.background};
       color: ${theme.foreground};
     }
     #cpu.good {
-      color: ${theme.green};
+      color: ${theme.foreground};
     }
     #cpu.warning {
       color: ${theme.yellow};
@@ -100,7 +110,6 @@ in
     modules-left = [ "hyprland/workspaces" ];
     modules-center = [ "hyprland/window" ];
     modules-right = [
-      "cpu"
       "bluetooth"
       "network"
     ]
@@ -108,66 +117,57 @@ in
     ++ [
       "hyprland/language"
       "wireplumber"
+      "cpu"
       "battery"
       "clock"
     ];
+    "hyprland/window" = {
+      max-length = 48;
+    };
     backlight = {
       device = osConfig.personal.backlight.device;
-      format = "☼ {percent}%";
+      format = ''<span weight="bold">SCR</span> {percent}%'';
     };
     battery = {
-      format = "{icon}  {capacity}%";
-      "format-icons" = [
-        ""
-        ""
-        ""
-        ""
-        ""
-      ];
+      format = ''<span weight="bold">BAT</span> {capacity}%'';
     };
     clock = {
       format-alt = "{:%a, %d. %b  %H:%M}";
     };
     network = {
-      format = "{icon}";
-      format-wifi = "{icon}";
-      format-ethernet = "󰊗";
-      format-disconnected = "{icon} "; # An empty format will hide the module.
+      format = ''<span weight="bold">NET</span> NONE'';
+      format-wifi = ''<span weight="bold">NET</span> {essid}'';
+      format-ethernet = ''<span weight="bold">NET</span> ETHN'';
+      format-disconnected = ''<span weight="bold">NET</span> DISC'';
       tooltip-format = "{ifname} via {gwaddr} 󰊗";
       tooltip-format-wifi = "{essid} ({signalStrength}%)";
       tooltip-format-ethernet = "{ifname} {ipaddr}/{cidr} ";
       tooltip-format-disconnected = "Disconnected";
-      max-length = 50;
-      "format-icons" = [ "" ];
+      max-length = 8;
       on-click = "ghostty -e nmtui";
     };
     "hyprland/language" = {
-      format = " {}";
+
+      format = ''<span weight="bold">KBD</span> {}'';
       on-click = "hyprctl switchxkblayout all next";
-      format-sv = "SV";
-      format-en = "EN";
+      format-sv = "SWE";
+      format-en = "ENG";
     };
     wireplumber = {
-      "format" = "{icon}  {volume}%";
-      "format-muted" = "";
-      "format-icons" = [
-        ""
-        ""
-        ""
-      ];
+      format = ''<span weight="bold">VOL</span> {volume}%'';
       "on-click" = "pwvucontrol";
       "max-volume" = 150;
-      "scroll-step" = 0.2;
+      "scroll-step" = 0.6;
     };
     bluetooth = {
-      "format" = "";
-      "format-connected" = " {device_alias}";
-      "format-connected-battery" = " {device_alias} {device_battery_percentage}%";
+      format = ''<span weight="bold">BLU</span> OFF'';
+      "format-connected" = ''<span weight="bold">BLU</span> {device_alias}'';
+      "format-connected-battery" = ''<span weight="bold">BLU</span> {device_battery_percentage}%'';
       "on-click" = "blueberry";
     };
     cpu = {
       interval = 10;
-      format = " {usage}%";
+      format = ''<span weight="bold">CPU</span> {usage}%'';
       states = {
         good = 0;
         warning = 33;

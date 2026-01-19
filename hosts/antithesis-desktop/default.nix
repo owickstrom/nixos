@@ -1,8 +1,14 @@
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 {
   imports = [ ./hardware-configuration.nix ];
   networking.hostName = "antithesis-desktop";
   networking.hostId = "8f3893c1"; # TODO Required for ZFS (from 'head -c 8 /etc/machine-id').
+  system.copySystemConfiguration = lib.mkForce false;
   boot.kernelPackages = pkgs.linuxPackages;
   boot.supportedFilesystems = [ "zfs" ];
   hardware.system76.enableAll = true;
