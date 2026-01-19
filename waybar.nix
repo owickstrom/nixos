@@ -51,11 +51,13 @@ let
     #cpu {
       margin: 0;
       padding: 0 0.75em;
+      color: ${theme.foreground};
       background-color: transparent;
     }
 
-    #network {
-      color: ${theme.blue};
+    #network,
+    #network.disconnected {
+      color: ${theme.foreground};
     }
 
     #bluetooth {
@@ -79,12 +81,13 @@ let
       color: ${theme.foreground};
     }
 
-    #battery {
-      color: ${theme.yellow};
-    }
-
     #battery.charging, #battery.plugged {
+      background: transparent;
       color: ${theme.green};
+    }
+    #battery.critical:not(.charging) {
+      background: transparent;
+      color: ${theme.red};
     }
 
     #cpu {
