@@ -28,6 +28,9 @@
     nixfmt-classic
     zoom-us
     zulip
+    # for testing
+    vscode
+    slack
   ];
   programs.chromium.enable = true;
   programs.chromium.extensions = [
