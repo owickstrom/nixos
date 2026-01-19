@@ -57,6 +57,7 @@ let
 
     #network,
     #network.disconnected {
+      background-color: transparent;
       color: ${theme.foreground};
     }
 
