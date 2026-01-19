@@ -150,8 +150,8 @@ in
 
       format = ''<span weight="bold">KBD</span> {}'';
       on-click = "hyprctl switchxkblayout all next";
-      format-sv = "SWE";
-      format-en = "ENG";
+      format-sv = "SE";
+      format-en = "US";
     };
     wireplumber = {
       format = ''<span weight="bold">VOL</span> {volume}%'';
