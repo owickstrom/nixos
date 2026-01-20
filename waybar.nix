@@ -126,7 +126,7 @@ in
       "clock"
     ];
     "hyprland/window" = {
-      max-length = 48;
+      max-length = 32;
     };
     backlight = {
       device = osConfig.personal.backlight.device;
@@ -134,9 +134,13 @@ in
     };
     battery = {
       format = ''<span weight="bold">BAT</span> {capacity}%'';
+      min-length = 6;
+      max-length = 7;
     };
     clock = {
-      format-alt = "{:%a, %d. %b  %H:%M}";
+      tooltip-format = "{:%a, %d. %b  %H:%M}";
+      min-length = 5;
+      max-length = 5;
     };
     network = {
       format = ''<span weight="bold">NET</span> NONE'';
@@ -147,27 +151,33 @@ in
       tooltip-format-wifi = "{essid} ({signalStrength}%)";
       tooltip-format-ethernet = "{ifname} {ipaddr}/{cidr} ";
       tooltip-format-disconnected = "Disconnected";
-      max-length = 8;
+      min-length = 6;
+      max-length = 12;
       on-click = "ghostty -e nmtui";
     };
     "hyprland/language" = {
-
       format = ''<span weight="bold">KBD</span> {}'';
       on-click = "hyprctl switchxkblayout all next";
       format-sv = "SE";
       format-en = "US";
+      min-length = 6;
+      max-length = 6;
     };
     wireplumber = {
       format = ''<span weight="bold">VOL</span> {volume}%'';
       "on-click" = "pwvucontrol";
       "max-volume" = 150;
       "scroll-step" = 0.6;
+      min-length = 6;
+      max-length = 7;
     };
     bluetooth = {
       format = ''<span weight="bold">BLU</span> OFF'';
       "format-connected" = ''<span weight="bold">BLU</span> {device_alias}'';
       "format-connected-battery" = ''<span weight="bold">BLU</span> {device_battery_percentage}%'';
       "on-click" = "blueberry";
+      min-length = 6;
+      max-length = 12;
     };
     cpu = {
       interval = 10;
@@ -178,6 +188,8 @@ in
         critical = 66;
       };
       on-click = "ghostty -e btop";
+      min-length = 6;
+      max-length = 7;
     };
   };
 
