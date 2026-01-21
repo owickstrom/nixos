@@ -110,6 +110,15 @@
     zls
   ];
 
+  xdg.mimeApps.enabled = true;
+  xdg.mimeApps.defaultApplicationPackages = {
+    "text/html" = "chromium-browser.desktop";
+    "x-scheme-handler/http" = "chromium-browser.desktop";
+    "x-scheme-handler/https" = "chromium-browser.desktop";
+    "x-scheme-handler/about" = "chromium-browser.desktop";
+    "x-scheme-handler/unknown" = "chromium-browser.desktop";
+  };
+
   home.sessionVariables = {
     ELECTRON_OZONE_PLATFORM_HINT = "wayland";
     NIXOS_OZONE_WL = 1;
