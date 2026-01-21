@@ -12,7 +12,6 @@
     userEmail = "oskar@wickstrom.tech";
     ignores = [
       ".vimrc"
-      ".vscode"
       ".direnv"
       ".dir-locals.el"
       "TAGS"

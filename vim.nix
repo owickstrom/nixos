@@ -12,7 +12,7 @@
     vimdiffAlias = true;
     defaultEditor = true;
     plugins = with pkgs.vimPlugins; [
-      # lsp/langs
+      # lsp/langs, debugging
       nvim-lspconfig
       (nvim-treesitter.withPlugins (p: [
         p.bash
@@ -29,6 +29,9 @@
         p.graphql
       ]))
       nvim-jdtls
+      nvim-dap
+      nvim-dap-ui
+      nvim-dap-vscode-js
       # git
       neogit
       gitlinker-nvim

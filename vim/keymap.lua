@@ -1,4 +1,7 @@
 local neogit = require('neogit')
+local dap = require("dap")
+local dap_vscode = require("dap.ext.vscode")
+local fzf_lua = require("fzf-lua")
 
 -- buffers
 vim.keymap.set('n', '[b', ':bprev<cr>')
@@ -48,5 +51,21 @@ vim.keymap.set('n', '<leader>ac', ':CopilotChat<cr>')
 vim.keymap.set('n', '<leader>ae', ':CopilotChatExplain<cr>')
 vim.keymap.set('n', '<leader>ar', ':CopilotChatReview<cr>')
 
--- compile
-vim.keymap.set('n', '<F5>', ':make<cr>')
+-- debug
+vim.keymap.set("n", "<F5>", function()
+  if dap.session() then
+    dap.continue()
+  else
+    fzf_lua.dap_configurations()
+  end
+end)
+vim.keymap.set("n", "C-<F5>", dap.terminate)
+vim.keymap.set("n", "<F9>", dap.toggle_breakpoint)
+vim.keymap.set("n", "<F10>", dap.step_over)
+vim.keymap.set("n", "<F11>", dap.step_into)
+vim.keymap.set("n", "<F12>", dap.step_out)
+vim.keymap.set("n", "<Leader>db", dap.toggle_breakpoint)
+vim.keymap.set("n", "<Leader>dr", dap_vscode.load_launchjs)
+vim.keymap.set("n", "<Leader>dB", function()
+  dap.set_breakpoint(vim.fn.input("Breakpoint condition: "))
+end)

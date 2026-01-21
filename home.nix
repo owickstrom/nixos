@@ -103,6 +103,7 @@
     awscli
     bat
     pandoc
+    (pkgs.callPackage ./codelldb.nix { })
 
     # Zig
     zig

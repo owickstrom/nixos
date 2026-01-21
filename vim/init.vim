@@ -95,4 +95,5 @@ luafile /home/owi/nixos/vim/completion.lua
 luafile /home/owi/nixos/vim/formatting.lua
 luafile /home/owi/nixos/vim/git.lua
 luafile /home/owi/nixos/vim/lsp.lua
+luafile /home/owi/nixos/vim/debugging.lua
 
