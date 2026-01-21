@@ -8,16 +8,56 @@ vim.lsp.config('lua_ls', {
   },
 })
 
-vim.lsp.config('rust_analyzer', {
-  -- Server-specific settings. See `:help lspconfig-setup`
-  settings = {
-    ['rust-analyzer'] = {
-      cargo = {
-        loadOutDirsFromCheck = true,
+-- vim.lsp.config('rust_analyzer', {
+--   -- Server-specific settings. See `:help lspconfig-setup`
+--   settings = {
+--     ['rust-analyzer'] = {
+--       cargo = {
+--         loadOutDirsFromCheck = true,
+--       },
+--     },
+--   },
+-- })
+
+vim.g.rustaceanvim = {
+  -- Plugin configuration
+  tools = {
+  },
+  -- LSP configuration
+  server = {
+    on_attach = function(client, bufnr)
+      local bufnr = vim.api.nvim_get_current_buf()
+      vim.keymap.set(
+        "n",
+        "<leader>a",
+        function()
+          vim.cmd.RustLsp('codeAction') -- supports rust-analyzer's grouping
+          -- or vim.lsp.buf.codeAction() if you don't want grouping.
+        end,
+        { silent = true, buffer = bufnr }
+      )
+      vim.keymap.set(
+        "n",
+        "K", -- Override Neovim's built-in hover keymap with rustaceanvim's hover actions
+        function()
+          vim.cmd.RustLsp({ 'hover', 'actions' })
+        end,
+        { silent = true, buffer = bufnr }
+      )
+    end,
+    default_settings = {
+      -- rust-analyzer language server configuration
+      ['rust-analyzer'] = {
+        cargo = {
+          loadOutDirsFromCheck = true,
+        },
       },
     },
   },
-})
+  -- DAP configuration
+  dap = {
+  },
+}
 
 vim.lsp.config('hls', {
   filetypes = { 'haskell', 'lhaskell', 'cabal' },

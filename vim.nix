@@ -33,12 +33,14 @@
       nvim-dap-ui
       nvim-dap-vscode-js
       nvim-dap-virtual-text
+      rustaceanvim
       # git
       neogit
       gitlinker-nvim
       # other
       conform-nvim
       fzf-lua
+      which-key-nvim
       lush-nvim
       zenbones-nvim
       goyo
