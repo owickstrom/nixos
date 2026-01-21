@@ -38,6 +38,8 @@
       neogit
       gitlinker-nvim
       # other
+      lualine-nvim
+      lualine-lsp-progress
       conform-nvim
       fzf-lua
       which-key-nvim

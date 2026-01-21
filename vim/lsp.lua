@@ -26,7 +26,7 @@ vim.g.rustaceanvim = {
   -- LSP configuration
   server = {
     on_attach = function(client, bufnr)
-      local bufnr = vim.api.nvim_get_current_buf()
+      bufnr = vim.api.nvim_get_current_buf()
       vim.keymap.set(
         "n",
         "<leader>a",
