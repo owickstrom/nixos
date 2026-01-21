@@ -24,3 +24,5 @@ end
 dap.listeners.before.event_exited["dapui"] = function()
   dapui.close()
 end
+
+require("nvim-dap-virtual-text").setup()

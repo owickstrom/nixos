@@ -32,6 +32,7 @@
       nvim-dap
       nvim-dap-ui
       nvim-dap-vscode-js
+      nvim-dap-virtual-text
       # git
       neogit
       gitlinker-nvim
