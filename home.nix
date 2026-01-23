@@ -110,7 +110,7 @@
     zls
   ];
 
-  xdg.mimeApps.enabled = true;
+  xdg.mimeApps.enable = true;
   xdg.mimeApps.defaultApplicationPackages = {
     "text/html" = "chromium-browser.desktop";
     "x-scheme-handler/http" = "chromium-browser.desktop";
