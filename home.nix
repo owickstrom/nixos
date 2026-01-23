@@ -111,13 +111,11 @@
   ];
 
   xdg.mimeApps.enable = true;
-  xdg.mimeApps.defaultApplicationPackages = {
-    "text/html" = "chromium-browser.desktop";
-    "x-scheme-handler/http" = "chromium-browser.desktop";
-    "x-scheme-handler/https" = "chromium-browser.desktop";
-    "x-scheme-handler/about" = "chromium-browser.desktop";
-    "x-scheme-handler/unknown" = "chromium-browser.desktop";
-  };
+  xdg.mimeApps.defaultApplicationPackages = [
+    pkgs.chromium
+    pkgs.papers
+    pkgs.nautilus
+  ];
 
   home.sessionVariables = {
     ELECTRON_OZONE_PLATFORM_HINT = "wayland";

@@ -68,6 +68,10 @@
     enable = true;
   };
 
+  nix.settings.trusted-users = [
+    "root"
+    "owi"
+  ];
   nix.settings.experimental-features = lib.mkForce "nix-command flakes";
   # system.copySystemConfiguration = lib.mkForce false;
 
