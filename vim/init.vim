@@ -72,8 +72,8 @@ set grepformat=%f:%l:%c:%m
 set termguicolors
 
 set bg=dark
-let g:zenbones_darkness='stark'
-colorscheme zenwritten
+lua require("gruvbox").setup({})
+colorscheme gruvbox
 
 function! MyHighlights() abort
   " highlight Normal         guibg=none

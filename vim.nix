@@ -45,8 +45,7 @@
       which-key-nvim
       lush-nvim
       zenbones-nvim
-      goyo
-      lean-nvim
+      gruvbox-nvim
     ];
     extraConfig = ''
       source /home/owi/nixos/vim/init.vim
