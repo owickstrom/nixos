@@ -50,7 +50,20 @@ vim.g.rustaceanvim = {
       ['rust-analyzer'] = {
         cargo = {
           loadOutDirsFromCheck = true,
+          buildScripts = {
+            enable = true,
+          },
         },
+        procMacro = {
+          enable = true,
+          attributes = {
+            enable = true,
+          },
+        },
+        checkOnSave = true,
+        check = {
+          extraArgs = { "--target-dir", "./target/check" }
+        }
       },
     },
   },
