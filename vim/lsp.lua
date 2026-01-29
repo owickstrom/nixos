@@ -70,6 +70,7 @@ vim.g.rustaceanvim = {
             enable = true,
           },
         },
+        restartServerOnConfigChange = true,
         procMacro = {
           enable = true,
           attributes = {
@@ -78,6 +79,7 @@ vim.g.rustaceanvim = {
         },
         checkOnSave = true,
         check = {
+          command = "clippy",
           extraArgs = { "--target-dir", "./target/check" }
         }
       },
