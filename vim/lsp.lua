@@ -44,6 +44,22 @@ vim.g.rustaceanvim = {
         end,
         { silent = true, buffer = bufnr }
       )
+      vim.keymap.set(
+        "n",
+        "r",
+        function()
+          vim.cmd.RustLsp({ 'runnables' })
+        end,
+        { silent = true, buffer = bufnr }
+      )
+      vim.keymap.set(
+        "n",
+        "t",
+        function()
+          vim.cmd.RustLsp({ 'testables' })
+        end,
+        { silent = true, buffer = bufnr }
+      )
     end,
     default_settings = {
       -- rust-analyzer language server configuration
