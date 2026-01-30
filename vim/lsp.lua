@@ -29,7 +29,7 @@ vim.g.rustaceanvim = {
       bufnr = vim.api.nvim_get_current_buf()
       vim.keymap.set(
         "n",
-        "<leader>a",
+        "<leader>ca",
         function()
           vim.cmd.RustLsp('codeAction') -- supports rust-analyzer's grouping
           -- or vim.lsp.buf.codeAction() if you don't want grouping.
@@ -46,7 +46,7 @@ vim.g.rustaceanvim = {
       )
       vim.keymap.set(
         "n",
-        "r",
+        "<leader>cr",
         function()
           vim.cmd.RustLsp({ 'runnables' })
         end,
@@ -54,7 +54,7 @@ vim.g.rustaceanvim = {
       )
       vim.keymap.set(
         "n",
-        "t",
+        "<leader>ct",
         function()
           vim.cmd.RustLsp({ 'testables' })
         end,
