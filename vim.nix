@@ -13,7 +13,7 @@
     defaultEditor = true;
     plugins = with pkgs.vimPlugins; [
       # lsp/langs, debugging
-      nvim-lspconfig
+      # nvim-lspconfig
       (nvim-treesitter.withPlugins (p: [
         p.bash
         p.go

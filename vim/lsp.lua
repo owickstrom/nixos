@@ -46,7 +46,7 @@ vim.g.rustaceanvim = {
       )
       vim.keymap.set(
         "n",
-        "<leader>cr",
+        "<leader>rr",
         function()
           vim.cmd.RustLsp({ 'runnables' })
         end,
@@ -54,7 +54,7 @@ vim.g.rustaceanvim = {
       )
       vim.keymap.set(
         "n",
-        "<leader>ct",
+        "<leader>rt",
         function()
           vim.cmd.RustLsp({ 'testables' })
         end,
