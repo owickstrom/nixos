@@ -45,7 +45,6 @@
       which-key-nvim
       lush-nvim
       zenbones-nvim
-      goyo
       lean-nvim
     ];
     extraConfig = ''
