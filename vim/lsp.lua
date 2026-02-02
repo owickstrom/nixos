@@ -8,17 +8,6 @@ vim.lsp.config('lua_ls', {
   },
 })
 
--- vim.lsp.config('rust_analyzer', {
---   -- Server-specific settings. See `:help lspconfig-setup`
---   settings = {
---     ['rust-analyzer'] = {
---       cargo = {
---         loadOutDirsFromCheck = true,
---       },
---     },
---   },
--- })
-
 vim.g.rustaceanvim = {
   -- Plugin configuration
   tools = {
@@ -136,7 +125,6 @@ vim.lsp.config('jdtls', {
 
 vim.lsp.enable({
   'lua_ls',
-  'rust_analyzer',
   'hls',
   'jdtls',
   'zls',
