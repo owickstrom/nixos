@@ -105,6 +105,12 @@
     pandoc
     (pkgs.callPackage ./codelldb.nix { })
 
+    # Rust
+    rust-analyzer
+    rustfmt
+    clippy
+    cargo-insta
+
     # Zig
     zig
     zls
