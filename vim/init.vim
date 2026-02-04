@@ -71,7 +71,6 @@ set grepformat=%f:%l:%c:%m
 " Theme
 set termguicolors
 
-
 if executable('darkman')
   let s:darkman_mode = trim(system('darkman get'))
 
@@ -106,6 +105,7 @@ call MyHighlights()
 autocmd BufEnter * TSEnable highlight indent
 autocmd BufEnter * TSBufEnable highlight indent
 
+luafile /home/owi/nixos/vim/fold.lua
 luafile /home/owi/nixos/vim/completion.lua
 luafile /home/owi/nixos/vim/debugging.lua
 luafile /home/owi/nixos/vim/formatting.lua
