@@ -71,7 +71,22 @@ set grepformat=%f:%l:%c:%m
 " Theme
 set termguicolors
 
-set bg=dark
+
+if executable('darkman')
+  let s:darkman_mode = trim(system('darkman get'))
+
+  " Optional: fallback if the command failed
+  if v:shell_error
+    let s:darkman_mode = 'dark'
+  endif
+
+  if s:darkman_mode ==# 'light'
+    set background=light
+  else
+    set background=dark
+  endif
+endif
+
 let g:zenbones_darkness='stark'
 colorscheme zenwritten
 
