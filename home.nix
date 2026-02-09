@@ -80,6 +80,8 @@
     # JS
     nodejs
     yarn
+    typescript
+    typescript-language-server
 
     # Fonts
     alegreya

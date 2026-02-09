@@ -38,14 +38,15 @@
       neogit
       gitlinker-nvim
       # other
-      lualine-nvim
-      lualine-lsp-progress
       conform-nvim
       fzf-lua
-      which-key-nvim
-      lush-nvim
-      zenbones-nvim
       lean-nvim
+      lualine-lsp-progress
+      lualine-nvim
+      lush-nvim
+      unicode-vim
+      which-key-nvim
+      zenbones-nvim
     ];
     extraConfig = ''
       source /home/owi/nixos/vim/init.vim

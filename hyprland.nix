@@ -31,7 +31,7 @@ in
     monitor = [
       "eDP-1,highres,auto-left,1.5,transform,0"
       "HDMI-A-2,highres,auto-down,2,transform,1"
-      "DP-1,highres,auto-left,2,transform,0" # ystad external monitor
+      "DP-1,highres,auto-right,2,transform,0" # ystad external monitor
       "DP-3,highres,auto-up,2,transform,0" # puget external monitor
       ", preferred, auto, 1"
     ];
