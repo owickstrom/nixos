@@ -49,7 +49,21 @@
       zenbones-nvim
     ];
     extraConfig = ''
-      source /home/owi/nixos/vim/init.vim
+      " portable vimscript
+      source ${vim/init.vim}
+
+      " nix-specific
+      let g:zenbones_darkness='stark'
+      colorscheme zenwritten
+
+      luafile ${vim/fold.lua}
+      luafile ${vim/completion.lua}
+      luafile ${vim/debugging.lua}
+      luafile ${vim/formatting.lua}
+      luafile ${vim/git.lua}
+      luafile ${vim/keymap.lua}
+      luafile ${vim/line.lua}
+      luafile ${vim/lsp.lua}
     '';
     extraPackages = with pkgs; [
       lua-language-server

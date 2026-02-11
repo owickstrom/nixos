@@ -86,8 +86,7 @@ if executable('darkman')
   endif
 endif
 
-let g:zenbones_darkness='stark'
-colorscheme zenwritten
+colorscheme quiet
 
 function! MyHighlights() abort
   " highlight Normal         guibg=none
@@ -104,13 +103,3 @@ call MyHighlights()
 
 autocmd BufEnter * TSEnable highlight indent
 autocmd BufEnter * TSBufEnable highlight indent
-
-luafile /home/owi/nixos/vim/fold.lua
-luafile /home/owi/nixos/vim/completion.lua
-luafile /home/owi/nixos/vim/debugging.lua
-luafile /home/owi/nixos/vim/formatting.lua
-luafile /home/owi/nixos/vim/git.lua
-luafile /home/owi/nixos/vim/keymap.lua
-luafile /home/owi/nixos/vim/line.lua
-luafile /home/owi/nixos/vim/lsp.lua
-
