@@ -49,6 +49,9 @@
       zenbones-nvim
     ];
     extraConfig = ''
+      " For faster startup
+      lua vim.loader.enable()
+
       " portable vimscript
       source ${vim/init.vim}
 
