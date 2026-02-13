@@ -37,7 +37,7 @@
         email = "oskar@wickstrom.tech";
       };
 
-      aliases = {
+      alias = {
         aa = "add --all";
         br = "branch";
         co = "checkout";
