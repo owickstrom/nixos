@@ -29,9 +29,10 @@ in
     };
 
     monitor = [
-      "eDP-1,highres,auto-left,1.5,transform,0"
+      "eDP-1,highres,auto-left,1.5,transform,0" # laptop monitor
       "HDMI-A-2,highres,auto-down,2,transform,1"
-      "DP-1,highres,auto-right,2,transform,0" # ystad external monitor
+      "DP-1,highres,auto-right,2,transform,0" # ystad lcd monitor
+      "HDMI-A-1,highres,auto-right,2,transform,1" # ystad eink monitor
       "DP-3,highres,auto-up,2,transform,0" # puget external monitor
       ", preferred, auto, 1"
     ];
@@ -138,6 +139,13 @@ in
         ) 9
       )
     );
+
+    bindl = [
+      # Trigger when the switch is turning on.
+      '', switch:on:Lid Switch, exec, hyprctl keyword monitor "eDP-1,disable"''
+      # Trigger when the switch is turning off.
+      '', switch:off:Lid Switch, exec, hyprctl keyword monitor "eDP-1,highres,auto-left,1.5,transform,0"''
+    ];
   };
 
   programs.hyprlock = {
