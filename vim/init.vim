@@ -86,7 +86,7 @@ endif
 colorscheme quiet
 
 function! MyHighlights() abort
-  " highlight Normal         guibg=none
+  highlight Normal         guibg=none
   highlight Comment        gui=italic
   highlight link debugPC DiffAdd
 endfunction

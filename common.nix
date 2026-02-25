@@ -7,6 +7,7 @@
 {
   imports = [
     ./pipewire.nix
+    ./boox.nix
   ];
 
   # Bootloader.
@@ -147,4 +148,10 @@
   };
   services.blueman.enable = true;
 
+  # https://help.boox.com/hc/en-us/articles/4547000092180-Mira-Software-Linux-Setup
+  # services.udev.extraRules = ''
+  #   SUBSYSTEM=="input", GROUP="input", MODE="0666"
+  #   SUBSYSTEM=="usb", ATTRS{idVendor}=="0416", ATTRS{idProduct}=="5020", MODE:="666", GROUP="plugdev"
+  #   KERNEL=="hidraw*", ATTRS{idVendor}=="0416", ATTRS{idProduct}=="5020", MODE="0666", GROUP="plugdev"
+  # '';
 }

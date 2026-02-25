@@ -31,8 +31,8 @@ in
     monitor = [
       "eDP-1,highres,auto-left,1.5,transform,0" # laptop monitor
       "HDMI-A-2,highres,auto-down,2,transform,1"
-      "DP-1,highres,auto-right,2,transform,0" # ystad lcd monitor
-      "HDMI-A-1,highres,auto-right,2,transform,1" # ystad eink monitor
+      "DP-1,highres,auto-left,2,transform,1" # ystad lcd monitor
+      "HDMI-A-1,2560x1440@60.00Hz,auto-right,1.6,transform,1" # ystad eink monitor
       "DP-3,highres,auto-up,2,transform,0" # puget external monitor
       ", preferred, auto, 1"
     ];
@@ -40,10 +40,8 @@ in
     general.gaps_in = 2;
     general.gaps_out = 4;
     general.border_size = 2;
-    general."col.inactive_border" =
-      "rgba(${lib.strings.removePrefix "#" themes.dark.white}aa) rgba(${lib.strings.removePrefix "#" themes.dark.white}44) 45deg";
-    general."col.active_border" =
-      "rgba(${lib.strings.removePrefix "#" themes.dark.brightBlue}ff) rgba(${lib.strings.removePrefix "#" themes.dark.blue}aa) 45deg";
+    general."col.inactive_border" = "rgba(ffffff00)";
+    general."col.active_border" = "rgba(${lib.strings.removePrefix "#" themes.dark.brightBlue}ff)";
 
     decoration = {
       shadow.enabled = false;
@@ -70,6 +68,7 @@ in
     misc = {
       disable_splash_rendering = true;
       disable_hyprland_logo = true;
+      background_color = "rgb(ffffff)";
     };
 
     bind = [
@@ -122,6 +121,14 @@ in
 
       ",XF86MonBrightnessUp, exec, brightnessctl s 10%+"
       ",XF86MonBrightnessDown, exec, brightnessctl s 10%-"
+
+      # Writing mode
+      "$mod + Shift, F9, exec, mira settings --speed 5 --contrast 5 --refresh-mode a2 --dither-mode 1 --black-filter 0 --white-filter 0"
+      # Reading mode
+      "$mod + Shift, F10, exec, mira settings --refresh-mode direct --contrast 7 --speed 5 --dither-mode 3 --white-filter 12 --black-filter 10"
+      # Refresh
+      "$mod + Shift, F12, exec, mira refresh"
+
     ]
     ++ (
       # workspaces
@@ -225,17 +232,6 @@ in
     };
   };
 
-  services.hyprpaper = {
-    enable = true;
-    settings = {
-      preload = [
-        "/home/owi/nixos/bg-dark.jpeg"
-        "/home/owi/nixos/bg-light.jpeg"
-      ];
-      wallpaper = ", /home/owi/nixos/bg-dark.jpeg";
-    };
-  };
-
   services.hyprsunset = {
     enable = true;
     settings = {
@@ -309,9 +305,6 @@ in
   services.darkman = {
     enable = true;
     darkModeScripts = {
-      wallpaper = ''
-        ${pkgs.hyprland}/bin/hyprctl hyprpaper reload ",/home/owi/nixos/bg-dark.jpeg"
-      '';
       color-scheme = ''
         ${pkgs.dconf}/bin/dconf write /org/gnome/desktop/interface/color-scheme "'prefer-dark'"
       '';
@@ -322,9 +315,6 @@ in
       '';
     };
     lightModeScripts = {
-      wallpaper = ''
-        ${pkgs.hyprland}/bin/hyprctl hyprpaper reload ",/home/owi/nixos/bg-light.jpeg"
-      '';
       color-scheme = ''
         ${pkgs.dconf}/bin/dconf write /org/gnome/desktop/interface/color-scheme "'prefer-light'"
       '';
