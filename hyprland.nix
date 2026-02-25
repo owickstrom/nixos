@@ -254,7 +254,7 @@ in
       picture-uri-dark = "file:///home/owi/nixos/bg-dark.jpeg";
     };
     "org/gnome/desktop/interface" = {
-      color-scheme = "prefer-dark";
+      color-scheme = "prefer-light";
     };
   };
 
@@ -272,7 +272,7 @@ in
       size = 12;
     };
     theme = {
-      name = "Adwaita-dark";
+      name = "Adwaita";
       package = pkgs.gnome-themes-extra;
     };
     iconTheme = {
@@ -281,17 +281,9 @@ in
       # package = pkgs.kdePackages.breeze-icons;
       # name = "Breeze-Dark";
     };
-    gtk3.extraConfig.gtk-application-prefer-dark-theme = 1;
-    gtk4.extraConfig.gtk-application-prefer-dark-theme = 1;
+    gtk3.extraConfig.gtk-application-prefer-dark-theme = 0;
+    gtk4.extraConfig.gtk-application-prefer-dark-theme = 0;
   };
-  #
-  # qt = {
-  #   enable = true;
-  #   style = {
-  #     name = "adwaita-dark";
-  #   };
-  # };
-  #
 
   xdg.portal = {
     enable = true;
@@ -307,6 +299,7 @@ in
     darkModeScripts = {
       color-scheme = ''
         ${pkgs.dconf}/bin/dconf write /org/gnome/desktop/interface/color-scheme "'prefer-dark'"
+        ${pkgs.hyprland}/bin/hyprctl --instance 0 keyword misc:background_color 0x000000
       '';
       nvim = ''
         for addr in `${pkgs.findutils}/bin/find /tmp/ -name '*.nvim.pipe'`; do
@@ -317,6 +310,7 @@ in
     lightModeScripts = {
       color-scheme = ''
         ${pkgs.dconf}/bin/dconf write /org/gnome/desktop/interface/color-scheme "'prefer-light'"
+        ${pkgs.hyprland}/bin/hyprctl --instance 0 keyword misc:background_color 0xFFFFFF
       '';
       nvim = ''
         for addr in `${pkgs.findutils}/bin/find /tmp/ -name '*.nvim.pipe'`; do
