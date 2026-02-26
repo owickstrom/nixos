@@ -32,7 +32,7 @@
   "buffer_line_height": "comfortable",
   "theme": {
     "mode": "system",
-    "light": "Gruvbox Light Hard",
+    "light": "GitHub Light High Contrast",
     "dark": "Kanagawa Dragon"
   },
   "git": {
