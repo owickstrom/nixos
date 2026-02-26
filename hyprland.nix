@@ -123,11 +123,11 @@ in
       ",XF86MonBrightnessDown, exec, brightnessctl s 10%-"
 
       # Writing mode
-      "$mod + Shift, F9, exec, mira settings --speed 5 --contrast 5 --refresh-mode a2 --dither-mode 1 --black-filter 0 --white-filter 0"
+      "$mod + Shift, F9, exec, mira settings --speed 5 --contrast 10 --refresh-mode a2 --dither-mode 1 --black-filter 0 --white-filter 0"
       # Reading mode
       "$mod + Shift, F10, exec, mira settings --refresh-mode direct --contrast 7 --speed 5 --dither-mode 3 --white-filter 12 --black-filter 10"
       # Speed mode
-      "$mod + Shift, F11, exec, mira settings --refresh-mode direct --contrast 7 --speed 15 --dither-mode 1 --white-filter 0 --black-filter 0"
+      "$mod + Shift, F11, exec, mira settings --refresh-mode direct --contrast 7 --speed 15 --dither-mode 0 --white-filter 0 --black-filter 0"
       # Refresh
       "$mod + Shift, F12, exec, mira refresh"
 
