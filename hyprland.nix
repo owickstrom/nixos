@@ -60,9 +60,9 @@ in
     };
 
     animation = [
-      "workspaces, 1, 1, default"
-      "windows, 1, 1, default"
-      "fade, 1, 1, default"
+      "workspaces, 0, 1, default"
+      "windows, 0, 1, default"
+      "fade, 0, 1, default"
     ];
 
     misc = {
@@ -126,6 +126,8 @@ in
       "$mod + Shift, F9, exec, mira settings --speed 5 --contrast 5 --refresh-mode a2 --dither-mode 1 --black-filter 0 --white-filter 0"
       # Reading mode
       "$mod + Shift, F10, exec, mira settings --refresh-mode direct --contrast 7 --speed 5 --dither-mode 3 --white-filter 12 --black-filter 10"
+      # Speed mode
+      "$mod + Shift, F11, exec, mira settings --refresh-mode direct --contrast 7 --speed 15 --dither-mode 1 --white-filter 0 --black-filter 0"
       # Refresh
       "$mod + Shift, F12, exec, mira refresh"
 
@@ -164,22 +166,12 @@ in
       };
 
       animations = {
-        enabled = true;
-        fade_in = {
-          duration = 300;
-          bezier = "easeOutQuint";
-        };
-        fade_out = {
-          duration = 300;
-          bezier = "easeOutQuint";
-        };
+        enabled = false;
       };
 
       background = [
         {
-          path = "/home/owi/nixos/bg-dark.jpeg";
-          blur_passes = 0;
-          blur_size = 0;
+          color = "rgb(255,255,255)";
         }
       ];
 
@@ -193,11 +185,11 @@ in
           dots_center = true;
           fade_on_empty = false;
           font_family = "TX-02";
-          font_color = "rgba(${lib.strings.removePrefix "#" themes.dark.foreground}ff)";
-          inner_color = "rgba(${lib.strings.removePrefix "#" themes.dark.background}aa)";
-          outer_color = "rgba(${lib.strings.removePrefix "#" themes.dark.foreground}88)";
-          fail_color = "rgba(${lib.strings.removePrefix "#" themes.dark.red}ff)";
-          capslock_color = "rgba(${lib.strings.removePrefix "#" themes.dark.yellow}ff)";
+          font_color = "rgba(${lib.strings.removePrefix "#" themes.light.foreground}ff)";
+          inner_color = "rgba(${lib.strings.removePrefix "#" themes.light.background}aa)";
+          outer_color = "rgba(${lib.strings.removePrefix "#" themes.light.foreground}88)";
+          fail_color = "rgba(${lib.strings.removePrefix "#" themes.light.red}ff)";
+          capslock_color = "rgba(${lib.strings.removePrefix "#" themes.light.yellow}ff)";
           outline_thickness = 4;
           placeholder_text = "You shall not pass!";
           rounding = 2;
