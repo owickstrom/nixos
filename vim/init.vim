@@ -15,7 +15,7 @@ set scrolloff=3             " some lines around scroll for context
 
 " Cursor/Line
 set number
-set colorcolumn=-0          " based on textwidth
+"set colorcolumn=-0          " based on textwidth
 set cursorline              " highlight the current line
 
 " Status/History
