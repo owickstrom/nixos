@@ -193,7 +193,7 @@ in
           outline_thickness = 4;
           placeholder_text = "You shall not pass!";
           rounding = 2;
-          shadow_passes = 3;
+          shadow_passes = 0;
         }
       ];
     };

@@ -1,4 +1,4 @@
-local colors_name = "lancia-dark"
+local colors_name = "lancia"
 vim.g.colors_name = colors_name -- Required when defining a colorscheme
 
 local lush = require "lush"
@@ -13,20 +13,22 @@ local palette
 if bg == "light" then
   palette = util.palette_extend({
     bg = hsluv "#ffffff",
-    fg = hsluv "#111111",
-    muted = hsluv "#888888",
-    muted_extra = hsluv "#aaaaaa",
-    paren = hsluv "#555555",
-    hint = hsluv "#555555",
+    bg_muted = hsluv "#eeeeee",
+    fg = hsluv "#000000",
+    fg_muted = hsluv "#444444",
+    fg_muted_extra = hsluv "#444444",
+    paren = hsluv "#222222",
+    hint = hsluv "#222222",
     warning = hsluv "#d9961a",
     error = hsluv "#ec3305",
   }, bg)
 else
   palette = util.palette_extend({
     bg = hsluv "#000000",
+    bg_muted = hsluv "#222222",
     fg = hsluv "#ed6405",
-    muted = hsluv "#8a4b2b",
-    muted_extra = hsluv "#563422",
+    fg_muted = hsluv "#8a4b2b",
+    fg_muted_extra = hsluv "#563422",
     paren = hsluv "#b36957",
     hint = hsluv "#8e5832",
     warning = hsluv "#b18532",
@@ -41,8 +43,8 @@ local base_specs = generator.generate(palette, bg, generator.get_global_config(c
 -- Optionally extend specs using Lush
 local specs = lush.extends({ base_specs }).with(function()
   return {
-    Comment { fg = palette.muted },
-    LineNr { fg = palette.muted_extra },
+    Comment { fg = palette.fg_muted },
+    LineNr { fg = palette.fg_muted_extra },
     Statement { base_specs.Statement, fg = palette.fg },
     Special { fg = palette.fg },
     Type { fg = palette.fg, gui = "italic" },
@@ -53,6 +55,9 @@ local specs = lush.extends({ base_specs }).with(function()
     DiagnosticUnderlineWarn { sp = palette.warning, gui = "undercurl", term = "undercurl" },
     DiagnosticUnderlineHint { sp = palette.hint, gui = "undercurl", term = "undercurl", fg = palette.fg },
     DiagnosticUnderlineInfo { sp = palette.hint, gui = "undercurl", term = "undercurl" },
+    NormalFloat { bg = palette.bg_muted },
+    Pmenu { bg = palette.bg },
+    PmenuSel { bg = palette.bg_muted },
   }
 end)
 

@@ -56,8 +56,8 @@
       source ${vim/init.vim}
 
       " nix-specific
-      let g:zenbones_darkness='stark'
-      colorscheme zenwritten
+      " let g:zenbones_darkness='stark'
+      colorscheme lancia
 
       luafile ${vim/fold.lua}
       luafile ${vim/completion.lua}
