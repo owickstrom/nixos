@@ -1,21 +1,17 @@
 { fetchFromGitHub }:
-let
-  repo = fetchFromGitHub {
-    owner = "zenbones-theme";
-    repo = "zenbones.nvim";
-    rev = "418fcb2bd45073d258a70d75a17f03e9f73a97a7";
-    hash = "sha256-BXm2vMvqIr5QW/MkRUwehjVVG570puVfZAHhflJq2hU=»;";
-  };
-in
 {
-  light =
-    (builtins.fromJSON (builtins.readFile "${repo}/extras/windows_terminal/zenwritten_light.json"))
-    // {
-      background = "#ffffff";
-    };
-  dark =
-    (builtins.fromJSON (builtins.readFile "${repo}/extras/windows_terminal/zenwritten_dark.json"))
-    // {
-      background = "#000000";
-    };
+  light = {
+    background = "#ffffff";
+    background-muted = "#eeeeee";
+    foreground = "#000000";
+    foreground-muted = "#444444";
+    accent = "#d44522";
+  };
+  dark = {
+    background = "#000000";
+    background-muted = "#222222";
+    foreground = "#eeeeee";
+    foreground-muted = "#aaaaaa";
+    accent = "#7d2914";
+  };
 }

@@ -26,9 +26,9 @@ else
   palette = util.palette_extend({
     bg = hsluv "#000000",
     bg_muted = hsluv "#222222",
-    fg = hsluv "#ed6405",
-    fg_muted = hsluv "#8a4b2b",
-    fg_muted_extra = hsluv "#563422",
+    fg = hsluv "#eeeeee",
+    fg_muted = hsluv "#aaaaaa",
+    fg_muted_extra = hsluv "#777777",
     paren = hsluv "#b36957",
     hint = hsluv "#8e5832",
     warning = hsluv "#b18532",

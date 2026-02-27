@@ -41,7 +41,7 @@ in
     general.gaps_out = 4;
     general.border_size = 2;
     general."col.inactive_border" = "rgba(ffffff00)";
-    general."col.active_border" = "rgba(${lib.strings.removePrefix "#" themes.dark.brightBlue}ff)";
+    general."col.active_border" = "rgba(${lib.strings.removePrefix "#" themes.dark.accent}ff)";
 
     decoration = {
       shadow.enabled = false;
@@ -188,8 +188,8 @@ in
           font_color = "rgba(${lib.strings.removePrefix "#" themes.light.foreground}ff)";
           inner_color = "rgba(${lib.strings.removePrefix "#" themes.light.background}aa)";
           outer_color = "rgba(${lib.strings.removePrefix "#" themes.light.foreground}88)";
-          fail_color = "rgba(${lib.strings.removePrefix "#" themes.light.red}ff)";
-          capslock_color = "rgba(${lib.strings.removePrefix "#" themes.light.yellow}ff)";
+          fail_color = "rgba(${lib.strings.removePrefix "#" themes.light.accent}ff)";
+          capslock_color = "rgba(${lib.strings.removePrefix "#" themes.light.accent}ff)";
           outline_thickness = 4;
           placeholder_text = "You shall not pass!";
           rounding = 2;

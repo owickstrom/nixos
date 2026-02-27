@@ -26,7 +26,7 @@ let
       color: ${theme.foreground};
     }
     #workspaces button.active {
-      background-color: ${theme.selectionBackground};
+      background-color: ${theme.background-muted};
     }
 
     #window * {
@@ -39,7 +39,7 @@ let
       padding: 0 0.75em;
       color: ${theme.foreground};
       background-color: transparent;
-      border-left: 1px solid ${theme.brightBlack};
+      border-left: 1px solid ${theme.foreground-muted};
     }
 
     #network,
@@ -67,7 +67,7 @@ let
 
     #network.connected,
     #bluetooth.connected {
-      color: ${theme.blue};
+      color: ${theme.foreground};
     }
 
     #backlight {
@@ -84,11 +84,11 @@ let
 
     #battery.charging, #battery.plugged {
       background: transparent;
-      color: ${theme.green};
+      color: ${theme.foreground};
     }
     #battery.critical:not(.charging) {
       background: transparent;
-      color: ${theme.red};
+      color: ${theme.accent};
     }
 
     #cpu {
@@ -97,11 +97,8 @@ let
     #cpu.good {
       color: ${theme.foreground};
     }
-    #cpu.warning {
-      color: ${theme.yellow};
-    }
     #cpu.critical {
-      color: ${theme.red};
+      color: ${theme.accent};
     }
   '';
 in
