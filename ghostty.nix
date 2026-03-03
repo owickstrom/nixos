@@ -37,21 +37,21 @@ in
 
   xdg.configFile."ghostty/themes/lancia-light".text = ''
     palette = 0=#000000
-    palette = 1=#990000
-    palette = 2=#00a600
-    palette = 3=#999900
-    palette = 4=#0000b2
-    palette = 5=#b200b2
-    palette = 6=#00a6b2
-    palette = 7=#bfbfbf
-    palette = 8=#666666
-    palette = 9=#e50000
-    palette = 10=#00d900
-    palette = 11=#bfbf00
-    palette = 12=#0000ff
-    palette = 13=#e500e5
-    palette = 14=#00d8d8
-    palette = 15=#e5e5e5
+    palette = 1=#bb0000
+    palette = 2=#00bb00
+    palette = 3=#bbbb00
+    palette = 4=#0000bb
+    palette = 5=#bb00bb
+    palette = 6=#00bbbb
+    palette = 7=#bbbbbb
+    palette = 8=#555555
+    palette = 9=#ff5555
+    palette = 10=#2fd92f
+    palette = 11=#bfbf15
+    palette = 12=#5555ff
+    palette = 13=#ff55ff
+    palette = 14=#22cccc
+    palette = 15=#ffffff
     background = ${themes.light.background}
     foreground = ${themes.light.foreground}
     cursor-color = ${themes.light.foreground}
