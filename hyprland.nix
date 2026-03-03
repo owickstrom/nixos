@@ -31,8 +31,8 @@ in
     monitor = [
       "eDP-1,highres,auto-left,1.5,transform,0" # laptop monitor
       "HDMI-A-2,highres,auto-down,2,transform,1"
-      "DP-1,2560x1440@60.00Hz,auto-right,1.6,transform,1" # ystad eink monitor
-      #"DP-1,highres,auto-left,2,transform,1" # ystad lcd monitor
+      "HDMI-A-1,2560x1440@60.00Hz,auto-right,2,transform,1" # ystad eink monitor
+      "DP-1,highres,auto-left,2,transform,1" # ystad lcd monitor
       "DP-3,highres,auto-up,2,transform,0" # puget external monitor
       ", preferred, auto, 1"
     ];
@@ -127,7 +127,7 @@ in
       # Reading mode
       "$mod + Shift, F10, exec, mira settings --refresh-mode direct --contrast 7 --speed 5 --dither-mode 3 --white-filter 12 --black-filter 10"
       # Speed mode
-      "$mod + Shift, F11, exec, mira settings --refresh-mode direct --contrast 7 --speed 15 --dither-mode 0 --white-filter 0 --black-filter 0"
+      "$mod + Shift, F11, exec, mira settings --refresh-mode direct --contrast 15 --speed 15 --dither-mode 0 --white-filter 0 --black-filter 0"
       # Refresh
       "$mod + Shift, F12, exec, mira refresh"
 
