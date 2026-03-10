@@ -39,8 +39,8 @@ in
 
     general.gaps_in = 2;
     general.gaps_out = 4;
-    general.border_size = 2;
-    general."col.inactive_border" = "rgba(ffffff00)";
+    general.border_size = 1;
+    general."col.inactive_border" = "rgba(999999ff)";
     general."col.active_border" = "rgba(${lib.strings.removePrefix "#" themes.dark.accent}ff)";
 
     decoration = {
