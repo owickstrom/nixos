@@ -186,6 +186,7 @@
       "editor.subheader.background": "#000000FF",
       "editor.active_line.background": "#111111FF",
       "editor.highlighted_line.background": "#000000FF",
+      "terminal.background": "#000000FF"
     },
     "One Light": {
       "border": "#7D7D7DFF",
