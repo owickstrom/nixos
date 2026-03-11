@@ -23,7 +23,10 @@
   "ui_font_weight": 450,
   "buffer_font_size": 12,
   "buffer_font_family": "TX-02",
-  "buffer_font_fallbacks": ["JetBrainsMono Nerd Font", "JetBrains Mono"],
+  "buffer_font_fallbacks": [
+    "JetBrainsMono Nerd Font",
+    "JetBrains Mono"
+  ],
   "buffer_font_weight": 450,
   "buffer_font_features": {
     "calt": true,
@@ -103,7 +106,10 @@
       "initialization_options": {
         "checkOnSave": true,
         "check": {
-          "extraArgs": ["--target-dir", "./target/check"]
+          "extraArgs": [
+            "--target-dir",
+            "./target/check"
+          ]
         }
       }
     }
@@ -125,7 +131,10 @@
   ],
   "languages": {
     "Nix": {
-      "language_servers": [ "nil", "!nixd" ]
+      "language_servers": [
+        "nil",
+        "!nixd"
+      ]
     }
   },
   "profiles": {
@@ -191,19 +200,23 @@
           "color": "#6094C4FF"
         },
         "comment": {
-          "color": "#B0B0B0FF"
+          // hello
+          "color": "#999999FF",
+          "font_style": "italic"
         },
         "constant": {
           "color": "#6094C4FF"
         },
         "constructor": {
-          "color": "#000000FF"
+          "color": "#000000FF",
+          "font_style": "italic"
         },
         "function": {
           "color": "#000000FF"
         },
         "keyword": {
-          "color": "#000000FF"
+          "color": "#000000FF",
+          "font_weight": 600,
         },
         "label": {
           "color": "#000000FF"
@@ -212,7 +225,8 @@
           "color": "#6094C4FF"
         },
         "operator": {
-          "color": "#000000FF"
+          "color": "#000000FF",
+          "font_weight": 600,
         },
         "preproc": {
           "color": "#000000FF"
