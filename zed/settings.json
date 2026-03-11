@@ -169,6 +169,24 @@
     }
   },
   "theme_overrides": {
+    "Kanagawa Dragon": {
+      "border": "#333333FF",
+      "border.variant": "#444444FF",
+      "background": "#000000FF",
+      "surface.background": "#000000FF",
+      "status_bar.background": "#000000FF",
+      "title_bar.background": "#000000FF",
+      "toolbar.background": "#000000FF",
+      "tab_bar.background": "#000000FF",
+      "tab.inactive_background": "#000000FF",
+      "tab.active_background": "#000000FF",
+      "panel.background": "#000000FF",
+      "editor.background": "#000000FF",
+      "editor.gutter.background": "#000000FF",
+      "editor.subheader.background": "#000000FF",
+      "editor.active_line.background": "#111111FF",
+      "editor.highlighted_line.background": "#000000FF",
+    },
     "One Light": {
       "border": "#7D7D7DFF",
       "border.variant": "#BABABAFF",
@@ -197,7 +215,7 @@
           "color": "#000000FF"
         },
         "boolean": {
-          "color": "#6094C4FF"
+          "color": "#2255aaff"
         },
         "comment": {
           // hello
@@ -205,7 +223,7 @@
           "font_style": "italic"
         },
         "constant": {
-          "color": "#6094C4FF"
+          "color": "#2255aaff"
         },
         "constructor": {
           "color": "#000000FF",
@@ -222,7 +240,10 @@
           "color": "#000000FF"
         },
         "number": {
-          "color": "#6094C4FF"
+          "color": "#2255aaff"
+        },
+        "type": {
+          "color": "#000000ff"
         },
         "operator": {
           "color": "#000000FF",
