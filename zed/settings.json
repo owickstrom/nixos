@@ -32,7 +32,7 @@
   "buffer_line_height": "comfortable",
   "theme": {
     "mode": "system",
-    "light": "GitHub Light High Contrast",
+    "light": "One Light",
     "dark": "Kanagawa Dragon"
   },
   "git": {
@@ -157,6 +157,117 @@
         "search_results": false,
         "selected_symbol": false
       }
+    }
+  },
+  "theme_overrides": {
+    "One Light": {
+      "border": "#7D7D7DFF",
+      "border.variant": "#BABABAFF",
+      "elevated_surface.background": "#FFFFFFFF",
+      "surface.background": "#FFFFFFFF",
+      "background": "#FFFFFFFF",
+      "text": "#000000FF",
+      "icon": "#000000FF",
+      "status_bar.background": "#FFFFFFFF",
+      "title_bar.background": "#FFFFFFFF",
+      "toolbar.background": "#FFFFFFFF",
+      "tab_bar.background": "#FFFFFFFF",
+      "tab.inactive_background": "#FFFFFFFF",
+      "tab.active_background": "#FFFFFFFF",
+      "panel.background": "#FFFFFFFF",
+      "editor.foreground": "#000000FF",
+      "editor.background": "#FFFFFFFF",
+      "editor.gutter.background": "#FFFFFFFF",
+      "editor.subheader.background": "#FFFFFFFF",
+      "editor.active_line.background": "#FAFAFABF",
+      "editor.highlighted_line.background": "#FFFFFFFF",
+      "terminal.background": "#FFFFFFFF",
+      "terminal.foreground": "#000000FF",
+      "syntax": {
+        "attribute": {
+          "color": "#000000FF"
+        },
+        "boolean": {
+          "color": "#6094C4FF"
+        },
+        "comment": {
+          "color": "#B0B0B0FF"
+        },
+        "constant": {
+          "color": "#6094C4FF"
+        },
+        "constructor": {
+          "color": "#000000FF"
+        },
+        "function": {
+          "color": "#000000FF"
+        },
+        "keyword": {
+          "color": "#000000FF"
+        },
+        "label": {
+          "color": "#000000FF"
+        },
+        "number": {
+          "color": "#6094C4FF"
+        },
+        "operator": {
+          "color": "#000000FF"
+        },
+        "preproc": {
+          "color": "#000000FF"
+        },
+        "property": {
+          "color": "#000000FF"
+        },
+        "punctuation": {
+          "color": "#000000FF"
+        },
+        "punctuation.bracket": {
+          "color": "#000000FF"
+        },
+        "punctuation.delimiter": {
+          "color": "#000000FF"
+        },
+        "punctuation.list_marker": {
+          "color": "#140D0CFF"
+        },
+        "punctuation.markup": {
+          "color": "#000000FF"
+        },
+        "punctuation.special": {
+          "color": "#000000FF"
+        },
+        "string": {
+          "color": "#707070FF"
+        },
+        "string.escape": {
+          "color": "#707070FF"
+        },
+        "string.regex": {
+          "color": "#707070FF"
+        },
+        "string.special": {
+          "color": "#707070FF"
+        },
+        "string.special.symbol": {
+          "color": "#707070FF"
+        },
+        "tag": {
+          "color": "#000000FF"
+        },
+        "title": {
+          "color": "#000000FF"
+        },
+        "variable": {
+          "color": "#000000FF"
+        },
+        "variable.special": {
+          "color": "#000000FF"
+        }
+      },
+      "panel.overlay_background": "#FFFFFFFF",
+      "panel.overlay_hover": "#FFFFFFFF"
     }
   }
 }
