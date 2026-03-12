@@ -4,7 +4,7 @@
     (pkgs.writeShellScriptBin "claude" ''
       original_cwd="$(pwd)"
       cd ~/src/star || exit 1
-      exec direnv exec . dev claude "$original_cwd"
+      echo "nix --extra-experimental-features 'nix-command flakes' develop --command claude" | exec direnv exec . dev claude.debug_sandbox "$original_cwd"
     '')
   ];
 }
