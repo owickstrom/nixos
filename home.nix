@@ -60,6 +60,7 @@
     vlc
     zed-editor
     wf-recorder # screen capture
+    maestral # for dropbox
 
     # Git
     difftastic
