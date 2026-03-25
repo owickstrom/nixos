@@ -31,7 +31,7 @@ in
     monitor = [
       "eDP-1,highres,auto-left,1.5,transform,0" # laptop monitor
       "HDMI-A-2,highres,auto-down,2,transform,1"
-      "HDMI-A-1,2560x1440@60.00Hz,auto-right,2,transform,1" # ystad eink monitor
+      "HDMI-A-1,2560x1440@60.00Hz,auto-right,1.6,transform,1" # ystad eink monitor
       "DP-1,highres,auto-left,2,transform,1" # ystad lcd monitor
       "DP-3,highres,auto-up,2,transform,0" # puget external monitor
       ", preferred, auto, 1"
@@ -39,8 +39,8 @@ in
 
     general.gaps_in = 2;
     general.gaps_out = 4;
-    general.border_size = 2;
-    general."col.inactive_border" = "rgba(ffffff00)";
+    general.border_size = 1;
+    general."col.inactive_border" = "rgba(999999ff)";
     general."col.active_border" = "rgba(${lib.strings.removePrefix "#" themes.dark.accent}ff)";
 
     decoration = {

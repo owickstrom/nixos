@@ -30,7 +30,7 @@ else
     fg_muted = hsluv "#aaaaaa",
     fg_muted_extra = hsluv "#777777",
     constant = hsluv "#b36957",
-    hint = hsluv "#bd9d86",
+    hint = hsluv "#cccccc",
     warning = hsluv "#b18532",
     error = hsluv "#ec3305",
   }, bg)
@@ -46,7 +46,7 @@ local specs = lush.extends({ base_specs }).with(function()
     Comment { fg = palette.fg_muted },
     LineNr { fg = palette.fg_muted_extra },
     Statement { base_specs.Statement, fg = palette.fg },
-    Special { fg = palette.hint },
+    Special { fg = palette.hint, gui = "italic" },
     Type { fg = palette.fg, gui = "italic" },
     String { fg = palette.constant },
     Delimiter { fg = palette.fg_muted },

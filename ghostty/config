@@ -135,7 +135,7 @@ macos-titlebar-style = transparent
 macos-option-as-alt = true
 macos-window-shadow = true
 
-gtk-single-instance = desktop
+gtk-single-instance = false
 gtk-tabs-location = top
 gtk-wide-tabs = false
 
