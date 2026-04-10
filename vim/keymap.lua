@@ -20,6 +20,7 @@ vim.keymap.set('n', '[t', ':tabprev<cr>')
 vim.keymap.set('n', ']t', ':tabnext<cr>')
 vim.keymap.set('n', '<leader>tn', ':tabnew<cr>')
 vim.keymap.set('n', '<leader>tf', ':FzfLua tabs')
+vim.keymap.set('n', '<leader>tc', ':tabclose<cr>')
 
 -- quickfix
 vim.keymap.set('n', '[q', ':cprev<cr>')

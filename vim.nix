@@ -37,6 +37,7 @@
       # git
       neogit
       gitlinker-nvim
+      diffview-nvim
       # other
       conform-nvim
       fzf-lua
