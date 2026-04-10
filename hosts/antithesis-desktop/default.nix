@@ -29,7 +29,6 @@
     fd
     kdiff3
     nixfmt-classic
-    zoom-us
     zulip
     # for testing
     vscode
@@ -43,6 +42,7 @@
     "cjpalhdlnbpafiamejdnhcphjbkeiagm" # ublock origin
     "dbepggeogbaibhgnhhndojpepiihcmeb" # vimium
   ];
+  programs.zoom-us.enable = true;
 
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware.nvidia = {

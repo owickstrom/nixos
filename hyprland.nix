@@ -247,6 +247,9 @@ in
     };
     "org/gnome/desktop/interface" = {
       color-scheme = "prefer-light";
+
+      document-font-name = "Alegreya Sans Medium 11";
+      monospace-font-name = "TX-02 SemiCondensed 11";
     };
   };
 

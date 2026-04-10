@@ -23,7 +23,6 @@
     fd
     kdiff3
     nixfmt-classic
-    zoom-us
     zulip
     vscode
   ];
@@ -35,6 +34,7 @@
     "cjpalhdlnbpafiamejdnhcphjbkeiagm" # ublock origin
     "dbepggeogbaibhgnhhndojpepiihcmeb" # vimium
   ];
+  programs.zoom-us.enable = true;
   personal.browser = "chromium";
   personal.backlight = {
     enabled = true;
