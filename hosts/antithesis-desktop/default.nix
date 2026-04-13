@@ -12,7 +12,7 @@
   networking.hostName = "antithesis-desktop";
   networking.hostId = "8f3893c1"; # TODO Required for ZFS (from 'head -c 8 /etc/machine-id').
   system.copySystemConfiguration = lib.mkForce false;
-  boot.kernelPackages = pkgs.linuxPackages;
+  boot.kernelPackages = pkgs.linuxPackages_6_19;
   boot.supportedFilesystems = [ "zfs" ];
   hardware.system76.enableAll = true;
   networking.extraHosts = ''
