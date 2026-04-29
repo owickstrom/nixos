@@ -13,6 +13,7 @@
     192.168.1.13	bhyve-host
   '';
   time.timeZone = "Europe/Stockholm";
+  # time.timeZone = "US/Eastern";
   environment.systemPackages = with pkgs; [
     wget
     vim
