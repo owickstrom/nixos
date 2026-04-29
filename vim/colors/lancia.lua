@@ -47,7 +47,7 @@ local base_specs = generator.generate(palette, bg, generator.get_global_config(c
 -- Optionally extend specs using Lush
 local specs = lush.extends({ base_specs }).with(function()
   return {
-    Comment { fg = palette.marker_fg, bg = palette.marker_bg },
+    Comment { fg = palette.marker_fg, bg = palette.marker_bg, gui = "italic" },
     LineNr { fg = palette.fg_muted_extra },
     Statement { base_specs.Statement, fg = palette.fg },
     Special { fg = palette.hint, gui = "italic" },
