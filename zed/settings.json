@@ -166,7 +166,7 @@
         "search_results": false,
         "selected_symbol": false
       }
-    }
+    },
   },
   "theme_overrides": {
     "Kanagawa Dragon": {
@@ -220,7 +220,14 @@
         },
         "comment": {
           // hello
-          "color": "#999999FF",
+          "color": "#000000FF",
+          "background_color": "#FFFF00FF",
+          "font_style": "italic"
+        },
+        "comment.doc": {
+          // hello
+          "color": "#000000FF",
+          "background_color": "#FFFF00FF",
           "font_style": "italic"
         },
         "constant": {

@@ -21,6 +21,7 @@ if bg == "light" then
     hint = hsluv "#222222",
     warning = hsluv "#d9961a",
     error = hsluv "#ec3305",
+    marker = hsluv "#e6e1b3",
   }, bg)
 else
   palette = util.palette_extend({
@@ -33,6 +34,7 @@ else
     hint = hsluv "#cccccc",
     warning = hsluv "#b18532",
     error = hsluv "#ec3305",
+    marker = hsluv "#e3cb9f",
   }, bg)
 end
 
@@ -43,7 +45,7 @@ local base_specs = generator.generate(palette, bg, generator.get_global_config(c
 -- Optionally extend specs using Lush
 local specs = lush.extends({ base_specs }).with(function()
   return {
-    Comment { fg = palette.fg_muted },
+    Comment { fg = palette.fg, bg = palette.marker },
     LineNr { fg = palette.fg_muted_extra },
     Statement { base_specs.Statement, fg = palette.fg },
     Special { fg = palette.hint, gui = "italic" },
