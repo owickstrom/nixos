@@ -63,6 +63,7 @@ local specs = lush.extends({ base_specs }).with(function()
     NormalFloat { bg = palette.bg_muted },
     Pmenu { bg = palette.bg },
     PmenuSel { bg = palette.bg_muted },
+    NeogitSubtleText { fg = palette.fg_muted },
   }
 end)
 
