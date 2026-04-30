@@ -40,6 +40,11 @@ set conceallevel=0
 " Wrapping
 set nowrap
 
+" List chars
+set list
+set listchars=trail:~,tab:>-,nbsp:␣
+
+
 " Leader
 nnoremap <Space> <Nop>
 let mapleader = ' '
