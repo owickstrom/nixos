@@ -31,4 +31,5 @@
     enabled = true;
     device = "intel_backlight";
   };
+  programs.steam.enable = true;
 }
