@@ -27,6 +27,7 @@ let
     }
     #workspaces button.active {
       background-color: ${theme.background-muted};
+      box-shadow: none;
     }
 
     #window * {
@@ -172,7 +173,7 @@ in
       format = ''<span weight="bold">BLU</span> OFF'';
       "format-connected" = ''<span weight="bold">BLU</span> {device_alias}'';
       "format-connected-battery" = ''<span weight="bold">BLU</span> {device_battery_percentage}%'';
-      "on-click" = "blueberry";
+      "on-click" = "blueman";
       min-length = 6;
       max-length = 12;
     };
@@ -196,5 +197,5 @@ in
 
   xdg.configFile."waybar/style.css".text = makeStyles themes.dark;
 
-  home.packages = [ pkgs.blueberry ];
+  home.packages = [ pkgs.blueman ];
 }
