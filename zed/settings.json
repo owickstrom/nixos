@@ -7,7 +7,20 @@
 // custom settings, run the `zed: Open Default Settings` command
 // from the command palette
 {
+  "project_panel": {
+    "dock": "left"
+  },
+  "outline_panel": {
+    "dock": "left"
+  },
+  "collaboration_panel": {
+    "dock": "left"
+  },
+  "git_panel": {
+    "dock": "left"
+  },
   "agent": {
+    "dock": "right",
     "default_model": {
       "provider": "ollama",
       "model": "gpt-oss:20b"
