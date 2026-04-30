@@ -12,7 +12,6 @@ dap.adapters.codelldb = {
 }
 
 
-dap_vscode.load_launchjs()
 dapui.setup()
 
 dap.listeners.after.event_initialized["dapui"] = function()

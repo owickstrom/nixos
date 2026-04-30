@@ -135,11 +135,6 @@ vim.lsp.enable({
   'gopls',
 })
 
-vim.api.nvim_create_autocmd('BufEnter', {
-  pattern = '',
-  command = 'TSEnable highlight'
-})
-
 -- https://github.com/neovim/neovim/issues/30985
 for _, method in ipairs({ 'textDocument/diagnostic', 'workspace/diagnostic' }) do
   local default_diagnostic_handler = vim.lsp.handlers[method]

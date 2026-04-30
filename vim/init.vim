@@ -97,6 +97,3 @@ augroup MyColors
 augroup END
 
 call MyHighlights()
-
-autocmd BufEnter * TSEnable highlight indent
-autocmd BufEnter * TSBufEnable highlight indent
