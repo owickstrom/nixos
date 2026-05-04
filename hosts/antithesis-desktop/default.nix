@@ -55,4 +55,6 @@
   personal.backlight = {
     enabled = false;
   };
+
+  antithesis.lock.enable = false;
 }
