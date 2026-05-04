@@ -3,73 +3,89 @@ local dap = require("dap")
 local dapui = require("dapui")
 local dap_vscode = require("dap.ext.vscode")
 local fzf_lua = require("fzf-lua")
+local wk = require("which-key")
 
--- buffers
-vim.keymap.set('n', '[b', ':bprev<cr>')
-vim.keymap.set('n', ']b', ':bnext<cr>')
-vim.keymap.set('n', '<leader>bb', ':FzfLua buffers<cr>')
-vim.keymap.set('n', '<leader>bd', ':bdelete<cr>')
-
--- files
-vim.keymap.set('n', '<leader><leader>', ':FzfLua files<cr>')
-vim.keymap.set('n', '<leader>ff', ':FzfLua files<cr>')
-vim.keymap.set('n', '<leader>fs', ':FzfLua grep<space>')
-
--- tabs
-vim.keymap.set('n', '[t', ':tabprev<cr>')
-vim.keymap.set('n', ']t', ':tabnext<cr>')
-vim.keymap.set('n', '<leader>tn', ':tabnew<cr>')
-vim.keymap.set('n', '<leader>tf', ':FzfLua tabs')
-vim.keymap.set('n', '<leader>tc', ':tabclose<cr>')
-
--- quickfix
-vim.keymap.set('n', '[q', ':cprev<cr>')
-vim.keymap.set('n', ']q', ':cnext<cr>')
-
--- completion
+-- completion (not part of which-key, insert mode)
 vim.keymap.set('i', '<C-Space>', '<C-x><C-o>')
 
--- git
-vim.keymap.set('n', '<Leader>gg', neogit.open)
-vim.keymap.set('n', '<leader>gf', ':FzfLua git_files<cr>')
-vim.keymap.set('n', '<leader>gl', ':FzfLua git_commits<cr>')
-vim.keymap.set('n', '<leader>gb', ':FzfLua git_branches<cr>')
+wk.add({
+  -- groups
+  { "<leader>b", group = "buffer" },
+  { "<leader>f", group = "file" },
+  { "<leader>t", group = "tab" },
+  { "<leader>g", group = "git" },
+  { "<leader>c", group = "code" },
+  { "<leader>cw", group = "workspace" },
+  { "<leader>a", group = "ai" },
+  { "<leader>d", group = "debug" },
 
--- lsp
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
-vim.keymap.set('n', 'K', vim.lsp.buf.hover)
-vim.keymap.set('n', '<leader>cr', vim.lsp.buf.rename)
-vim.keymap.set('n', '<leader>ca', ':FzfLua lsp_code_actions<cr>')
-vim.keymap.set('n', '<leader>cf', ':FzfLua lsp_finder<cr>')
-vim.keymap.set('n', '<leader>cd', vim.lsp.buf.definition)
-vim.keymap.set('n', '<leader>cD', vim.lsp.buf.declaration)
-vim.keymap.set('n', '<leader>cu', ':FzfLua lsp_references<cr>')
-vim.keymap.set('n', '<leader>ch', vim.lsp.buf.signature_help)
-vim.keymap.set('n', '<leader>cws', ':FzfLua lsp_live_workspace_symbols<cr>')
-vim.keymap.set('n', '<leader>cwd', ':FzfLua lsp_workspace_diagnostics<cr>')
+  -- buffers
+  { "[b", ":bprev<cr>", desc = "Previous buffer" },
+  { "]b", ":bnext<cr>", desc = "Next buffer" },
+  { "<leader>bb", ":FzfLua buffers<cr>", desc = "Find buffer" },
+  { "<leader>bd", ":bdelete<cr>", desc = "Delete buffer" },
 
-vim.keymap.set('n', '<leader>ac', ':CopilotChat<cr>')
-vim.keymap.set('n', '<leader>ae', ':CopilotChatExplain<cr>')
-vim.keymap.set('n', '<leader>ar', ':CopilotChatReview<cr>')
+  -- files
+  { "<leader><leader>", ":FzfLua files<cr>", desc = "Find file" },
+  { "<leader>ff", ":FzfLua files<cr>", desc = "Find file" },
+  { "<leader>fs", ":FzfLua grep<space>", desc = "Grep" },
 
--- debug
-vim.keymap.set("n", "<F5>", function()
-  if dap.session() then
-    dap.continue()
-  else
-    fzf_lua.dap_configurations()
-  end
-end)
-vim.keymap.set("n", "<F9>", dap.toggle_breakpoint)
-vim.keymap.set("n", "<F10>", dap.step_over)
-vim.keymap.set("n", "<F11>", dap.step_into)
-vim.keymap.set("n", "<F12>", dap.step_out)
-vim.keymap.set("n", "<Leader>dt", dap.terminate)
-vim.keymap.set("n", "<Leader>du", dapui.toggle)
-vim.keymap.set("n", "<Leader>db", dap.toggle_breakpoint)
-vim.keymap.set("n", "<Leader>dl", fzf_lua.dap_breakpoints)
-vim.keymap.set("n", "<Leader>dr", dap_vscode.load_launchjs)
-vim.keymap.set("n", "<Leader>dB", function()
-  dap.set_breakpoint(vim.fn.input("Breakpoint condition: "))
-end)
+  -- tabs
+  { "[t", ":tabprev<cr>", desc = "Previous tab" },
+  { "]t", ":tabnext<cr>", desc = "Next tab" },
+  { "<leader>tn", ":tabnew<cr>", desc = "New tab" },
+  { "<leader>tf", ":FzfLua tabs<cr>", desc = "Find tab" },
+  { "<leader>tc", ":tabclose<cr>", desc = "Close tab" },
+
+  -- quickfix
+  { "[q", ":cprev<cr>", desc = "Previous quickfix" },
+  { "]q", ":cnext<cr>", desc = "Next quickfix" },
+
+  -- git
+  { "<leader>gg", neogit.open, desc = "Neogit" },
+  { "<leader>gf", ":FzfLua git_files<cr>", desc = "Find git file" },
+  { "<leader>gl", ":FzfLua git_commits<cr>", desc = "Log" },
+  { "<leader>gb", ":FzfLua git_branches<cr>", desc = "Branches" },
+
+  -- lsp
+  { "[d", vim.diagnostic.goto_prev, desc = "Previous diagnostic" },
+  { "]d", vim.diagnostic.goto_next, desc = "Next diagnostic" },
+  { "K", vim.lsp.buf.hover, desc = "Hover" },
+  { "<leader>cr", vim.lsp.buf.rename, desc = "Rename" },
+  { "<leader>ca", ":FzfLua lsp_code_actions<cr>", desc = "Code actions" },
+  { "<leader>cf", ":FzfLua lsp_finder<cr>", desc = "Finder" },
+  { "<leader>cd", vim.lsp.buf.definition, desc = "Go to definition" },
+  { "<leader>cD", vim.lsp.buf.declaration, desc = "Go to declaration" },
+  { "<leader>cu", ":FzfLua lsp_references<cr>", desc = "References" },
+  { "<leader>ch", vim.lsp.buf.signature_help, desc = "Signature help" },
+  { "<leader>cws", ":FzfLua lsp_live_workspace_symbols<cr>", desc = "Symbols" },
+  { "<leader>cwd", ":FzfLua lsp_workspace_diagnostics<cr>", desc = "Diagnostics" },
+
+  -- ai
+  { "<leader>ac", ":CopilotChat<cr>", desc = "Chat" },
+  { "<leader>ae", ":CopilotChatExplain<cr>", desc = "Explain" },
+  { "<leader>ar", ":CopilotChatReview<cr>", desc = "Review" },
+
+  -- debug (function keys)
+  { "<F5>", function()
+    if dap.session() then
+      dap.continue()
+    else
+      fzf_lua.dap_configurations()
+    end
+  end, desc = "Continue / launch" },
+  { "<F9>", dap.toggle_breakpoint, desc = "Toggle breakpoint" },
+  { "<F10>", dap.step_over, desc = "Step over" },
+  { "<F11>", dap.step_into, desc = "Step into" },
+  { "<F12>", dap.step_out, desc = "Step out" },
+
+  -- debug (leader)
+  { "<leader>dt", dap.terminate, desc = "Terminate" },
+  { "<leader>du", dapui.toggle, desc = "Toggle UI" },
+  { "<leader>db", dap.toggle_breakpoint, desc = "Toggle breakpoint" },
+  { "<leader>dl", fzf_lua.dap_breakpoints, desc = "List breakpoints" },
+  { "<leader>dr", dap_vscode.load_launchjs, desc = "Load launch.json" },
+  { "<leader>dB", function()
+    dap.set_breakpoint(vim.fn.input("Breakpoint condition: "))
+  end, desc = "Conditional breakpoint" },
+})
