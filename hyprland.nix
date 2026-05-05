@@ -171,6 +171,7 @@ in
 
       background = [
         {
+          path = "/home/owi/nixos/bg-light.jpeg";
           color = "rgb(255,255,255)";
         }
       ];
@@ -186,8 +187,8 @@ in
           fade_on_empty = false;
           font_family = "TX-02";
           font_color = "rgba(${lib.strings.removePrefix "#" themes.light.foreground}ff)";
-          inner_color = "rgba(${lib.strings.removePrefix "#" themes.light.background}aa)";
-          outer_color = "rgba(${lib.strings.removePrefix "#" themes.light.foreground}88)";
+          inner_color = "rgba(${lib.strings.removePrefix "#" themes.light.background}ff)";
+          outer_color = "rgba(${lib.strings.removePrefix "#" themes.light.foreground}ff)";
           fail_color = "rgba(${lib.strings.removePrefix "#" themes.light.accent}ff)";
           capslock_color = "rgba(${lib.strings.removePrefix "#" themes.light.accent}ff)";
           outline_thickness = 4;
