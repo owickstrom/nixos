@@ -8,6 +8,7 @@
   networking.hostId = "251c9149"; # TODO Required for ZFS (from 'head -c 8 /etc/machine-id').
   system.copySystemConfiguration = lib.mkForce false;
   boot.kernelPackages = pkgs.linuxPackages_6_18;
+  boot.loader.systemd-boot.configurationLimit = 16;
   boot.supportedFilesystems = [ "zfs" ];
   networking.extraHosts = ''
     192.168.1.13	bhyve-host
