@@ -109,6 +109,10 @@
     pandoc
     (pkgs.callPackage ./codelldb.nix { })
 
+    # Webcam
+    usbutils
+    v4l-utils
+
     # Rust
     rust-analyzer
     rustfmt
