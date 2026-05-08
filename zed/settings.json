@@ -33,14 +33,14 @@
   "vim_mode": true,
   "ui_font_size": 14,
   "ui_font_family": "Alegreya Sans",
-  "ui_font_weight": 450,
+  "ui_font_weight": 500,
   "buffer_font_size": 12,
   "buffer_font_family": "TX-02",
   "buffer_font_fallbacks": [
     "JetBrainsMono Nerd Font",
     "JetBrains Mono"
   ],
-  "buffer_font_weight": 450,
+  "buffer_font_weight": 500,
   "buffer_font_features": {
     "calt": true,
     "liga": true
@@ -152,32 +152,34 @@
   },
   "profiles": {
     "Focus": {
-      "tab_bar": {
-        "show": false,
-        "show_nav_history_buttons": false
-      },
-      "toolbar": {
-        "breadcrumbs": false,
-        "quick_actions": false
-      },
-      "gutter": {
-        "line_numbers": false,
-        "folds": false,
-        "breakpoints": false,
-        "runnables": false,
-        "min_line_number_digits": 0
-      },
-      "indent_guides": {
-        "enabled": false
-      },
-      "current_line_highlight": "none",
-      "scrollbar": {
-        "show": "never",
-        "cursors": false,
-        "git_diff": false,
-        "diagnostics": "none",
-        "search_results": false,
-        "selected_symbol": false
+      "settings": {
+        "tab_bar": {
+          "show": false,
+          "show_nav_history_buttons": false
+        },
+        "toolbar": {
+          "breadcrumbs": false,
+          "quick_actions": false
+        },
+        "gutter": {
+          "line_numbers": false,
+          "folds": false,
+          "breakpoints": false,
+          "runnables": false,
+          "min_line_number_digits": 0
+        },
+        "indent_guides": {
+          "enabled": false
+        },
+        "current_line_highlight": "none",
+        "scrollbar": {
+          "show": "never",
+          "cursors": false,
+          "git_diff": false,
+          "diagnostics": "none",
+          "search_results": false,
+          "selected_symbol": false
+        }
       }
     },
   },
