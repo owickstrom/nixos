@@ -39,22 +39,22 @@ in
   '';
 
   xdg.configFile."ghostty/themes/lancia-light".text = ''
-    palette = 0=#000000
-    palette = 1=#bb0000
-    palette = 2=#00bb00
-    palette = 3=#bbbb00
-    palette = 4=#0000bb
-    palette = 5=#bb00bb
-    palette = 6=#00bbbb
-    palette = 7=#bbbbbb
-    palette = 8=#555555
-    palette = 9=#ff5555
-    palette = 10=#2fd92f
-    palette = 11=#bfbf15
-    palette = 12=#5555ff
-    palette = 13=#ff55ff
-    palette = 14=#22cccc
-    palette = 15=#ffffff
+    palette = 0=#ffffff
+    palette = 1=#a8334c
+    palette = 2=#4f6c31
+    palette = 3=#944927
+    palette = 4=#286486
+    palette = 5=#88507d
+    palette = 6=#3b8992
+    palette = 7=#353535
+    palette = 8=#aca9a9
+    palette = 9=#94253e
+    palette = 10=#3f5a22
+    palette = 11=#803d1c
+    palette = 12=#1d5573
+    palette = 13=#7b3b70
+    palette = 14=#2b747c
+    palette = 15=#5c5c5c
     background = ${themes.light.background}
     foreground = ${themes.light.foreground}
     cursor-color = ${themes.light.foreground}
