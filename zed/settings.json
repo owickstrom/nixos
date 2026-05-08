@@ -72,9 +72,9 @@
   },
   "auto_signature_help": false,
   "wrap_guides": [
-    100
+    80
   ],
-  "preferred_line_length": 100,
+  "preferred_line_length": 80,
   "show_wrap_guides": true,
   "load_direnv": "shell_hook",
   "lsp": {
@@ -234,15 +234,14 @@
           "color": "#2255aaff"
         },
         "comment": {
-          // hello
+          // example
           "color": "#000000FF",
-          "background_color": "#FFFF00FF",
+          "background_color": "#F5E87EFF",
           "font_style": "italic"
         },
         "comment.doc": {
-          // hello
           "color": "#000000FF",
-          "background_color": "#FFFF00FF",
+          "background_color": "#F5E87EFF",
           "font_style": "italic"
         },
         "constant": {
