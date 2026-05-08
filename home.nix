@@ -15,6 +15,7 @@
     ./bat.nix
     ./zsh.nix
     ./git.nix
+    ./jj.nix
     ./vim.nix
     ./tmux.nix
     ./ctags.nix
