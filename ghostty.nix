@@ -8,7 +8,10 @@ let
   themes = pkgs.callPackage ./themes.nix { };
 in
 {
-  xdg.configFile."ghostty/config".source = config.lib.file.mkOutOfStoreSymlink ./ghostty/config;
+  home.activation.ghosttySymlinks = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    $DRY_RUN_CMD mkdir -p ~/.config/ghostty
+    $DRY_RUN_CMD ln -sfn ${config.home.homeDirectory}/nixos/ghostty/config ~/.config/ghostty/config
+  '';
 
   xdg.configFile."ghostty/themes/lancia-dark".text = ''
     palette = 0=#4f4f4f

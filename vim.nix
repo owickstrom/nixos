@@ -54,20 +54,20 @@
       lua vim.loader.enable()
 
       " portable vimscript
-      source ${vim/init.vim}
+      source ${config.home.homeDirectory}/nixos/vim/init.vim
 
       " nix-specific
       " let g:zenbones_darkness='stark'
       colorscheme lancia
 
-      luafile ${vim/fold.lua}
-      luafile ${vim/completion.lua}
-      luafile ${vim/debugging.lua}
-      luafile ${vim/formatting.lua}
-      luafile ${vim/git.lua}
-      luafile ${vim/keymap.lua}
-      luafile ${vim/line.lua}
-      luafile ${vim/lsp.lua}
+      luafile ${config.home.homeDirectory}/nixos/vim/fold.lua
+      luafile ${config.home.homeDirectory}/nixos/vim/completion.lua
+      luafile ${config.home.homeDirectory}/nixos/vim/debugging.lua
+      luafile ${config.home.homeDirectory}/nixos/vim/formatting.lua
+      luafile ${config.home.homeDirectory}/nixos/vim/git.lua
+      luafile ${config.home.homeDirectory}/nixos/vim/keymap.lua
+      luafile ${config.home.homeDirectory}/nixos/vim/line.lua
+      luafile ${config.home.homeDirectory}/nixos/vim/lsp.lua
     '';
     extraPackages = with pkgs; [
       lua-language-server
@@ -85,6 +85,8 @@
     }
   '';
 
-  xdg.configFile."nvim/colors/lancia.lua".source =
-    config.lib.file.mkOutOfStoreSymlink ./vim/colors/lancia.lua;
+  home.activation.vimSymlinks = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    $DRY_RUN_CMD mkdir -p ~/.config/nvim/colors
+    $DRY_RUN_CMD ln -sfn ${config.home.homeDirectory}/nixos/vim/colors/lancia.lua ~/.config/nvim/colors/lancia.lua
+  '';
 }

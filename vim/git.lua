@@ -1,7 +1,7 @@
 local neogit = require('neogit')
 neogit.setup {
-  kind = "floating",
-  commit_editor = { kind = "floating" },
+  kind = "tab",
+  commit_editor = { kind = "tab" },
   integrations = {
     diffview = true,
   },

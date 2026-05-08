@@ -58,7 +58,6 @@
     papers
     gnome-calculator
     vlc
-    zed-editor
     wf-recorder # screen capture
     slurp
     maestral # for dropbox
