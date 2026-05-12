@@ -34,10 +34,11 @@
       nvim-dap-vscode-js
       nvim-dap-virtual-text
       rustaceanvim
-      # git
+      # vcs
       neogit
       gitlinker-nvim
       diffview-nvim
+      hunk-nvim
       # other
       conform-nvim
       fzf-lua

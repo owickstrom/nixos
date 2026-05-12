@@ -63,9 +63,6 @@
     slurp
     maestral # for dropbox
 
-    # Git
-    difftastic
-
     # Nix
     nix-prefetch-git
     nixfmt-rfc-style
