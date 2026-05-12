@@ -5,6 +5,7 @@
   ...
 }:
 {
+
   programs.fzf.enable = true;
   programs.fzf.defaultOptions = [ "--color=16" ];
   programs.zsh = {
@@ -40,6 +41,13 @@
       # For home-manager
       export NIX_PATH=$HOME/.nix-defexpr/channels''${NIX_PATH:+:}$NIX_PATH
 
+      _my_theme_vcs_info() {
+        jj_prompt_template_raw ' "[" ++ concat( separate(" ", "%B" ++ format_short_change_id_with_change_offset(self) ++ "%b", bookmarks,if(conflict,label("conflict","conflict")), "%F{green}+" ++ self.diff().stat(0).total_added() ++ "%f/%F{red}-" ++ self.diff().stat(0).total_removed() ++ "%f", "\e[3m" ++ coalesce(truncate_end(40, self.description().first_line()), "(no description)") ++ "\e[23m") )++"]" ' \
+        || git_prompt_info
+      }
+
+      PROMPT='%~ $(_my_theme_vcs_info)» '
+
       eval "$(direnv hook zsh)"
     '';
     profileExtra = ''
@@ -57,14 +65,15 @@
       export FZF_DEFAULT_COMMAND='rg --files --hidden'
       export FZF_DEFAULT_OPTS='--color=16'
     '';
+  };
 
-    prezto = {
-      enable = true;
-      prompt = {
-        pwdLength = "short";
-        theme = "minimal";
-      };
-    };
+  programs.zsh.oh-my-zsh = {
+    enable = true;
+    plugins = [
+      "git"
+      "jj"
+    ];
+    theme = "minimal";
   };
 
   programs.autojump.enable = true;
