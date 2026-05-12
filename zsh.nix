@@ -42,7 +42,7 @@
       export NIX_PATH=$HOME/.nix-defexpr/channels''${NIX_PATH:+:}$NIX_PATH
 
       _my_theme_vcs_info() {
-        jj_prompt_template_raw ' "[" ++ concat( separate(" ", "%B" ++ format_short_change_id_with_change_offset(self) ++ "%b", bookmarks,if(conflict,label("conflict","conflict")), "%F{green}+" ++ self.diff().stat(0).total_added() ++ "%f/%F{red}-" ++ self.diff().stat(0).total_removed() ++ "%f", "\e[3m" ++ coalesce(truncate_end(40, self.description().first_line()), "(no description)") ++ "\e[23m") )++"]" ' \
+        jj_prompt_template_raw ' "[" ++ concat( separate(" ", "%B" ++ format_short_change_id_with_change_offset(self) ++ "%b", bookmarks,if(conflict,label("conflict","conflict")), "%F{green}+" ++ self.diff().stat(0).total_added() ++ "%f/%F{red}-" ++ self.diff().stat(0).total_removed() ++ "%f", coalesce(truncate_end(10, self.description().first_line()), "(no description)")) )++"]" ' \
         || git_prompt_info
       }
 
