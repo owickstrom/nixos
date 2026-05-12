@@ -11,6 +11,8 @@
     vimAlias = true;
     vimdiffAlias = true;
     defaultEditor = true;
+    withPython3 = false;
+    withRuby = false;
     plugins = with pkgs.vimPlugins; [
       # lsp/langs, debugging
       nvim-lspconfig

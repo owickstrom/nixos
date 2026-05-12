@@ -39,5 +39,7 @@
     enabled = true;
     device = "acpi_video0";
   };
+
+  antithesis.lock.enable = false;
   antithesis.user.global_home_manager = false;
 }

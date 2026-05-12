@@ -22,14 +22,11 @@
   environment.systemPackages = with pkgs; [
     wget
     vim
-    mercurial
-    # direnv
     clang
     ripgrep
     fd
     kdiff3
-    nixfmt-classic
-    zulip
+    nixfmt
     # for testing
     vscode
     slack
@@ -58,4 +55,5 @@
   };
 
   antithesis.lock.enable = false;
+  antithesis.user.global_home_manager = false;
 }

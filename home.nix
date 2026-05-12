@@ -69,7 +69,7 @@
 
     # Nix
     nix-prefetch-git
-    nixfmt-rfc-style
+    nixfmt
     nix-tree
     cachix
     nil

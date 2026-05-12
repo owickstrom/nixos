@@ -278,7 +278,10 @@ in
       # name = "Breeze-Dark";
     };
     gtk3.extraConfig.gtk-application-prefer-dark-theme = 0;
+    gtk3.theme = config.gtk.theme;
+
     gtk4.extraConfig.gtk-application-prefer-dark-theme = 0;
+    gtk4.theme = config.gtk.theme;
   };
 
   xdg.portal = {
