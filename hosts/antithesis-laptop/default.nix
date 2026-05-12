@@ -32,6 +32,7 @@
     "eimadpbcbfnmbkopoojfekhnkhdbieeh" # dark reader
     "cjpalhdlnbpafiamejdnhcphjbkeiagm" # ublock origin
     "dbepggeogbaibhgnhhndojpepiihcmeb" # vimium
+    "eakpippijmmohmdlpgcjnipolcgciaga" # pangram
   ];
   programs.zoom-us.enable = true;
   personal.browser = "chromium";
