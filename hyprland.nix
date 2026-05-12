@@ -30,9 +30,9 @@ in
 
     monitor = [
       "eDP-1,highres,auto-left,1.5,transform,0" # laptop monitor
+      "desc:BNQ BenQ EW2880U ET4AM01231SL0,highres,auto-right,2,transform,1" # ystad lcd monitor
       "HDMI-A-2,highres,auto-down,2,transform,1"
       "DP-1,2560x1440@60.00Hz,auto-right,1.6,transform,1" # ystad eink monitor
-      "HDMI-A-1,highres,auto-left,2,transform,1" # ystad lcd monitor
       "DP-3,highres,auto-up,2,transform,0" # puget external monitor
       ", preferred, auto, 1"
     ];
