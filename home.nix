@@ -29,6 +29,10 @@
     gc = {
       automatic = true;
     };
+    settings = {
+      keep-outputs = true;
+      keep-derivations = true;
+    };
   };
 
   nixpkgs.config.allowUnfree = true;
