@@ -18,14 +18,11 @@
   environment.systemPackages = with pkgs; [
     wget
     vim
-    mercurial
-    # direnv
     clang
     ripgrep
     fd
     kdiff3
-    nixfmt-classic
-    zulip
+    nixfmt
     vscode
   ];
   programs.chromium.enable = true;
@@ -42,4 +39,5 @@
     enabled = true;
     device = "acpi_video0";
   };
+  antithesis.user.global_home_manager = false;
 }
