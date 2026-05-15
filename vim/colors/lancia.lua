@@ -13,7 +13,7 @@ local palette
 if bg == "light" then
   palette = util.palette_extend({
     bg = hsluv "#ffffff",
-    bg_muted = hsluv "#eeeeee",
+    bg_muted = hsluv "#dddddd",
     fg = hsluv "#000000",
     fg_muted = hsluv "#444444",
     fg_muted_extra = hsluv "#999999",
@@ -21,6 +21,8 @@ if bg == "light" then
     hint = hsluv "#222222",
     warning = hsluv "#d9961a",
     error = hsluv "#ec3305",
+    selection = hsluv "#f7a539",
+    search_current = hsluv "#fa9d23",
     marker_fg = hsluv "#000000",
     marker_bg = hsluv "#f5e97f",
   }, bg)
@@ -35,6 +37,8 @@ else
     hint = hsluv "#cccccc",
     warning = hsluv "#b18532",
     error = hsluv "#ec3305",
+    selection = hsluv "#222222",
+    search_current = hsluv "#f7a539",
     marker_fg = hsluv "#f5e97f",
     marker_bg = hsluv "#000000",
   }, bg)
@@ -63,6 +67,11 @@ local specs = lush.extends({ base_specs }).with(function()
     NormalFloat { bg = palette.bg_muted },
     Pmenu { bg = palette.bg },
     PmenuSel { bg = palette.bg_muted },
+    CursorLine { bg = palette.bg_muted },
+    Visual { bg = palette.selection },
+    Search { bg = palette.selection },
+    CurSearch { bg = palette.search_current, fg = palette.bg },
+    QuickFixLine { bg = palette.selection },
     NeogitSubtleText { fg = palette.fg_muted },
   }
 end)
