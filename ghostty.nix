@@ -59,7 +59,7 @@ in
     foreground = ${themes.light.foreground}
     cursor-color = ${themes.light.foreground}
     cursor-text = ${themes.light.background}
-    selection-background = ${themes.light.background-muted}
+    selection-background = ${themes.light.selection}
     selection-foreground = ${themes.light.foreground}
   '';
 }
