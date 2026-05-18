@@ -24,6 +24,8 @@
     kdiff3
     nixfmt
     vscode
+    podman
+    podman-compose
   ];
   programs.chromium.enable = true;
   programs.chromium.extensions = [

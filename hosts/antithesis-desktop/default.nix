@@ -30,6 +30,8 @@
     # for testing
     vscode
     slack
+    podman
+    podman-compose
   ];
   programs.chromium.enable = true;
   programs.chromium.extensions = [
