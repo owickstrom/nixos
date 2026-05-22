@@ -150,6 +150,13 @@
       ]
     }
   },
+  "auto_install_extensions": {
+    "emmet": true,
+    "nix": true,
+    "kanagawa-themes": true,
+    "html": true,
+    "toml": true,
+  },
   "profiles": {
     "Focus": {
       "settings": {
