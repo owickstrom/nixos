@@ -192,6 +192,15 @@
   },
   "theme_overrides": {
     "Kanagawa Dragon": {
+      "players": [
+        {
+          "cursor": "#f5e97fFF",
+          "selection": "#5a4f1aFF",
+        }
+      ],
+      "search.match_background": "#5a4f1aFF",
+      "search.active_match_background": "#8a7520FF",
+      "vim.visual.background": "#5a4f1aFF",
       "border": "#333333FF",
       "border.variant": "#444444FF",
       "background": "#000000FF",
@@ -208,7 +217,122 @@
       "editor.subheader.background": "#000000FF",
       "editor.active_line.background": "#111111FF",
       "editor.highlighted_line.background": "#000000FF",
-      "terminal.background": "#000000FF"
+      "editor.line_number": "#777777FF",
+      "editor.active_line_number": "#aaaaaaFF",
+      "terminal.background": "#000000FF",
+      "syntax": {
+        "attribute": {
+          "color": "#eeeeeeFF"
+        },
+        "boolean": {
+          "color": "#b36957FF"
+        },
+        "comment": {
+          "color": "#f5e97fFF",
+          "background_color": "#000000FF",
+          "font_style": "italic"
+        },
+        "comment.doc": {
+          "color": "#f5e97fFF",
+          "background_color": "#000000FF",
+          "font_style": "italic"
+        },
+        "constant": {
+          "color": "#b36957FF"
+        },
+        "constructor": {
+          "color": "#eeeeeeFF"
+        },
+        "function": {
+          "color": "#eeeeeeFF",
+          "font_style": "normal"
+        },
+        "function.method": {
+          "color": "#eeeeeeFF",
+          "font_style": "normal"
+        },
+        "function.macro": {
+          "color": "#eeeeeeFF",
+          "font_style": "normal"
+        },
+        "function.special": {
+          "color": "#eeeeeeFF",
+          "font_style": "normal"
+        },
+        "function.builtin": {
+          "color": "#eeeeeeFF",
+          "font_style": "normal"
+        },
+        "keyword": {
+          "color": "#eeeeeeFF",
+          "font_weight": 700
+        },
+        "label": {
+          "color": "#eeeeeeFF"
+        },
+        "number": {
+          "color": "#b36957FF"
+        },
+        "type": {
+          "color": "#eeeeeeFF",
+          "font_style": "italic"
+        },
+        "operator": {
+          "color": "#eeeeeeFF",
+          "font_weight": 700
+        },
+        "preproc": {
+          "color": "#eeeeeeFF"
+        },
+        "property": {
+          "color": "#eeeeeeFF"
+        },
+        "punctuation": {
+          "color": "#aaaaaaFF"
+        },
+        "punctuation.bracket": {
+          "color": "#aaaaaaFF"
+        },
+        "punctuation.delimiter": {
+          "color": "#aaaaaaFF"
+        },
+        "punctuation.list_marker": {
+          "color": "#ccccccFF"
+        },
+        "punctuation.markup": {
+          "color": "#aaaaaaFF"
+        },
+        "punctuation.special": {
+          "color": "#aaaaaaFF"
+        },
+        "string": {
+          "color": "#b36957FF"
+        },
+        "string.escape": {
+          "color": "#b36957FF"
+        },
+        "string.regex": {
+          "color": "#b36957FF"
+        },
+        "string.special": {
+          "color": "#b36957FF"
+        },
+        "string.special.symbol": {
+          "color": "#b36957FF"
+        },
+        "tag": {
+          "color": "#eeeeeeFF"
+        },
+        "title": {
+          "color": "#eeeeeeFF"
+        },
+        "variable": {
+          "color": "#eeeeeeFF"
+        },
+        "variable.special": {
+          "color": "#eeeeeeFF"
+        }
+      }
     },
     "One Light": {
       "border": "#7D7D7DFF",
@@ -231,6 +355,8 @@
       "editor.subheader.background": "#FFFFFFFF",
       "editor.active_line.background": "#FAFAFABF",
       "editor.highlighted_line.background": "#FFFFFFFF",
+      "editor.line_number": "#999999FF",
+      "editor.active_line_number": "#444444FF",
       "terminal.background": "#FFFFFFFF",
       "terminal.foreground": "#000000FF",
       "syntax": {
@@ -255,11 +381,27 @@
           "color": "#2255aaff"
         },
         "constructor": {
-          "color": "#000000FF",
-          "font_style": "italic"
+          "color": "#000000FF"
         },
         "function": {
-          "color": "#000000FF"
+          "color": "#000000FF",
+          "font_style": "normal"
+        },
+        "function.method": {
+          "color": "#000000FF",
+          "font_style": "normal"
+        },
+        "function.macro": {
+          "color": "#000000FF",
+          "font_style": "normal"
+        },
+        "function.special": {
+          "color": "#000000FF",
+          "font_style": "normal"
+        },
+        "function.builtin": {
+          "color": "#000000FF",
+          "font_style": "normal"
         },
         "keyword": {
           "color": "#000000FF",
@@ -272,7 +414,8 @@
           "color": "#2255aaff"
         },
         "type": {
-          "color": "#000000ff"
+          "color": "#000000ff",
+          "font_style": "italic"
         },
         "operator": {
           "color": "#000000FF",
@@ -285,37 +428,37 @@
           "color": "#000000FF"
         },
         "punctuation": {
-          "color": "#000000FF"
+          "color": "#444444FF"
         },
         "punctuation.bracket": {
-          "color": "#000000FF"
+          "color": "#444444FF"
         },
         "punctuation.delimiter": {
-          "color": "#000000FF"
+          "color": "#444444FF"
         },
         "punctuation.list_marker": {
           "color": "#140D0CFF"
         },
         "punctuation.markup": {
-          "color": "#000000FF"
+          "color": "#444444FF"
         },
         "punctuation.special": {
-          "color": "#000000FF"
+          "color": "#444444FF"
         },
         "string": {
-          "color": "#707070FF"
+          "color": "#7a3416FF"
         },
         "string.escape": {
-          "color": "#707070FF"
+          "color": "#7a3416FF"
         },
         "string.regex": {
-          "color": "#707070FF"
+          "color": "#7a3416FF"
         },
         "string.special": {
-          "color": "#707070FF"
+          "color": "#7a3416FF"
         },
         "string.special.symbol": {
-          "color": "#707070FF"
+          "color": "#7a3416FF"
         },
         "tag": {
           "color": "#000000FF"

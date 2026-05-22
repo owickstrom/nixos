@@ -17,7 +17,7 @@ if bg == "light" then
     fg = hsluv "#000000",
     fg_muted = hsluv "#444444",
     fg_muted_extra = hsluv "#999999",
-    constant = hsluv "#000000",
+    constant = hsluv "#7a3416",
     hint = hsluv "#222222",
     warning = hsluv "#d9961a",
     error = hsluv "#ec3305",
