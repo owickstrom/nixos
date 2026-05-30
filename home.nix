@@ -66,6 +66,7 @@
     wf-recorder # screen capture
     slurp
     maestral # for dropbox
+    android-tools
 
     # Nix
     nix-prefetch-git

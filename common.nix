@@ -162,4 +162,7 @@
   #   SUBSYSTEM=="usb", ATTRS{idVendor}=="0416", ATTRS{idProduct}=="5020", MODE:="666", GROUP="plugdev"
   #   KERNEL=="hidraw*", ATTRS{idVendor}=="0416", ATTRS{idProduct}=="5020", MODE="0666", GROUP="plugdev"
   # '';
+
+  # mount automatically
+  services.udisks2.enable = true;
 }
