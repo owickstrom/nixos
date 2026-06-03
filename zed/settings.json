@@ -78,6 +78,9 @@
   "preferred_line_length": 80,
   "show_wrap_guides": true,
   "load_direnv": "shell_hook",
+  "inlay_hints": {
+    "enabled": false
+  },
   "lsp": {
     "zls": {
       "binary": {}
