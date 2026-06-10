@@ -20,26 +20,7 @@
           "-c"
           "DiffEditor $left $right $output"
         ];
-      };
-
-      merge-tools.vimdiff = {
-        merge-args = [
-          "-f"
-          "-d"
-          "$output"
-          "-M"
-          "$left"
-          "$base"
-          "$right"
-          "-c"
-          "wincmd J"
-          "-c"
-          "set modifiable"
-          "-c"
-          "set write"
-        ];
-        program = "vim";
-        merge-tool-edits-conflict-markers = true;
+        diff-formatter = ":git";
       };
 
       templates.draft_commit_description = ''
@@ -50,11 +31,28 @@
         )
       '';
 
+      aliases.review = [
+        "util"
+        "exec"
+        "--"
+        "jj-review"
+      ];
+
     };
   };
 
   programs.difftastic = {
     enable = true;
-    jujutsu.enable = true;
+    jujutsu.enable = false; # doesn't work well on eink
   };
+
+  home.packages = [
+    (pkgs.writeShellApplication {
+      name = "jj-review";
+      runtimeInputs = [
+        pkgs.jujutsu
+      ];
+      text = builtins.readFile ./jj-review;
+    })
+  ];
 }

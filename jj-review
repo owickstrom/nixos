@@ -1,0 +1,73 @@
+#!/usr/bin/env bash
+# jj-review: open a diffview of current bookmark vs trunk
+#
+# Usage:
+#   jj-review                  # review bookmark at @
+#   jj-review my-feature       # review named bookmark
+
+set -euo pipefail
+
+# ── args ───────────────────────────────────────────────────────────────────
+
+BOOKMARK=""
+for arg in "$@"; do
+  case "$arg" in
+    -*) echo "unknown flag: $arg" >&2; exit 1 ;;
+    *)  BOOKMARK="$arg" ;;
+  esac
+done
+
+# ── helpers ────────────────────────────────────────────────────────────────
+
+die() { echo "error: $*" >&2; exit 1; }
+
+# ── resolve trunk ──────────────────────────────────────────────────────────
+
+TRUNK=$(jj log -r 'trunk()' --no-graph -T 'bookmarks' 2>/dev/null \
+  | tr ' ' '\n' | grep -v '@' | head -1)
+
+if [[ -z "$TRUNK" ]]; then
+  for candidate in main master trunk; do
+    if jj log -r "$candidate" --no-graph -T '' &>/dev/null; then
+      TRUNK="$candidate"; break
+    fi
+  done
+fi
+
+[[ -n "$TRUNK" ]] || die "could not determine trunk (tried trunk(), main, master, trunk)"
+
+# ── resolve bookmark to review ─────────────────────────────────────────────
+
+if [[ -z "$BOOKMARK" ]]; then
+  BOOKMARK=$(jj log -r '@' --no-graph -T 'bookmarks' 2>/dev/null \
+    | tr ' ' '\n' | grep -v '@' | sed 's/\*$//' | head -1)
+  [[ -n "$BOOKMARK" ]] || die "no bookmark at @; pass a bookmark name explicitly"
+fi
+
+jj log -r "$BOOKMARK" --no-graph -T '' &>/dev/null \
+  || die "bookmark '$BOOKMARK' not found"
+
+[[ "$BOOKMARK" != "$TRUNK" ]] \
+  || die "bookmark '$BOOKMARK' is the same as trunk '$TRUNK'"
+
+REVIEW_BOOKMARK="review/${BOOKMARK}"
+
+# ── create or resume review bookmark ──────────────────────────────────────
+
+if jj log -r "$REVIEW_BOOKMARK" --no-graph -T '' &>/dev/null; then
+  echo "resuming review: $REVIEW_BOOKMARK"
+  jj edit "$REVIEW_BOOKMARK"
+else
+  echo "creating review commit on top of $BOOKMARK..."
+  jj new "$BOOKMARK" -m "review: $BOOKMARK"
+  jj bookmark create "$REVIEW_BOOKMARK"
+  echo "created: $REVIEW_BOOKMARK"
+fi
+
+# ── sync to git and open diffview ─────────────────────────────────────────
+
+echo "syncing to git..."
+jj git export
+
+echo "opening diffview: $TRUNK..$BOOKMARK"
+nvim -c "DiffviewOpen ${TRUNK}..${BOOKMARK}"

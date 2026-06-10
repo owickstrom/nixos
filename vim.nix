@@ -40,6 +40,7 @@
       neogit
       gitlinker-nvim
       diffview-nvim
+      nvim-web-devicons
       hunk-nvim
       # other
       conform-nvim
@@ -71,6 +72,7 @@
       luafile ${config.home.homeDirectory}/nixos/vim/keymap.lua
       luafile ${config.home.homeDirectory}/nixos/vim/line.lua
       luafile ${config.home.homeDirectory}/nixos/vim/lsp.lua
+      luafile ${config.home.homeDirectory}/nixos/vim/jj.lua
     '';
     extraPackages = with pkgs; [
       lua-language-server
