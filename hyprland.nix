@@ -34,6 +34,7 @@ in
       "HDMI-A-2,highres,auto-down,2,transform,1"
       "DP-3,2560x1440@60.00Hz,auto-right,1.6,transform,1" # eink monitor
       "DP-2,highres,auto-left,2,transform,1" # lcd monitor
+      "moonlight,1440x1080,auto-right,1.8,transform,1" # sunshine
       ", preferred, auto, 1"
     ];
 

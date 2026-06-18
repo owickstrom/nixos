@@ -58,4 +58,36 @@
 
   antithesis.lock.enable = false;
   antithesis.user.global_home_manager = false;
+
+  services.sunshine = {
+    enable = true;
+    autoStart = true;
+    capSysAdmin = true;
+    openFirewall = true;
+
+    settings = {
+      adapter_name = "/dev/dri/renderD129";
+      codec = "hevc";
+      capture_method = "wlr";
+      output_name = 1;
+
+      # Listen precisely for the native dimensions Moonlight passes
+      advertised_resolutions = "1440x1080";
+
+      # Pad the processing frame by 4 pixels to satisfy the GPU's division limits
+      canvas_width = 1440;
+      canvas_height = 1080;
+    };
+
+    applications = {
+      apps = [
+        {
+          name = "Desktop";
+          # image-path = "desktop.png";
+          # Automatically paths to your active desktop environment wrapper
+          cmd = "${pkgs.zsh}/bin/zsh -c 'echo Streaming Desktop'";
+        }
+      ];
+    };
+  };
 }
