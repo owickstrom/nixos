@@ -41,7 +41,7 @@
     "cjpalhdlnbpafiamejdnhcphjbkeiagm" # ublock origin
     "dbepggeogbaibhgnhhndojpepiihcmeb" # vimium
   ];
-  programs.zoom-us.enable = true;
+  programs.zoom-us.enable = false;
 
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware.nvidia = {

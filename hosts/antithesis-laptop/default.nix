@@ -36,7 +36,7 @@
     "dbepggeogbaibhgnhhndojpepiihcmeb" # vimium
     "eakpippijmmohmdlpgcjnipolcgciaga" # pangram
   ];
-  programs.zoom-us.enable = true;
+  programs.zoom-us.enable = false;
   personal.browser = "chromium";
   personal.backlight = {
     enabled = true;
