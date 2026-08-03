@@ -30,8 +30,7 @@
     # for testing
     vscode
     slack
-    podman
-    podman-compose
+    docker-compose
   ];
   programs.chromium.enable = true;
   programs.chromium.extensions = [
@@ -88,6 +87,15 @@
           cmd = "${pkgs.zsh}/bin/zsh -c 'echo Streaming Desktop'";
         }
       ];
+    };
+  };
+
+  # Docker
+  virtualisation.docker = {
+    enable = true;
+    rootless = {
+      enable = true;
+      setSocketVariable = true;
     };
   };
 }
