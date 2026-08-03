@@ -24,8 +24,7 @@
     kdiff3
     nixfmt
     vscode
-    podman
-    podman-compose
+    docker-compose
   ];
   programs.chromium.enable = true;
   programs.chromium.extensions = [
@@ -45,4 +44,13 @@
 
   antithesis.lock.enable = false;
   antithesis.user.global_home_manager = false;
+
+  # Docker
+  virtualisation.docker = {
+    enable = true;
+    rootless = {
+      enable = true;
+      setSocketVariable = true;
+    };
+  };
 }
