@@ -1,13 +1,12 @@
 #!/usr/bin/env bash
-# jj-review: open a diffview of current bookmark vs trunk
+# jj-review: create/resume a squashed review commit for a bookmark,
+# then drop into a zsh subshell with review helper commands.
 #
 # Usage:
 #   jj-review                  # review bookmark at @
 #   jj-review my-feature       # review named bookmark
 
 set -euo pipefail
-
-# ── args ───────────────────────────────────────────────────────────────────
 
 BOOKMARK=""
 for arg in "$@"; do
@@ -17,14 +16,12 @@ for arg in "$@"; do
   esac
 done
 
-# ── helpers ────────────────────────────────────────────────────────────────
-
 die() { echo "error: $*" >&2; exit 1; }
 
-# ── resolve trunk ──────────────────────────────────────────────────────────
+# resolve trunk
 
 TRUNK=$(jj log -r 'trunk()' --no-graph -T 'bookmarks' 2>/dev/null \
-  | tr ' ' '\n' | grep -v '@' | head -1)
+  | tr ' ' '\n' | grep -v '@' | sed 's/\*$//' | head -1)
 
 if [[ -z "$TRUNK" ]]; then
   for candidate in main master trunk; do
@@ -36,12 +33,20 @@ fi
 
 [[ -n "$TRUNK" ]] || die "could not determine trunk (tried trunk(), main, master, trunk)"
 
-# ── resolve bookmark to review ─────────────────────────────────────────────
+# resolve bookmark to review
+
+REVIEW_PREFIX="review/"
 
 if [[ -z "$BOOKMARK" ]]; then
   BOOKMARK=$(jj log -r '@' --no-graph -T 'bookmarks' 2>/dev/null \
-    | tr ' ' '\n' | grep -v '@' | sed 's/\*$//' | head -1)
-  [[ -n "$BOOKMARK" ]] || die "no bookmark at @; pass a bookmark name explicitly"
+    | tr ' ' '\n' | grep -v '@' | sed 's/\*$//' \
+    | grep -v "^${REVIEW_PREFIX}" | head -1)
+  [[ -n "$BOOKMARK" ]] || die "no non-review bookmark at @; pass a bookmark name explicitly"
+fi
+
+if [[ "$BOOKMARK" == "${REVIEW_PREFIX}"* ]]; then
+  BOOKMARK="${BOOKMARK#$REVIEW_PREFIX}"
+  echo "note: '$REVIEW_PREFIX$BOOKMARK' is itself a review bookmark; reviewing '$BOOKMARK' instead"
 fi
 
 jj log -r "$BOOKMARK" --no-graph -T '' &>/dev/null \
@@ -52,22 +57,80 @@ jj log -r "$BOOKMARK" --no-graph -T '' &>/dev/null \
 
 REVIEW_BOOKMARK="review/${BOOKMARK}"
 
-# ── create or resume review bookmark ──────────────────────────────────────
+ROOTS_COUNT=$(jj log -r "roots($TRUNK..$BOOKMARK)" --no-graph -T 'commit_id ++ "\n"' | wc -l)
+[[ "$ROOTS_COUNT" -eq 1 ]] \
+  || die "'$BOOKMARK' has $ROOTS_COUNT roots relative to trunk; this script assumes a single linear stack"
+
+# create or resume review bookmark
 
 if jj log -r "$REVIEW_BOOKMARK" --no-graph -T '' &>/dev/null; then
   echo "resuming review: $REVIEW_BOOKMARK"
   jj edit "$REVIEW_BOOKMARK"
 else
-  echo "creating review commit on top of $BOOKMARK..."
-  jj new "$BOOKMARK" -m "review: $BOOKMARK"
-  jj bookmark create "$REVIEW_BOOKMARK"
+  echo "creating review commit for $BOOKMARK..."
+  jj new -r "roots($TRUNK..$BOOKMARK)-" -m "review: $BOOKMARK"
+  jj restore --from "$BOOKMARK" --to @
+  jj bookmark create "$REVIEW_BOOKMARK" -r @
   echo "created: $REVIEW_BOOKMARK"
 fi
 
-# ── sync to git and open diffview ─────────────────────────────────────────
+jj new -m "wip"
 
-echo "syncing to git..."
-jj git export
+# drop into a subshell with review helpers
 
-echo "opening diffview: $TRUNK..$BOOKMARK"
-nvim -c "DiffviewOpen ${TRUNK}..${BOOKMARK}"
+tmpdir=$(mktemp -d)
+cat > "$tmpdir/.zshrc" <<EOF
+[[ -f "\$HOME/.zshrc" ]] && source "\$HOME/.zshrc"
+
+export BOOKMARK="$BOOKMARK"
+export REVIEW_BOOKMARK="$REVIEW_BOOKMARK"
+export TRUNK="$TRUNK"
+
+zshexit() { rm -rf "$tmpdir"; }
+
+jj-review-rest() {
+  # selected hunks = reviewed, extracted into a new commit stacked
+  # on top of \$REVIEW_BOOKMARK; unselected = still unreviewed,
+  # stays as \$REVIEW_BOOKMARK itself.
+  jj split -r "\$REVIEW_BOOKMARK" -A "\$REVIEW_BOOKMARK"
+}
+
+jj-review-amend() {
+  if [[ \$# -gt 0 ]]; then
+    jj describe -m "\$*"
+  else
+    jj describe
+  fi
+  jj new -m "wip"
+}
+
+jj-review-finish() {
+  # rebase the review chain onto \$BOOKMARK, drop anything that's now
+  # empty, and point \$REVIEW_BOOKMARK at the surviving tip. \$BOOKMARK
+  # itself is never modified.
+  local review_root tip
+  review_root=\$(jj log -r "roots(\$TRUNK..\$REVIEW_BOOKMARK)" --no-graph -T 'commit_id')
+  jj edit -r "heads(\${review_root}::)"
+  jj rebase -s "\$review_root" -d "\$BOOKMARK"
+  tip=\$(jj log -r "heads(\$BOOKMARK::)" --no-graph -T 'commit_id')
+  jj abandon -r "empty() & (\$BOOKMARK..\$tip)"
+  tip=\$(jj log -r "heads(\$BOOKMARK::)" --no-graph -T 'commit_id')
+  jj bookmark set "\$REVIEW_BOOKMARK" -r "\$tip"
+  jj edit "\$REVIEW_BOOKMARK"
+  echo "done: \$REVIEW_BOOKMARK now points to reviewed stack on top of \$BOOKMARK"
+}
+
+jj-review-abort() {
+  local review_root
+  review_root=\$(jj log -r "roots(\$TRUNK..\$REVIEW_BOOKMARK)" --no-graph -T 'commit_id')
+  jj abandon -r "\${review_root}::(heads(\${review_root}::))"
+  jj bookmark delete "\$REVIEW_BOOKMARK" 2>/dev/null || true
+  jj edit "\$BOOKMARK"
+  echo "aborted: \$REVIEW_BOOKMARK discarded, back on \$BOOKMARK"
+}
+
+echo "jj-review: \$BOOKMARK  (review bookmark: \$REVIEW_BOOKMARK)"
+echo "commands: jj-review-rest | jj-review-amend [msg] | jj-review-finish | jj-review-abort"
+EOF
+
+ZDOTDIR="$tmpdir" exec zsh -i

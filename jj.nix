@@ -23,6 +23,14 @@
         diff-formatter = ":git";
       };
 
+      # "merge-tools".diffview = {
+      #   program = "nvim";
+      #   merge-args = [
+      #     "-c"
+      #     "DiffviewMergeFiles $left $base $right $output"
+      #   ];
+      # };
+      #
       templates.draft_commit_description = ''
         concat(
           builtin_draft_commit_description,
@@ -46,13 +54,8 @@
     jujutsu.enable = false; # doesn't work well on eink
   };
 
-  home.packages = [
-    (pkgs.writeShellApplication {
-      name = "jj-review";
-      runtimeInputs = [
-        pkgs.jujutsu
-      ];
-      text = builtins.readFile ./jj-review;
-    })
-  ];
+  home.activation.jjReview = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    $DRY_RUN_CMD mkdir -p ~/.local/bin
+    $DRY_RUN_CMD ln -sfn ${config.home.homeDirectory}/nixos/jj-review ~/.local/bin/jj-review
+  '';
 }

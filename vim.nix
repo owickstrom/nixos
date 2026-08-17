@@ -4,7 +4,19 @@
   pkgs,
   ...
 }:
-
+let
+  diffview-plus-nvim = pkgs.vimUtils.buildVimPlugin {
+    pname = "diffview-plus.nvim";
+    version = "unstable";
+    src = pkgs.fetchFromGitHub {
+      owner = "dlyongemallo";
+      repo = "diffview-plus.nvim";
+      rev = "v0.37";
+      hash = "sha256-5ZYl7D/V5tFhlojwj6EvHXnQVvfdiLxzpAlNUejLJzI=";
+    };
+    doCheck = false;
+  };
+in
 {
   programs.neovim = {
     enable = true;
@@ -39,7 +51,7 @@
       # vcs
       neogit
       gitlinker-nvim
-      diffview-nvim
+      diffview-plus-nvim
       nvim-web-devicons
       hunk-nvim
       # other
