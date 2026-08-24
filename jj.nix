@@ -23,14 +23,14 @@
         diff-formatter = ":git";
       };
 
-      # "merge-tools".diffview = {
-      #   program = "nvim";
-      #   merge-args = [
-      #     "-c"
-      #     "DiffviewMergeFiles $left $base $right $output"
-      #   ];
-      # };
-      #
+      "merge-tools".diffview = {
+        program = "nvim";
+        merge-args = [
+          "-c"
+          "DiffviewMergeFiles $left $base $right $output"
+        ];
+      };
+
       templates.draft_commit_description = ''
         concat(
           builtin_draft_commit_description,
