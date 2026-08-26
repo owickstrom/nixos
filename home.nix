@@ -64,6 +64,7 @@
     gnome-calculator
     vlc
     wf-recorder # screen capture
+    wl-clipboard # wl-copy et al
     slurp
     maestral # for dropbox
     android-tools
