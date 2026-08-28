@@ -38,10 +38,13 @@
     LC_TIME = "sv_SE.UTF-8";
   };
 
+  catppuccin = {
+    autoEnable = false;
+  };
+
   services.displayManager.sddm = {
     enable = true;
     wayland.enable = true;
-    theme = "where_is_my_sddm_theme";
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
@@ -95,6 +98,13 @@
     git
     grimblast
   ];
+
+  catppuccin.sddm = {
+    enable = true;
+    flavor = "mocha";
+    accent = "lavender";
+    background = "${./bg-light.jpeg}";
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

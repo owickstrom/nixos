@@ -10,6 +10,7 @@
   boot.kernelPackages = pkgs.linuxPackages_6_18;
   boot.loader.systemd-boot.configurationLimit = 16;
   boot.supportedFilesystems = [ "zfs" ];
+  boot.zfs.forceImportRoot = false;
   networking.extraHosts = ''
     192.168.1.13	bhyve-host
   '';

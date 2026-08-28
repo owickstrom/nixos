@@ -7,6 +7,7 @@
 }:
 let
   themes = pkgs.callPackage ./themes.nix { };
+  mod = "SUPER";
 in
 {
 
@@ -21,8 +22,8 @@ in
   ];
 
   wayland.windowManager.hyprland.enable = true;
+  wayland.windowManager.hyprland.configType = "hyprlang";
   wayland.windowManager.hyprland.settings = {
-    "$mod" = "SUPER";
     input = {
       kb_layout = "us,se";
       kb_options = "ctrl:nocaps, compose:ralt";
@@ -50,11 +51,11 @@ in
       # dim_strength = 0.1;
 
       active_opacity = 1;
-      inactive_opacity = 0.9;
+      inactive_opacity = 0.8;
 
       blur = {
         enabled = true;
-        size = 8;
+        size = 10;
         passes = 1;
         new_optimizations = true;
       };
@@ -73,47 +74,47 @@ in
     };
 
     bind = [
-      "$mod, Q, killactive"
-      "$mod + SHIFT, Q, killactive"
-      "$mod, F, fullscreen"
-      "$mod + SHIFT, F, togglefloating"
-      "$mod, Return, exec, ghostty"
-      "$mod + SHIFT, Return, exec, ${osConfig.personal.browser}"
-      "$mod + SHIFT, N, exec, nautilus"
-      "$mod, Space, exec, rofi -show run"
-      "$mod, T, exec, darkman toggle"
-      "$mod + SHIFT, Escape, exec, hyprlock"
-      "$mod + SHIFT, E, exit"
+      "${mod}, Q, killactive"
+      "${mod} + SHIFT, Q, killactive"
+      "${mod}, F, fullscreen"
+      "${mod} + SHIFT, F, togglefloating"
+      "${mod}, Return, exec, ghostty"
+      "${mod} + SHIFT, Return, exec, ${osConfig.personal.browser}"
+      "${mod} + SHIFT, N, exec, nautilus"
+      "${mod}, Space, exec, rofi -show run"
+      "${mod}, T, exec, darkman toggle"
+      "${mod} + SHIFT, Escape, exec, hyprlock"
+      "${mod} + SHIFT, E, exit"
 
-      "$mod, R, layoutmsg, orientationnext"
+      "${mod}, R, layoutmsg, orientationnext"
 
-      "$mod, Left, movefocus, l"
-      "$mod, Right, movefocus, r"
-      "$mod, Up, movefocus, u"
-      "$mod, Down, movefocus, d"
+      "${mod}, Left, movefocus, l"
+      "${mod}, Right, movefocus, r"
+      "${mod}, Up, movefocus, u"
+      "${mod}, Down, movefocus, d"
 
-      "$mod + Shift + Ctrl, H, movecurrentworkspacetomonitor, l"
-      "$mod + Shift + Ctrl, L, movecurrentworkspacetomonitor, r"
+      "${mod} + Shift + Ctrl, H, movecurrentworkspacetomonitor, l"
+      "${mod} + Shift + Ctrl, L, movecurrentworkspacetomonitor, r"
 
-      "$mod, H, movefocus, l"
-      "$mod, J, movefocus, d"
-      "$mod, K, movefocus, u"
-      "$mod, L, movefocus, r"
+      "${mod}, H, movefocus, l"
+      "${mod}, J, movefocus, d"
+      "${mod}, K, movefocus, u"
+      "${mod}, L, movefocus, r"
 
-      "$mod + Shift, H, movewindow, l"
-      "$mod + Shift, J, movewindow, d"
-      "$mod + Shift, K, movewindow, u"
-      "$mod + Shift, L, movewindow, r"
+      "${mod} + Shift, H, movewindow, l"
+      "${mod} + Shift, J, movewindow, d"
+      "${mod} + Shift, K, movewindow, u"
+      "${mod} + Shift, L, movewindow, r"
 
-      "$mod + Shift + Ctrl, Right, resizeactive, 10 0"
-      "$mod + Shift + Ctrl, Left, resizeactive, -10 0"
-      "$mod + Shift + Ctrl, Up, resizeactive, 0 -10"
-      "$mod + Shift + Ctrl, Down, resizeactive, 0 10"
+      "${mod} + Shift + Ctrl, Right, resizeactive, 10 0"
+      "${mod} + Shift + Ctrl, Left, resizeactive, -10 0"
+      "${mod} + Shift + Ctrl, Up, resizeactive, 0 -10"
+      "${mod} + Shift + Ctrl, Down, resizeactive, 0 10"
 
-      "$mod,mouse:272,movewindow"
-      # "$mod,mouse:273,resizewindow"
+      "${mod},mouse:272,movewindow"
+      # "${mod},mouse:273,resizewindow"
 
-      "$mod + Alt, Backspace, exec, hyprctl switchxkblayout all next"
+      "${mod} + Alt, Backspace, exec, hyprctl switchxkblayout all next"
 
       ", Print, exec, grimblast copy area"
       "SHIFT, Print, exec, grimblast copysave area"
@@ -124,18 +125,18 @@ in
       ",XF86MonBrightnessDown, exec, brightnessctl s 10%-"
 
       # Writing mode
-      "$mod + Shift, F9, exec, mira settings --speed 5 --contrast 10 --refresh-mode a2 --dither-mode 1 --black-filter 0 --white-filter 0"
+      "${mod} + Shift, F9, exec, mira settings --speed 5 --contrast 10 --refresh-mode a2 --dither-mode 1 --black-filter 0 --white-filter 0"
       # Reading mode
-      "$mod + Shift, F10, exec, mira settings --refresh-mode direct --contrast 7 --speed 5 --dither-mode 3 --white-filter 12 --black-filter 10"
+      "${mod} + Shift, F10, exec, mira settings --refresh-mode direct --contrast 7 --speed 5 --dither-mode 3 --white-filter 12 --black-filter 10"
       # Speed mode
-      "$mod + Shift, F11, exec, mira settings --refresh-mode direct --contrast 15 --speed 15 --dither-mode 0 --white-filter 0 --black-filter 0"
+      "${mod} + Shift, F11, exec, mira settings --refresh-mode direct --contrast 15 --speed 15 --dither-mode 0 --white-filter 0 --black-filter 0"
       # Refresh
-      "$mod + Shift, F12, exec, mira refresh"
+      "${mod} + Shift, F12, exec, mira refresh"
 
     ]
     ++ (
       # workspaces
-      # binds $mod + [shift +] {1..9} to [move to] workspace {1..9}
+      # binds ${mod} + [shift +] {1..9} to [move to] workspace {1..9}
       builtins.concatLists (
         builtins.genList (
           i:
@@ -143,8 +144,8 @@ in
             ws = i + 1;
           in
           [
-            "$mod, code:1${toString i}, workspace, ${toString ws}"
-            "$mod SHIFT, code:1${toString i}, movetoworkspace, ${toString ws}"
+            "${mod}, code:1${toString i}, workspace, ${toString ws}"
+            "${mod} SHIFT, code:1${toString i}, movetoworkspace, ${toString ws}"
           ]
         ) 9
       )
@@ -155,6 +156,17 @@ in
       '', switch:on:Lid Switch, exec, hyprctl keyword monitor "eDP-1,disable"''
       # Trigger when the switch is turning off.
       '', switch:off:Lid Switch, exec, hyprctl keyword monitor "eDP-1,highres,auto-left,1.5,transform,0"''
+    ];
+  };
+
+  services.hyprpaper.enable = true;
+  services.hyprpaper.settings = {
+    splash = false;
+    wallpaper = [
+      {
+        monitor = "";
+        path = "${./bg-light.jpeg}";
+      }
     ];
   };
 
@@ -256,10 +268,10 @@ in
   };
 
   home.pointerCursor = {
+    enable = true;
     hyprcursor.enable = true;
     name = "Vanilla-DMZ";
     package = pkgs.vanilla-dmz;
-
   };
 
   gtk = {
@@ -295,7 +307,7 @@ in
   };
 
   services.darkman = {
-    enable = true;
+    enable = false;
     darkModeScripts = {
       color-scheme = ''
         ${pkgs.dconf}/bin/dconf write /org/gnome/desktop/interface/color-scheme "'prefer-dark'"
