@@ -142,6 +142,7 @@ gtk-wide-tabs = false
 # gtk-adwaita = true
 
 desktop-notifications = true
+app-notifications = no-clipboard-copy
 bold-is-bright = false
 
 term = xterm-ghostty
