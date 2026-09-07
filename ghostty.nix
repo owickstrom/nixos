@@ -32,7 +32,8 @@ in
     palette = 15=#ffffff
     background = ${themes.dark.background}
     foreground = ${themes.dark.foreground}
-    cursor-color = ${themes.dark.foreground}
+    # https://github.com/ghostty-org/ghostty/discussions/12708#discussioncomment-17270550
+    cursor-color = cell-foreground
     cursor-text = ${themes.dark.background}
     selection-background = ${themes.dark.background-muted}
     selection-foreground = ${themes.dark.foreground}
@@ -57,7 +58,8 @@ in
     palette = 15=#5c5c5c
     background = ${themes.light.background}
     foreground = ${themes.light.foreground}
-    cursor-color = ${themes.light.foreground}
+    # https://github.com/ghostty-org/ghostty/discussions/12708#discussioncomment-17270550
+    cursor-color = cell-foreground
     cursor-text = ${themes.light.background}
     selection-background = ${themes.light.selection}
     selection-foreground = ${themes.light.foreground}

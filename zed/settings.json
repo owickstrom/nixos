@@ -20,6 +20,22 @@
         }
       ],
       "nickname": "desktop"
+    },
+    {
+      "host": "bombadil.exe.xyz",
+      "args": [],
+      "projects": [
+        {
+          "paths": [
+            "/home/exedev"
+          ]
+        },
+        {
+          "paths": [
+            "/home/exedev/bombadil"
+          ]
+        }
+      ]
     }
   ],
   "disable_ai": true,

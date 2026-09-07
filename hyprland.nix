@@ -307,7 +307,7 @@ in
   };
 
   services.darkman = {
-    enable = false;
+    enable = true;
     darkModeScripts = {
       color-scheme = ''
         ${pkgs.dconf}/bin/dconf write /org/gnome/desktop/interface/color-scheme "'prefer-dark'"
