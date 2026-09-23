@@ -123,6 +123,7 @@
   networking.firewall.allowedTCPPorts = [
     80
     443
+    1073 # bombadil inspect
     8080
   ];
   # networking.firewall.allowedUDPPorts = [ ... ];

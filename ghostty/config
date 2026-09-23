@@ -12,7 +12,7 @@ adjust-cell-height = 20%
 
 theme = dark:lancia-dark,light:lancia-light
 selection-invert-fg-bg = false
-minimum-contrast = 1
+minimum-contrast = 3
 
 cursor-opacity = 1
 cursor-style = block
