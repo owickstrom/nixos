@@ -34,6 +34,11 @@
           "paths": [
             "/home/exedev/bombadil"
           ]
+        },
+        {
+          "paths": [
+            "/home/exedev/bombadil-2"
+          ]
         }
       ]
     }
