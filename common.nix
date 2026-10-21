@@ -78,7 +78,10 @@
     "root"
     "owi"
   ];
-  nix.settings.experimental-features = lib.mkForce "nix-command flakes";
+  nix.settings.experimental-features = lib.mkForce [
+    "nix-command"
+    "flakes"
+  ];
   # system.copySystemConfiguration = lib.mkForce false;
 
   nixpkgs.config.allowUnfree = true;

@@ -77,10 +77,10 @@
     nil
 
     # Python
-    python313
+    python3
     uv
     pyright
-    python313Packages.black
+    python3Packages.black
 
     # JS
     nodejs
