@@ -154,8 +154,10 @@ in
     bindl = [
       # Trigger when the switch is turning on.
       '', switch:on:Lid Switch, exec, hyprctl keyword monitor "eDP-1,disable"''
-      # Trigger when the switch is turning off.
-      '', switch:off:Lid Switch, exec, hyprctl keyword monitor "eDP-1,highres,auto-left,1.5,transform,0"''
+      # Trigger when the switch is turning off. A `keyword monitor` rule only
+      # applies on the next render tick, and with no enabled monitors there is
+      # none, so re-read the config instead, which applies synchronously.
+      '', switch:off:Lid Switch, exec, hyprctl reload''
     ];
   };
 
@@ -219,7 +221,9 @@ in
     enable = true;
     settings = {
       general = {
-        after_sleep_cmd = "hyprctl dispatch dpms on";
+        # Re-enable the panel after resume if the lid is open; the lid switch:off
+        # bind can miss it. See the bindl comment for why this is a reload.
+        after_sleep_cmd = "hyprctl dispatch dpms on; grep -q open /proc/acpi/button/lid/LID0/state && hyprctl reload";
         ignore_dbus_inhibit = false;
         lock_cmd = "hyprlock";
       };
