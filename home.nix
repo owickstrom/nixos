@@ -20,6 +20,7 @@
     ./tmux.nix
     ./ctags.nix
     ./spotify.nix
+    ./voxtype.nix
   ];
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;

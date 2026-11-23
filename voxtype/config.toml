@@ -1,0 +1,66 @@
+# Voxtype configuration, managed by home-manager (nixos/voxtype/config.toml).
+# Reference: voxtype config; full template in share/voxtype/default-config.toml.
+
+# Written to $XDG_RUNTIME_DIR/voxtype/state; needed by `voxtype record ...`
+# and `voxtype status` (waybar).
+state_file = "auto"
+
+[hotkey]
+# Recording is toggled from a Hyprland bind (`voxtype record toggle`), so the
+# built-in evdev hotkey is off. See voxtype.nix.
+enabled = false
+
+[audio]
+device = "default"
+sample_rate = 16000
+# Safety limit for a single held recording.
+max_duration_secs = 120
+
+[audio.feedback]
+# Short beeps on start/stop so push-to-talk has some feedback.
+enabled = true
+theme = "subtle"
+volume = 0.5
+
+[whisper]
+# Local whisper.cpp on CPU. Options: tiny.en, base.en, small.en, medium.en,
+# large-v3-turbo. Downloaded on first use to ~/.local/share/voxtype/models.
+model = "base.en"
+language = "en"
+translate = false
+on_demand_loading = false
+
+# Live streaming (v1.3+): a rolling buffer is re-transcribed every
+# interval_secs and stable words are typed at the cursor while speaking.
+# Requires toggle activation (see voxtype.nix); the old 5s eager chunking is
+# superseded by this and stays off.
+streaming = true
+eager_processing = false
+
+[streaming]
+interval_secs = 0.8
+max_buffer_secs = 29.0
+partial_min_words = 1
+type_partials = true
+
+[output]
+# Type at the cursor via wtype; fall back to the clipboard if that fails.
+mode = "type"
+fallback_to_clipboard = true
+type_delay_ms = 0
+pre_type_delay_ms = 0
+
+# Hyprland submap hooks: disable the main keybinds while typing so letters
+# typed while Super+Shift is still held don't trigger them. The submap is
+# defined in voxtype.nix.
+pre_output_command = "hyprctl dispatch submap voxtype_suppress"
+post_output_command = "hyprctl dispatch submap reset"
+
+[output.notification]
+on_recording_start = false
+on_recording_stop = false
+# The text shows up where you type, so skip the extra toast.
+on_transcription = false
+
+[status]
+icon_theme = "nerd-font"

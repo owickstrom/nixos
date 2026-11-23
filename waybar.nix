@@ -49,6 +49,7 @@ let
     #language,
     #wireplumber,
     #battery,
+    #custom-voxtype,
     #cpu {
       margin: 0;
       padding: 0 0.75em;
@@ -92,6 +93,14 @@ let
       color: ${theme.accent};
     }
 
+    #custom-voxtype.recording,
+    #custom-voxtype.streaming {
+      color: #e5484d;
+    }
+    #custom-voxtype.transcribing {
+      color: #e0a800;
+    }
+
     #cpu {
       color: ${theme.foreground};
     }
@@ -119,6 +128,7 @@ in
     ++ [
       "hyprland/language"
       "wireplumber"
+      "custom/voxtype"
       "cpu"
       "battery"
       "clock"
