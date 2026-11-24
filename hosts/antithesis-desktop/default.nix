@@ -8,6 +8,7 @@
   imports = [
     ./hardware-configuration.nix
     ../../claude-wrapper.nix
+    ../../llama-cpp.nix
   ];
   networking.hostName = "antithesis-desktop";
   networking.hostId = "8f3893c1"; # TODO Required for ZFS (from 'head -c 8 /etc/machine-id').
