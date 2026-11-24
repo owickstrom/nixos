@@ -40,6 +40,9 @@ eager_processing = false
 [streaming]
 interval_secs = 0.8
 max_buffer_secs = 29.0
+# No pass runs until this much audio is buffered (upstream default 1.0), and
+# the final pass on stop has the same gate, so short dictations were dropped.
+min_audio_secs = 0.5
 partial_min_words = 1
 type_partials = true
 

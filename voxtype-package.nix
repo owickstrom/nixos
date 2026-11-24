@@ -51,6 +51,12 @@
     xclip
     xdotool
   ],
+
+  # x86 CPU level for both the Rust code and the bundled whisper.cpp/ggml.
+  # x86-64-v3 is AVX2 and runs on everything from Haswell onwards; x86-64-v4
+  # adds AVX-512 and roughly halves whisper inference time, but the binary
+  # then only runs on CPUs that have it (Zen 4+, Intel non-hybrid parts).
+  cpuTarget ? "x86-64-v3",
 }:
 
 rustPlatform.buildRustPackage (finalAttrs: {
@@ -131,18 +137,18 @@ rustPlatform.buildRustPackage (finalAttrs: {
     # This matches the portable AVX2 binaries we ship for other distros
     RUSTFLAGS = lib.optionalString (
       stdenv.hostPlatform.isLinux && stdenv.hostPlatform.isx86_64
-    ) "-C target-cpu=x86-64-v3";
+    ) "-C target-cpu=${cpuTarget}";
 
     # RUSTFLAGS above only covers Rust code. The bundled whisper.cpp/ggml is
     # built by cmake from whisper-rs-sys, and ggml turns GGML_NATIVE off when
     # SOURCE_DATE_EPOCH is set (which nix always does), which also disables
     # every GGML_AVX* option: the result is scalar inference, ~5s per pass
     # for base.en on a Zen 5. ggml's kernels key off the compiler's __AVX2__ /
-    # __FMA__ / __F16C__ macros, so giving the C/C++ compiles the same
-    # x86-64-v3 target is enough to get the SIMD paths.
+    # __FMA__ / __F16C__ / __AVX512F__ macros, so giving the C/C++ compiles
+    # the same target as the Rust code is enough to get the SIMD paths.
     NIX_CFLAGS_COMPILE = lib.optionalString (
       stdenv.hostPlatform.isLinux && stdenv.hostPlatform.isx86_64
-    ) "-march=x86-64-v3";
+    ) "-march=${cpuTarget}";
   };
 
   preBuild = ''

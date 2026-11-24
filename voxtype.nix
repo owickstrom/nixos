@@ -3,10 +3,15 @@
   pkgs,
   config,
   lib,
+  osConfig,
   ...
 }:
 let
-  voxtype = pkgs.callPackage ./voxtype-package.nix { };
+  # The desktop's Ryzen 9 9900X has AVX-512, which roughly halves whisper
+  # inference time; the laptop only has AVX2. The two hosts therefore build
+  # different binaries, so `nix copy` between them doesn't apply to voxtype.
+  cpuTarget = if osConfig.networking.hostName == "antithesis-desktop" then "x86-64-v4" else "x86-64-v3";
+  voxtype = pkgs.callPackage ./voxtype-package.nix { inherit cpuTarget; };
   bin = "${voxtype}/bin/voxtype";
   mod = "SUPER";
 in
