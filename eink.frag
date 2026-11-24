@@ -17,6 +17,7 @@ const float DITHER       = 0.8;   // 0 = plain quantization, 1 = full-step Bayer
 const int   DITHER_SCALE = 2;     // physical pixels per dither cell; 2 matches the monitor's scale=2 logical pixel
 const float SOFTEN       = 0.5;   // 0..1 blend with a 3x3 blur, mimics e-ink edge bleed
 const float INK_BLEED    = 0.3;   // 0..1 blend toward the darkest neighbour; thickens and clumps strokes
+const float DESATURATE   = 0.75;  // 0 = full colour, 1 = pure grayscale
 const vec3  WARM         = vec3(1.0, 0.63, 0.28); // blackbody tint, 2500K. 2000K: vec3(1.0, 0.54, 0.07)
 const float WARMTH       = 1.0;   // 0 = neutral gray, 1 = full WARM tint
 
@@ -56,6 +57,11 @@ void main() {
     float t = (B4[p.y * 4 + p.x] + 0.5) / 16.0 - 0.5;
     float q = floor(y * (LEVELS - 1.0) + 0.5 + t * DITHER) / (LEVELS - 1.0);
 
+    float g = mix(BLACK, WHITE, q);
+    // Re-apply the original hue at the quantized brightness, then desaturate.
+    vec3 colored = clamp(c * (g / max(luma(c), 0.001)), 0.0, 1.0);
+    vec3 outc = mix(colored, vec3(g), DESATURATE);
+
     vec3 tint = mix(vec3(1.0), WARM, WARMTH);
-    fragColor = vec4(vec3(mix(BLACK, WHITE, q)) * tint, 1.0);
+    fragColor = vec4(outc * tint, 1.0);
 }
