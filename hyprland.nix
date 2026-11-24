@@ -19,6 +19,23 @@ in
     (pkgs.writeShellScriptBin "x-www-browser" ''
       exec ${osConfig.personal.browser} "$@"
     '')
+
+    # Toggle the e-ink emulation shader. screen_shader is global in Hyprland
+    # (decoration:screen_shader), so eink.frag selects the monitor itself via
+    # the wl_output uniform. The shader samples neighbouring pixels, which
+    # shows seams at damage-region edges, so damage tracking is turned off
+    # while it is active and restored to the default (2) when it is not.
+    (pkgs.writeShellScriptBin "toggle-eink" ''
+      if hyprctl getoption decoration:screen_shader | grep -q "eink.frag"; then
+          hyprctl keyword decoration:screen_shader ""
+          hyprctl keyword debug:damage_tracking 2
+          echo "E-ink emulation disabled"
+      else
+          hyprctl keyword debug:damage_tracking 0
+          hyprctl keyword decoration:screen_shader "${./eink.frag}"
+          echo "E-ink emulation enabled"
+      fi
+    '')
   ];
 
   wayland.windowManager.hyprland.enable = true;
